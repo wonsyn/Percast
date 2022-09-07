@@ -2,17 +2,15 @@
   <div>
     <header-nav-bar></header-nav-bar>
     <router-view />
-    <footer-nav-bar></footer-nav-bar>
   </div>
 </template>
 
 <script>
 import HeaderNavBar from "./components/layout/HeaderNavBar.vue";
-import FooterNavBar from "./components/layout/FooterNavBar.vue";
+
 export default {
   components: {
     HeaderNavBar,
-    FooterNavBar,
   }
 }
 </script>
