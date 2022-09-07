@@ -1,12 +1,10 @@
 <template>
   <div>
     <b-row>
-      <!--
-        <b-col>
-            <map-l-option></map-l-option>
-        </b-col>
-      -->
-      <b-col>
+      <b-col cols="4">
+          <map-l-option></map-l-option>
+      </b-col>
+      <b-col cols="8">
         <maps-main></maps-main>
       </b-col>
       <!-- 
@@ -20,13 +18,13 @@
 
 <script>
 import MapsMain from '@/components/maps/MapsMain.vue';
-//import MapLOption from '@/components/maps/MapLOption.vue'
+import MapLOption from '@/components/maps/MapLOption.vue'
 //import MapROption from '@/components/maps/MapROption.vue'
 
 export default {
 components: {
 MapsMain,
-//MapLOption,
+MapLOption,
 //MapROption,
 }
 }
