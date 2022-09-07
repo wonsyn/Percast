@@ -55,8 +55,8 @@ setup() {
 },
 data() {
     return {
-        classname: ["", ""], // 마커 종류가 늘어날수록 더 늘린다.
-        markers2: [], // 마커 종류가 늘어날수록 더 늘린다.
+        classname: ["", "",], // 마커 종류가 늘어날수록 더 늘린다.
+        markers2: [[],[],], // 마커 종류가 늘어날수록 더 늘린다.
         markers: [],
         marker: null,
         infowindow: null,
@@ -248,6 +248,7 @@ methods:{
     },
 
     onClickCategory(id, classnum) {
+        console.log(id+" , "+classnum)
         this.placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 });
         this.ps = new kakao.maps.services.Places(this.map);
         this.className = this.classname[classnum];
@@ -258,7 +259,7 @@ methods:{
             this.removeMarker(classnum);
         } else {
             this.currCategory = id;
-            this.searchPlaces(classnum);
+            this.searchPlaces();
         }
         this.changeCategoryClass(classnum);
 
@@ -286,7 +287,7 @@ methods:{
             this.classname[el] = "on";
         }
     },
-    searchPlaces(classnum) {
+    searchPlaces() {
         const ps = new kakao.maps.services.Places(this.map);
         if (!this.currCategory != "") {
             return;
