@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div style="background-color: #0f1421;">
         <b-row>
             <b-col cols="3">
                 <menu-l-option></menu-l-option>
             </b-col>
             <b-col cols="6">
-                <menu-main/>
+                <menu-main />
             </b-col>
             <b-col cols="3">
                 <menu-r-option></menu-r-option>
@@ -15,18 +15,18 @@
 </template>
 
 <script>
-    import MenuMain from '@/components/menu/MenuMain.vue';
-    import MenuROption from '@/components/menu/MenuROption.vue';
-    import MenuLOption from '@/components/menu/MenuLOption.vue';
+import MenuMain from '@/components/menu/MenuMain.vue';
+import MenuROption from '@/components/menu/MenuROption.vue';
+import MenuLOption from '@/components/menu/MenuLOption.vue';
 
-    export default {
+export default {
     name: 'MenuView',
-    components:{
+    components: {
         MenuMain,
         MenuROption,
         MenuLOption,
     }
-    }
+}
 </script>
 
 <style>

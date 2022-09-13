@@ -2,7 +2,7 @@
   <div>
     <b-row>
       <b-col cols="4">
-          <map-l-option></map-l-option>
+        <map-l-option></map-l-option>
       </b-col>
       <b-col cols="8">
         <maps-main></maps-main>
