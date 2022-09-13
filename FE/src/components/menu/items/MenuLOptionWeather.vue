@@ -4,10 +4,16 @@
         <b-card-body>
             <b-row>
                 <b-col>
-                    <b-card> 기온 </b-card>
+                    <b-card>
+                        기온
+                        <b-card-text> 36.5 </b-card-text>
+                    </b-card>
                 </b-col>
                 <b-col>
-                    <b-card> 습도 </b-card>
+                    <b-card>
+                        습도
+                        <b-card-text>17</b-card-text>
+                    </b-card>
                 </b-col>
                 <b-col>
                     <b-card> 강수 </b-card>

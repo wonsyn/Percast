@@ -9,8 +9,8 @@
 import AboutHead from '@/components/about/AboutHead.vue'
 import AboutTypes from '@/components/about/AboutTypes.vue'
 export default {
-  name: 'AboutView',
-  components: { AboutHead,AboutTypes },
+name: 'AboutView',
+components: { AboutHead, AboutTypes },
 }
 </script>
 

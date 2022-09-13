@@ -9,9 +9,9 @@
 import HeaderNavBar from "./components/layout/HeaderNavBar.vue";
 
 export default {
-  components: {
-    HeaderNavBar,
-  }
+components: {
+HeaderNavBar,
+}
 }
 </script>
 

@@ -20,13 +20,6 @@
         PM9 약국 
     -->
     <div id="container">
-        <div id="rvWrapper">
-            <div id="roadview" style="width: 100%; height: 100%"></div>
-            <!-- 로드뷰를 표시할 div 입니다 -->
-            <div id="close" title="로드뷰닫기" @click="closeRoadview()">
-                <span class="img"></span>
-            </div>
-        </div>
         <div id="mapWrapper" class="map_wrap">
             <div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden"></div>
             <!-- 지도를 표시할 div 입니다 -->
@@ -40,7 +33,6 @@
                     약국
                 </li>
             </ul>
-            <div id="roadviewControl" @click="setRoadviewRoad()"></div>
         </div>
     </div>
 </template>
@@ -283,7 +275,6 @@ methods:{
             this.classname[el] = "on";
         }
     },
-    
 },
 }
 </script>
@@ -314,31 +305,8 @@ methods:{
     height: 800px;
 }
 
-#rvWrapper {
-    width: 50%;
-    height: 800px;
-    top: 0;
-    right: 0;
-    position: absolute;
-}
-
 #container.view_roadview #mapWrapper {
     width: 50%;
-}
-
-#roadviewControl {
-    position: absolute;
-    top: 10px;
-    left: 120px;
-    width: 52px;
-    height: 52px;
-    z-index: 1;
-    cursor: pointer;
-    background: url(https://t1.daumcdn.net/localimg/localimages/07/2018/pc/common/img_search.png) 0 -450px no-repeat;
-}
-
-#roadviewControl.active {
-    background-position: 0 -350px;
 }
 
 #close {
