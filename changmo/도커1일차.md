@@ -1,0 +1,211 @@
+# 제목 없음
+
+Created: 2022년 9월 13일 오후 1:27
+분류: Docker
+
+### 도커란?
+
+리눅스 컨테이너에 여러 기능을 추가함으로써 애플리케이션을 컨테이너로서 좀 더 쉽게 사용할 수 있게 만든 오픈소스 프로젝트
+
+Go 언어로 작성
+
+### 가상 머신과 도커 컨테이너
+
+가상 머신
+
+장점 : 완벽한 운영체제를 생성
+
+단점 : 가상 머신 이미지를 애플리케이션으로 배포하기는 부담스러움
+
+성능의 손실이 발생
+
+컨테이너
+
+가상화된 공간을 생성하기 위해 리눅스의 자체 기능인 chroot, 네임스페이스, cgroup을 사용함으로써 프로세스 단위의 격리 환경을 만들기 때문에 성능 손실이 거의 없음
+
+도커 사용 시 장점
+
+- 애플리케이션의 개발과 배포가 편해짐
+    - 커널을 포함하고 있지 않아 크기가 작음
+    - 중복되는 레이어를 재사용할 수 있어 애플리케이션 배포 속도가 매우 빠름
+    - 개발 환경을 다른 서버에서도 컨테이너로서 똑같이 복제할 수 있기 때문에 개발/운영 환경의 통합이 가능
+- 여러 애플리케이션의 독립성과 확장성이 높아짐
+    
+    
+    |  | 모놀리스(Monolith) | 마이크로서비스 |
+    | --- | --- | --- |
+    | 설명 | 하나의 프로그램 내에서 구동 | 다수의 프로그램으로 나누어 구동 |
+    | 장점 | 소규모 | 변화에 빠른 대응(유연성)
+    각 모듈 관리 용이(확장성) |
+
+```jsx
+도커 엔진 설치
+
+리눅스 커널 버전 확인 ( 최소 3.10 버전 이상 )
+uname -r
+
+64비트 리눅스인지 확인
+sudo 명령어를 통해 설치, root 권한을 소유한 계정에서 설치를 진행
+```
+
+| Docker Toolbox | Docker for Windows/Mac |
+| --- | --- |
+| 리눅스 가상 머신을 생성해 그 내부에 도커를 설치 | 호스트 자체에 가상화 기술을 적용 |
+| 내부 IP를 가진 가상 머신 안에 NAT IP를 할당받은 도커 컨테이너가 생성되므로 외부에서 컨테이너에 접근하기 위해서는 2중 포트 포워딩 필요 | 도커에서 컨테이너를 생성할 때는 포트 포워딩을 설정하는 것만으로 외부에서 접근 가능 |
+
+![KakaoTalk_20220913_173513444.jpg](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%20071baa18fc834ceba0fe4ffbf61bd6ba/KakaoTalk_20220913_173513444.jpg)
+
+![KakaoTalk_20220913_173513444_01.jpg](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%20071baa18fc834ceba0fe4ffbf61bd6ba/KakaoTalk_20220913_173513444_01.jpg)
+
+### 도커 엔진
+
+기본 단위 : 이미지, 컨테이너
+
+### 도커 이미지
+
+컨테이너를 생성하고 실행할 때 읽기 전용으로 사용
+
+### 도커 컨테이너
+
+도커 이미지로 생성
+
+이미지의 목적에 맞는 파일이 들어 있는 파일시스템 + 격리된 시스템 자원 및 네트워크
+
+컨테이너는 이미지를 읽기 전용으로 사용하되 이미지에서 변경된 사항만 컨테이너 계층에 저장하므로 컨테이너에서 무엇을 하든 원래 이미지는 영향을 받지 않음
+
+```jsx
+도커 컨테이너 다루기
+
+도커 엔진 버전 확인
+docker -v
+
+컨테이너 생성 및 실행
+docker run [컨테이너ID]
+docker run -i -t --name [설정이름입력] -p [호스트 포트]:[컨테이너포트] [실행]
+docker run -i -t --name samplecontainer -p 80:80 ubuntu:latest
+
+호스트 IP의 80번 포트로 접근 -> 80번 포트는 컨테이너의 80번 포트로 포워딩 -> 웹 서버 접근
+
+컨테이너 정지, 빠져나오기
+exit || ctrl + d
+
+컨테이너 정지 X, 빠져나오기
+ctrl + p , q
+
+도커 엔진에 존재하는 이미지 목록 출력
+docker images
+
+컨테이너 목록 확인
+docker ps
+docker ps -a
+
+컨테이너 삭제
+docker rm [컨테이너ID]
+docker rm -f [컨테이너ID]
+docker container prune
+
+컨테이너 정지
+docker stop [컨테이너ID]
+
+호스트와 바인딩된 포트만 확인
+docker port
+
+도커 볼륨
+
+1. 호스트 볼륨 공유
+docker run -d \
+--name wordpressdb_hostvolume \
+-e MYSQL_ROOT_PASSWORD=password \
+-e MYSQL_DATABASE=wordpress \
+-v /home/wordpress_db:/var/lib/mysql
+mysql:5.7
+
+docker run -d \
+-e WORDPRESS_DB_PASSWORD=password \
+--name wordpress_hostvolume \
+--link wordpressdb_hostvolume:mysql \
+-p 80 \
+wordpress
+
+호스트의 /home/wordpress_db 디렉토리와 컨테이너의 /var/lib/mysql 디렉터리를 공유한다는 의미
+
+디렉터리 단위 공유뿐 아니라 단일 파일 공유, 다중 -v 옵션 사용 가능
+docker run -i -t \
+--name file_volume \
+-v /home/hello:/hello \
+-v /home/hello2:/hello2 \
+ubuntu:latest
+
+** 이미 존재하는 파일 경로 입력 시 기존 파일들은 없어짐( 덮어씀 )
+
+2. 볼륨 컨테이너
+docker run -i -t \
+--name volumes_from_container \
+--volumes-from volume_overide \
+ubuntu:latest
+
+1에서 생성한 volume_overide 컨테이너에서 볼륨을 공유 받는 경우
+volume_overide 컨테이너는 /home/testdir_2 디렉터리를 호스트와 공유
+
+3. 도커 볼륨 ( 도커 자체에서 제공 )
+docker volume create --name myvolume
+docker volume ls
+
+docker run -i -t --name myvolume_1 \
+-v myvolume:/root/ \
+ubuntu:latest
+
+docker run -i -t --name myvolume_2 \
+-v myvolume:/root/ \
+ubuntu:latest
+
+실제 저장 정보 확인
+docker inspect --type volume myvolume
+docker container inspect volume_auto
+
+docker volume create 명령어 없이 -v 옵션 입력으로 수행
+docker run -i -t --name volume_auto \
+-v /root \
+ubuntu:latest
+
+-v 옵션 대신 --mount 옵션 사용 가능
+docker run -i -t --name mount_option_1 \
+--mount type=volume, source=myvolume, target=/root \
+ubuntu:latest
+
+호스트의 디렉터리를 컨테이너 내부에 마운트하는 경우 type을 bind로 지정, source는 호스트의 디렉터리 경로 지정
+docker run -i -t --name mount_option_2 \
+--mount type=bind, source=/home/wordpress_db, target=/home/testdir \
+ubuntu:latest
+
+볼륨 일괄 삭제
+docker volume prune
+
+스테이트리스( stateless )
+컨테이너가 아닌 외부에 데이터를 저장하고 컨테이너는 그 데이터로 동작하도록 설계하는 것
+컨테이너 자체는 상태가 없고 상태를 결정하는 데이터는 외부로부터 제공받음
+컨테이너가 삭제되더라도 데이터는 보존, 스테이트리스한 컨테이너 설계는 도커 사용할 때 바람직
+
+스테이트풀 ( stateful )
+컨테이너가 데이터를 저장, 안 좋음
+
+도커 네트워크 ****** 추후 공부 필요 ***********
+도커는 컨테이너에 내부 ip를 순차적 할당, 이 ip는 컨테이너를 재시작할 때마다 변경될 수 있음
+
+컨테이너 로깅
+docker logs [컨테이너 이름]
+
+-e MYSQL_ROOT_PASSWOR=password 옵션이 빠져있음
+docker run -d --name no_passwd_mysql \
+mysql:latest
+
+docker start no_passwd_mysql
+docker logs no_passwd_mysql
+
+마지막 로그 줄로부터 출력할 줄의 수 설정
+docker logs tail 2 mysql 
+
+-t: 타임스태프, -f: 컨테이너에서 실시간으로 출력되는 내용 확인
+docker logs -f -t mysql
+
+```
