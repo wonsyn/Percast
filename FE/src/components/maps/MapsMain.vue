@@ -56,7 +56,7 @@ setup() {
 data() {
     return {
         classname: ["", "",], // 마커 종류가 늘어날수록 더 늘린다.
-        markers2: [[],[],], // 마커 종류가 늘어날수록 더 늘린다.
+        markers2: [], // 마커 종류가 늘어날수록 더 늘린다.
         markers: [],
         marker: null,
         infowindow: null,
@@ -128,21 +128,21 @@ methods:{
         }
     },
 
-    // searchPlaces() {
-    //     const ps = new kakao.maps.services.Places(this.map);
-    //     if (!this.currCategory != "") {
-    //         return;
-    //     }
-    //     // 커스텀 오버레이를 숨깁니다
-    //     this.placeOverlay.setMap(null);
+    searchPlaces() {
+        const ps = new kakao.maps.services.Places(this.map);
+        if (!this.currCategory != "") {
+            return;
+        }
+        // 커스텀 오버레이를 숨깁니다
+        this.placeOverlay.setMap(null);
         
-    //     // 지도에 표시되고 있는 마커를 제거합니다
-    //     this.removeMarker();
+        // 지도에 표시되고 있는 마커를 제거합니다
+        this.removeMarker();
 
-    //     ps.categorySearch(this.currCategory, this.placesSearchCB, {
-    //         useMapBounds: true,
-    //     });
-    // },
+        ps.categorySearch(this.currCategory, this.placesSearchCB, {
+            useMapBounds: true,
+        });
+    },
     placesSearchCB(data, status) {
         if (status === kakao.maps.services.Status.OK) {
             // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
@@ -256,71 +256,33 @@ methods:{
 
         if (this.className === "on") {
             this.currCategory = "";
-            this.removeMarker(classnum);
+            this.changeCategoryClass(null);
+            this.removeMarker();
         } else {
             this.currCategory = id;
+            this.changeCategoryClass(classnum);
             this.searchPlaces();
         }
-        this.changeCategoryClass(classnum);
-
-        // if (this.className === "on") {
-        //     this.currCategory = "";
-        //     this.changeCategoryClass(null);
-        //     this.removeMarker();
-        // } else {
-        //     this.currCategory = id;
-        //     this.changeCategoryClass(classnum);
-        //     this.searchPlaces();
-        // }
     },
 
-    removeMarker(classnum) {
-        for (var i = 0; i < this.markers2[classnum].length; i++) {
-            this.markers2[classnum][i].setMap(null);
+    removeMarker() {
+        for (var i = 0; i < this.markers2.length; i++) {
+            this.markers2[i].setMap(null);
         }
-        this.markers2[classnum] = [];
+        this.markers2 = [];
     },
+    
+    //클릭된 카테고리에만 클릭된 스타일 적용
     changeCategoryClass(el) {
-        if( this.classname[el]==='on')
-            this.calssname[el] = "";
-        else{
+        let category = document.getElementById("category");
+        let children = category.children;
+        for (let i = 0; i < children.length; i++) {
+            this.classname[i] = "";
+        }
+        if (el != null) {
             this.classname[el] = "on";
         }
     },
-    searchPlaces() {
-        const ps = new kakao.maps.services.Places(this.map);
-        if (!this.currCategory != "") {
-            return;
-        }
-        // 커스텀 오버레이를 숨깁니다
-        this.placeOverlay.setMap(null);
-        
-        // 지도에 표시되고 있는 마커를 제거합니다
-        this.removeMarker();
-
-        ps.categorySearch(this.currCategory, this.placesSearchCB, {
-            useMapBounds: true,
-        });
-    },
-
-    // removeMarker() {
-    //     for (var i = 0; i < this.markers2.length; i++) {
-    //         this.markers2[i].setMap(null);
-    //     }
-    //     this.markers2 = [];
-    // },
-    
-    // 클릭된 카테고리에만 클릭된 스타일 적용
-    // changeCategoryClass(el) {
-    //     let category = document.getElementById("category");
-    //     let children = category.children;
-    //     for (let i = 0; i < children.length; i++) {
-    //         this.classname[i] = "";
-    //     }
-    //     if (el != null) {
-    //         this.classname[el] = "on";
-    //     }
-    // },
     
 },
 }
