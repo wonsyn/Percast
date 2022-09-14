@@ -1,14 +1,14 @@
 package b101.percast.service;
 
-import b101.percast.dto.QnaDto;
-import b101.percast.entity.Qna;
+import b101.percast.dto.Qna.*;
 
 import java.util.List;
 
 public interface QnaService {
-    public List<Qna> findAll();
-    public Qna findById(Long id);
-    public Long create(QnaDto dto);
-    public Long update(QnaDto dto);
-    public void delete(Long id);
+    public List<QnaFindAllDto.Response> findAll();
+    public QnaFindDto.Response findById(Long id);
+    public Long create(QnaSaveDto.Request dto);
+    public Long update(QnaUpdateDto.Request dto);
+    public boolean delete(Long id);
+    public boolean authPassword(QnaAuthDto.Request dto);
 }
