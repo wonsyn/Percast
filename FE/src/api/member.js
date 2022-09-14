@@ -38,7 +38,6 @@ async function userDelete(userid, success, fail) {
 
 export {
   login,
-  userIdDuplicated,
   getUserInfo,
   modifyMember,
   modifyPassword,

@@ -1,5 +1,5 @@
 <template>
-    <div style="background-color: #0f1421;">
+    <div>
         <b-row>
             <b-col cols="3">
                 <menu-l-option></menu-l-option>

@@ -48,23 +48,19 @@ setup() {
 data() {
     return {
         classname: ["", "",], // 마커 종류가 늘어날수록 더 늘린다.
-        markers2: [], // 마커 종류가 늘어날수록 더 늘린다.
-        markers: [],
+        markers: [], // 마커 종류가 늘어날수록 더 늘린다.
+        markers2: [[],[],], // 마커 종류가 늘어날수록 더 늘린다.
+        category_name:["HP8","PM9"], // 카테고리 명을 표시
+        classes:["병원","약국"],
         marker: null,
-        infowindow: null,
-        point: {},
         ps: null,
         map: null,
-        roadview: null,
-        roadviewClient: null,
-        roadviewContainer: null,
         container: null,
-        overlayOn: true,
         openinfo: false,
         currCategory: null,
+        currNum :-1,
         className: "",
         info: null,
-
         mapsrc : "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=0b3e66bcb81a8bb4498994ff82980dda&libraries=services",
     };
 },
@@ -120,24 +116,57 @@ methods:{
         }
     },
 
+    // searchPlaces() {
+    //     if (!this.currCategory != "") {
+    //         return;
+    //     }
+    //     // 커스텀 오버레이를 숨깁니다
+    //     this.placeOverlay.setMap(null);
+        
+    //     // 지도에 표시되고 있는 마커를 제거합니다
+    //     this.removeMarker();
+
+    //     this.ps.categorySearch(this.currCategory, this.placesSearchCB, {
+    //         useMapBounds: true,
+    //     });
+    // },
+
+    // 수정본
     searchPlaces() {
-        const ps = new kakao.maps.services.Places(this.map);
-        if (!this.currCategory != "") {
+        for(let i = 0;i<this.classname.length;i++)
+        {
+            if (this.classname[i] == "on") {
+                // 커스텀 오버레이를 숨깁니다
+                this.placeOverlay.setMap(null);
+                this.searchSelectedPlaces(i);
+            }
+        }
+    },
+
+    searchSelectedPlaces(num) {
+        if (!this.category_name[num] != "") {
             return;
         }
         // 커스텀 오버레이를 숨깁니다
         this.placeOverlay.setMap(null);
         
-        // 지도에 표시되고 있는 마커를 제거합니다
-        this.removeMarker();
-
-        ps.categorySearch(this.currCategory, this.placesSearchCB, {
+        // 선택된 카테고리로 지도에 표시되고 있는 마커를 제거합니다
+        this.removeMarker(num);
+        this.currNum = num;
+        this.currCategory = this.category_name[num];
+        // 비동기가 문제를 발생시킨다.
+        this.ps.categorySearch(this.category_name[num], this.placesSearchCB, {
             useMapBounds: true,
         });
     },
+
+
+    // status 값을 받아와 OK인 경우 displayPlaces를 수행한다.
     placesSearchCB(data, status) {
         if (status === kakao.maps.services.Status.OK) {
             // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
+            console.log(data);
+            this.store.dispatch('mapStore/set_mapdata',data);
             this.displayPlaces(data);
         } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
             // 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
@@ -148,74 +177,89 @@ methods:{
         }
     },
 
-    // 지도에 마커를 표출하는 함수입니다
+    // 수정본
     displayPlaces(places) {
-      // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
-      // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
-      var order = document
-        .getElementById(this.currCategory)
+        console.log("displayPlaces!");
+        // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
+        // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
+        var category = places[0].category_group_code;
+        for(let i=0;i<this.category_name.length;i++)
+        {
+            if(this.category_name[i]==category)
+            {
+                this.currNum = i;
+                break;
+            }
+        }
+        var order = document
+        .getElementById(category)
         .getAttribute("data-order");
 
-      console.log("displayPlaces : "+this.currCategory);
-      places.forEach((place) => {
-        // 마커를 생성하고 지도에 표시합니다
-        var marker = this.addMarker(
-          new kakao.maps.LatLng(place.y, place.x),
-          order,
-        );
+        console.log("displayPlaces : "+category);
+        console.log("currNum : "+this.currNum);
+        places.forEach((place) => {
+            // 마커를 생성하고 지도에 표시합니다
+            var marker = this.addMarker(
+                new kakao.maps.LatLng(place.y, place.x),
+                order,
+                this.currNum,
+            );
 
-        var content =
-          '<div class="placeinfo">' +
-          '   <a class="title" href="' +
-          place.place_url +
-          '" target="_blank" title="' +
-          place.place_name +
-          '">' +
-          place.place_name +
-          "</a>";
+            var content =
+                '<div class="placeinfo">' +
+                '   <a class="title" href="' +
+                place.place_url +
+                '" target="_blank" title="' +
+                place.place_name +
+                '">' +
+                place.place_name +
+                "</a>";
 
-        if (place.road_address_name) {
-          content +=
-            '    <span title="' +
-            place.road_address_name +
-            '">' +
-            place.road_address_name +
-            "</span>" +
-            '  <span class="jibun" title="' +
-            place.address_name +
-            '">(지번 : ' +
-            place.address_name +
-            ")</span>";
-        } else {
-          content +=
-            '    <span title="' +
-            place.address_name +
-            '">' +
-            place.address_name +
-            "</span>";
-        }
-        content +=
-          '    <span class="tel">' +
-          place.phone +
-          "</span>" +
-          "</div>" +
-          '<div class="after"></div>';
+            if (place.road_address_name) {
+                content +=
+                '    <span title="' +
+                place.road_address_name +
+                '">' +
+                place.road_address_name +
+                "</span>" +
+                '  <span class="jibun" title="' +
+                place.address_name +
+                '">(지번 : ' +
+                place.address_name +
+                ")</span>";
+            } else {
+                content +=
+                '    <span title="' +
+                place.address_name +
+                '">' +
+                place.address_name +
+                "</span>";
+            }
+            content +=
+                '    <span class="tel">' +
+                place.phone +
+                "</span>" +
+                "</div>" +
+                '<div class="after"></div>';
 
-        kakao.maps.event.addListener(marker, "click", () => {
-          if (this.openinfo && this.info.getContent() == content) {
-            this.info.close(this.map, marker);
-            this.openinfo = false;
-          } else {
-            this.info.setContent(content);
-            this.info.setPosition(new kakao.maps.LatLng(place.y, place.x));
-            this.info.open(this.map, marker);
-            this.openinfo = true;
-          }
+            kakao.maps.event.addListener(marker, "click", () => {
+                if (this.openinfo && this.info.getContent() == content) {
+                    this.info.close(this.map, marker);
+                    this.openinfo = false;
+                } else {
+                this.info.setContent(content);
+                this.info.setPosition(new kakao.maps.LatLng(place.y, place.x));
+                this.info.open(this.map, marker);
+                this.openinfo = true;
+                }
+            });
         });
-      });
     },
 
-    addMarker(position, order) {
+    // 수정본
+    addMarker(position, order,num) {
+        if(this.currNum==-1)
+            return;
         var imageSrc =
             "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png"; // 마커 이미지 url, 스프라이트 이미지를 씁니다
         const imageSize = new kakao.maps.Size(27, 28); // 마커 이미지의 크기
@@ -235,7 +279,7 @@ methods:{
         });
 
         marker.setMap(this.map); // 지도 위에 마커를 표출합니다
-        this.markers2.push(marker); // 배열에 생성된 마커를 추가합니다
+        this.markers2[num].push(marker); // 배열에 생성된 마커를 추가합니다
         return marker;
     },
 
@@ -245,36 +289,47 @@ methods:{
         this.ps = new kakao.maps.services.Places(this.map);
         this.className = this.classname[classnum];
         this.placeOverlay.setMap(null);
-
+        
         if (this.className === "on") {
             this.currCategory = "";
-            this.changeCategoryClass(null);
-            this.removeMarker();
+            this.currNum = -1;
+            const data = {
+                category_group_code : id,
+                category_group_name : this.classes[classnum],
+            }
+            this.store.dispatch('mapStore/clear_mapdata',data);
+            this.removeMarker(classnum);
         } else {
             this.currCategory = id;
-            this.changeCategoryClass(classnum);
-            this.searchPlaces();
+            this.currNum = classnum;
+            this.searchSelectedPlaces(classnum);
         }
+        this.changeCategoryClass(classnum);
     },
 
-    removeMarker() {
-        for (var i = 0; i < this.markers2.length; i++) {
-            this.markers2[i].setMap(null);
+
+
+    // 수정본
+    removeMarker(num) {
+        console.log("remove"+num);
+        for (var i = 0; i < this.markers2[num].length; i++) {
+            this.markers2[num][i].setMap(null);
         }
-        this.markers2 = [];
+        console.log("remove success");
+        this.markers2[num] = [];
     },
-    
-    //클릭된 카테고리에만 클릭된 스타일 적용
+
+
+    // 수정본
     changeCategoryClass(el) {
-        let category = document.getElementById("category");
-        let children = category.children;
-        for (let i = 0; i < children.length; i++) {
-            this.classname[i] = "";
+        if (this.classname[el] == "on") {
+            this.classname[el] = "";
         }
-        if (el != null) {
+        else{
             this.classname[el] = "on";
         }
     },
+
 },
 }
 </script>
@@ -282,7 +337,9 @@ methods:{
 <style>
 #container {
     overflow: hidden;
-    height: 800px;
+    margin:30px;
+    height: 90%;
+    width:90%;
     position: relative;
 }
 
@@ -297,12 +354,12 @@ methods:{
 .map_wrap {
     position: relative;
     width: 100%;
-    height: 350px;
+    height: 100%;
 }
 
 #mapWrapper {
     width: 100%;
-    height: 800px;
+    height: 100%;
 }
 
 #container.view_roadview #mapWrapper {

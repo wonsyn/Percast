@@ -1,10 +1,7 @@
 <template>
   <div>
-    <b-navbar type="dark" variant="dark">
-
-    </b-navbar>
-    <b-navbar type="light" variant="light">
-      <b-navbar-nav style="alignment:center">
+    <b-navbar id="head-nav" >
+      <b-navbar-nav>
 
         <router-link :to="{path: menuArray[(selected_num+maxsize-2)%maxsize].name}"
           @click="getSelnum((selected_num+maxsize-2)%maxsize)" class="nav-link">
@@ -65,5 +62,8 @@ export default {
 </script>
 
 <style>
-
+  #head-nav{
+    background-color: #1a2844;
+    
+  }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id='body'>
     <header-nav-bar></header-nav-bar>
     <router-view />
   </div>
@@ -25,16 +25,25 @@ HeaderNavBar,
   color: #2c3e50;
 }
 
+#body{
+  width: 100%;
+  height:100%;
+  background-color: #0f1421;
+}
+
 nav {
   padding: 30px;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: white;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #BBBBBB;
+}
+.card {
+  background-color:#1a2844;
 }
 </style>

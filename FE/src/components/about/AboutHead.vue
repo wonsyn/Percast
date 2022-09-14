@@ -12,10 +12,10 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#Spring">Spring</a></li>
-                <li><a href="#Summer">Summer</a></li>
-                <li><a href="#Autumn">Autumn</a></li>
-                <li><a href="#Winter">Winter</a></li>
+                <li><a @click="openSeason(0)" href="#">Spring</a></li>
+                <li><a @click="openSeason(1)" href="#">Summer</a></li>
+                <li><a @click="openSeason(2)" href="#">Autumn</a></li>
+                <li><a @click="openSeason(3)" href="#">Winter</a></li>
                 <!--<li><a href="#elements">Elements</a></li>-->
             </ul>
         </nav>

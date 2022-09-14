@@ -1,21 +1,11 @@
 <template>
   <div>
-    <b-jumbotron header="BootstrapVue" lead="Bootstrap v4 Components for Vue.js 2">
-      <template #header>BootstrapVue</template>
-
-    <template #lead>
-      This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-      featured content or information.
-    </template>
-
-    <hr class="my-4">
-
-    <p>
-      It uses utility classes for typography and spacing to space content out within the larger
-      container.
-    </p>
-
-    </b-jumbotron>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Fluid jumbotron</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+      </div>
+    </div>
   </div>
 </template>
 

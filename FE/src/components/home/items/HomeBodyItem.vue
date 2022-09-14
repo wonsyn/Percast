@@ -1,4 +1,5 @@
 <template>
+    <b-card>
     <b-row v-if="index%2==0">
         <b-col>
             <b-card class="menu">
@@ -38,6 +39,7 @@
             </b-card>
         </b-col>
     </b-row>
+</b-card>
 </template>
 
 <script>
