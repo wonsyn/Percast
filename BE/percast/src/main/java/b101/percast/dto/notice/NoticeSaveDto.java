@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class NoticeSaveDto {
     @NoArgsConstructor
@@ -15,7 +16,7 @@ public class NoticeSaveDto {
     @Data
     public static class Request {
         private Long id;
-        private LocalDateTime date;
+        private String date;
         private String title;
         private String content;
 
@@ -25,7 +26,7 @@ public class NoticeSaveDto {
                     .id(id)
                     .title(title)
                     .content(content)
-                    .date(LocalDateTime.now())
+                    .date(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")))
                     .build();
         }
     }

@@ -31,12 +31,7 @@ public class NoticeServiceImpl implements NoticeService {
     @Transactional
     @Override
     public void update(NoticeSaveDto.Request dto) {
-        noticeRepository.save(Notice.builder()
-                .id(dto.getId())
-                .title(dto.getTitle())
-                .content(dto.getContent())
-                .date(LocalDateTime.now())
-                .build());
+        noticeRepository.save(dto.toEntity());
     }
 
     @Transactional
