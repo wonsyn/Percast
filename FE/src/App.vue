@@ -31,6 +31,11 @@ HeaderNavBar,
   background-color: #0f1421;
 }
 
+#view_body{
+  width: 100%;
+  height:100%;
+}
+
 nav {
   padding: 30px;
 }

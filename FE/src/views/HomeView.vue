@@ -1,6 +1,8 @@
 <template>
-  <home-main></home-main>
-  <footer-nav-bar></footer-nav-bar>
+  <div id="view_body">
+    <home-main></home-main>
+    <footer-nav-bar></footer-nav-bar>
+  </div>
 </template>
 
 <script>

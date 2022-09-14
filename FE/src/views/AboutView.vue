@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="view_body">
     <about-head></about-head>
     <about-types></about-types>
   </div>

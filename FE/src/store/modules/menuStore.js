@@ -64,6 +64,8 @@ const menuStore = {
                 value: 23,
             }
         ],
+        region: '서울',
+        score: 86,
         danger: '안전',
         grade: 2,
     },

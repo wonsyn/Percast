@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="view_body">
         <b-row>
             <b-col cols="3">
                 <menu-l-option></menu-l-option>

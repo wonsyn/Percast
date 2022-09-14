@@ -338,7 +338,7 @@ methods:{
 #container {
     overflow: hidden;
     margin:30px;
-    height: 90%;
+    height: 600px;
     width:90%;
     position: relative;
 }

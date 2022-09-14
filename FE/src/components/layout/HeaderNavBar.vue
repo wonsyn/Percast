@@ -47,7 +47,8 @@ export default {
   methods: {
     getSelnum(nums) {
       console.log(nums);
-      this.store.dispatch('navStore/set_selected_num', nums);
+      //this.store.dispatch('navStore/set_selected_num', nums);
+      
     }
   },
   setup() {
@@ -64,6 +65,8 @@ export default {
 <style>
   #head-nav{
     background-color: #1a2844;
-    
+  }
+  #head-nav .nav-link{
+    color:white;
   }
 </style>
