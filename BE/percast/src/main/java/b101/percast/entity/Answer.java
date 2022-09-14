@@ -1,6 +1,7 @@
 package b101.percast.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
