@@ -20,7 +20,6 @@ public class NoticeDeleteByIdDto {
         public Notice toEntity() {
             return Notice.builder()
                     .id(id)
-                    .date(LocalDateTime.now())
                     .build();
         }
     }
