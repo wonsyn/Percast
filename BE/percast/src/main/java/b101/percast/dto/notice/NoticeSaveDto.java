@@ -1,12 +1,14 @@
-package b101.percast.dto;
+package b101.percast.dto.notice;
 
 import b101.percast.entity.Notice;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-
-public class NoticeDto {
+public class NoticeSaveDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
@@ -27,24 +29,4 @@ public class NoticeDto {
                     .build();
         }
     }
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
-    public static class Response {
-        private Long id;
-        private LocalDateTime date;
-        private String title;
-        private String content;
-
-        /* Entity -> DTO */
-        public Response(Notice entity) {
-            this.id = entity.getId();
-            this.date = entity.getDate();
-            this.title = entity.getTitle();
-            this.content = entity.getContent();
-        }
-    }
-
 }

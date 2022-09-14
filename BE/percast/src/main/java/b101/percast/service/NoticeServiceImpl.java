@@ -1,7 +1,9 @@
 package b101.percast.service;
 
 
-import b101.percast.dto.NoticeDto;
+import b101.percast.dto.notice.NoticeFindAllDto;
+import b101.percast.dto.notice.NoticeFindDto;
+import b101.percast.dto.notice.NoticeSaveDto;
 import b101.percast.entity.Notice;
 import b101.percast.repository.NoticeRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,15 +22,15 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Transactional
     @Override
-    public List<NoticeDto.Response> getList() {
+    public List<NoticeFindAllDto.Response> getList() {
         return noticeRepository.findAll()
-                .stream().map(NoticeDto.Response::new)
+                .stream().map(NoticeFindAllDto.Response::new)
                 .collect(Collectors.toList());
     }
 
     @Transactional
     @Override
-    public void update(NoticeDto.Request dto) {
+    public void update(NoticeSaveDto.Request dto) {
         noticeRepository.save(Notice.builder()
                 .id(dto.getId())
                 .title(dto.getTitle())
@@ -45,15 +47,15 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Transactional
     @Override
-    public Long save(NoticeDto.Request dto) {
+    public Long save(NoticeSaveDto.Request dto) {
         return noticeRepository.save(dto.toEntity()).getId();
     }
 
     @Transactional(readOnly = true)
     @Override
-    public NoticeDto.Response searchNoticeInfo(Long id) {
+    public NoticeFindDto.Response searchNoticeInfo(Long id) {
         Notice notice = noticeRepository.findById(id).orElseThrow(()
                 -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다. 글번호: " + id));
-        return new NoticeDto.Response(notice);
+        return new NoticeFindDto.Response(notice);
     }
 }
