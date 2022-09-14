@@ -12,7 +12,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/notice")
+@RequestMapping("/notice")
 @RequiredArgsConstructor
 public class NoticeController {
 
