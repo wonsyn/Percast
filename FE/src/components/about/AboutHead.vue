@@ -10,6 +10,11 @@
 					<p> {{texts[selNum]}} </p>
 				</div>
 			</div>
+			<div class="content">
+				<div class="button" style="font-size:200%" @click="showModal()">
+					확인하기
+				</div>
+			</div>
 			<nav>
 				<ul>
 					<li><a @click="openSeason(0)" href="#" :class="selected[0]">Spring</a></li>
@@ -21,14 +26,22 @@
 			</nav>
 		</div>
 	</div>
-	<div id="bg"></div>
+	<div id="bg" :class="season_class[selNum]"></div>
+	<about-modals-show v-if="isModalView" @close-modal="isModalView=false">
+	</about-modals-show>
 </template>
 
 <script>
+import AboutModalsShow from "@/components/about/modal/AboutModalsShow.vue";
+
 export default {
+	components: {
+		AboutModalsShow,
+	},
 	data() {
 		return {
 			selected: ["", "", "", ""],
+			season_class: ["Spring", "Summer", "Autumn", "Winter", "Select"],
 			seasons: ["Spring", "Summer", "Autumn", "Winter", "Select a Season"],
 			texts: ["봄은 미세먼지가 많아 기관지 관련 질병을 조심해야 합니다.",
 				"여름은 날씨가 덥고 습하여 온열질병을 조심해야 합니다.",
@@ -37,13 +50,11 @@ export default {
 				"원하는 날짜를 선택하세요. 해당 날짜에 맞는 질병에 대한 안내를 띄워드립니다."],
 			pictures: ["Spring.png", "Summer.png", "Autumn.png", "Winter.png", ""],
 			selNum: 4,
+			isModalView: false,
 		}
 	},
 	methods: {
 		openSeason(num) {
-			const bg = document.getElementById("bg");
-			//const img = this.pictures[num];
-			bg.style.backgroundImage = `url("../../assets/Winter.png")`;
 			this.selNum = num;
 			this.changeCategorySeason(num);
 		},
@@ -54,6 +65,10 @@ export default {
 			if (el != null) {
 				this.selected[el] = "on";
 			}
+		},
+		showModal() {
+			console.log("click");
+			this.isModalView = true;
 		}
 	}
 }
@@ -131,6 +146,7 @@ export default {
 	border-top-width: 1px;
 	border-bottom-width: 1px;
 	max-width: 100%;
+	color: #ffffff;
 }
 
 #header .content .inner {
@@ -156,6 +172,11 @@ export default {
 	letter-spacing: 0.2rem;
 	font-size: 0.8rem;
 	line-height: 2;
+}
+
+#header .content .button:hover {
+	background-color: rgba(255, 255, 255, 0.075);
+	color: gray;
 }
 
 #header nav ul {
@@ -277,13 +298,32 @@ export default {
 	-webkit-transition-delay: 0.75s;
 	-ms-transition-delay: 0.75s;
 	transition-delay: 0.75s;
-	background-image: url("../../assets/Spring.png");
 	background-size: 100% 100%;
 	background-position: center,
 		center;
 	background-repeat: no-repeat,
 		repeat;
 	z-index: 0;
+}
+
+#bg.Spring {
+	background-image: url("../../assets/Spring.png");
+}
+
+#bg.Summer {
+	background-image: url("../../assets/Summer.png");
+}
+
+#bg.Autumn {
+	background-image: url("../../assets/Autumn.png");
+}
+
+#bg.Winter {
+	background-image: url("../../assets/Winter.png");
+}
+
+#bg .Select {
+	background: url("../../assets/logo.png");
 }
 
 body.is-article-visible #bg:after {
