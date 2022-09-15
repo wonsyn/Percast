@@ -16,7 +16,7 @@ public class NoticeFindDto {
     @Builder
     public static class Response {
         private Long id;
-        private LocalDateTime date;
+        private String date;
         private String title;
         private String content;
 
