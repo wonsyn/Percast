@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM adoptopenjdk:11-jre-hotspot AS builder
 WORKDIR /var/jenkins_home/workspace/deploytest/BE/percast
 COPY gradlew .
 COPY gradle gradle
@@ -8,5 +8,6 @@ COPY src src
 RUN chmod +x ./gradlew
 RUN ./gradlew bootJar
 #ARG JAR_FILE=build/libs/*.jar
-COPY build/libs/*.jar app.jar
+FROM adoptopenjdk:11-jre-hotspot
+COPY --from=builder build/libs/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
