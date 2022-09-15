@@ -22,13 +22,14 @@ import MapLOption from '@/components/maps/MapLOption.vue'
 //import MapROption from '@/components/maps/MapROption.vue'
 
 export default {
-components: {
-MapsMain,
-MapLOption,
-//MapROption,
-}
+  components: {
+    MapsMain,
+    MapLOption,
+    //MapROption,
+  }
 }
 </script>
 
 <style>
+
 </style>

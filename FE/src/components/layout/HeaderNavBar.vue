@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar id="head-nav" >
+    <b-navbar id="head-nav">
       <b-navbar-nav>
 
         <router-link :to="{path: menuArray[(selected_num+maxsize-2)%maxsize].name}"
@@ -48,7 +48,7 @@ export default {
     getSelnum(nums) {
       console.log(nums);
       //this.store.dispatch('navStore/set_selected_num', nums);
-      
+
     }
   },
   setup() {
@@ -63,10 +63,12 @@ export default {
 </script>
 
 <style>
-  #head-nav{
-    background-color: #1a2844;
-  }
-  #head-nav .nav-link{
-    color:white;
-  }
+#head-nav {
+  background-color: #1a2844;
+  z-index: 2;
+}
+
+#head-nav .nav-link {
+  color: white;
+}
 </style>

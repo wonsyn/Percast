@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="jumbotron">
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4">Fluid jumbotron</h1>
@@ -16,5 +16,9 @@ export default {
 </script>
 
 <style>
-
+#jumbotron {
+  height: 500px;
+  color: white;
+  background-color: gray;
+}
 </style>

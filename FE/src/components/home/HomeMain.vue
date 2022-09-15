@@ -13,42 +13,42 @@
 </template>
   
 <script>
-import {computed} from 'vue';
-import {useStore} from 'vuex';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 import HomeHeader from './HomeHeader.vue';
 import HomeBody from './HomeBody.vue';
 import HomeFooter from './HomeFooter.vue';
-  
+
 export default {
   name: 'HomeView',
   components: {
-      HomeHeader,
-      HomeBody,
-      HomeFooter
+    HomeHeader,
+    HomeBody,
+    HomeFooter
   },
-  methods:{
-    movePage(link){
+  methods: {
+    movePage(link) {
       this.$router.push(link);
     }
   },
-  setup(){
+  setup() {
     const store = useStore();
-  
-    const maxsize = computed(()=>store.state.navStore.maxsize);
-    const menuArray = computed(()=>store.state.navStore.menuArray);
-    const selected_num = computed(()=>store.state.navStore.selected_num);
-    return {store, maxsize, menuArray,selected_num};
+
+    const maxsize = computed(() => store.state.navStore.maxsize);
+    const menuArray = computed(() => store.state.navStore.menuArray);
+    const selected_num = computed(() => store.state.navStore.selected_num);
+    return { store, maxsize, menuArray, selected_num };
   }
 }
 </script>
   
 <style>
-.menu{
+.menu {
   min-width: 20rem;
   max-width: 20rem;
   max-height: 20rem;
   min-height: 20rem;
 }
-.menu_col{
-}
+
+.menu_col {}
 </style>

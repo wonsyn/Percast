@@ -9,9 +9,9 @@
 import HeaderNavBar from "./components/layout/HeaderNavBar.vue";
 
 export default {
-components: {
-HeaderNavBar,
-}
+  components: {
+    HeaderNavBar,
+  }
 }
 </script>
 
@@ -25,15 +25,16 @@ HeaderNavBar,
   color: #2c3e50;
 }
 
-#body{
-  width: 100%;
-  height:100%;
-  background-color: #0f1421;
+#body {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
 }
 
-#view_body{
+#view_body {
   width: 100%;
-  height:100%;
+  height: 100% auto;
+  background-color: #0f1421;
 }
 
 nav {
@@ -48,7 +49,8 @@ nav a {
 nav a.router-link-exact-active {
   color: #BBBBBB;
 }
+
 .card {
-  background-color:#1a2844;
+  background-color: #1a2844;
 }
 </style>
