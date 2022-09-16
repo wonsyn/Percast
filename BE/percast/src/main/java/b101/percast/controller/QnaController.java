@@ -1,6 +1,7 @@
 package b101.percast.controller;
 
 import b101.percast.dto.Qna.*;
+import b101.percast.dto.answer.AnswerSaveDto;
 import b101.percast.service.QnaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,80 +19,32 @@ public class QnaController {
     private final QnaService qnaService;
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> create(@RequestBody QnaSaveDto.Request dto) {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
-        Long id = qnaService.create(dto);
-        if(id == null) {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        } else {
-            map.put("id", id);
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+    public QnaSaveResponse create(@RequestBody QnaSaveRequest request) {
+        Long id = qnaService.create(request);
+        return new QnaSaveResponse(id);
     }
 
     @GetMapping
-    public ResponseEntity<Map<String, Object>> readAll() {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
-        List<QnaFindAllDto.Response> list = qnaService.findAll();
-        if(list == null) {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        } else {
-            map.put("data", list);
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+    public List<QnaFindAllResponse> readAll() {
+        List<QnaFindAllResponse> list = qnaService.findAll();
+        return list;
     }
 
     @GetMapping("/detail")
-    public ResponseEntity<Map<String, Object>> read(@RequestParam Long qnaId) {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
-        QnaFindDto.Response qna = qnaService.findById(qnaId);
-        if(qna != null) {
-            map.put("data", qna);
-        } else {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+    public QnaFindResponse read(@RequestParam Long qnaId) {
+        return qnaService.findById(qnaId);
     }
 
     @PutMapping
-    public ResponseEntity<Map<String, Object>> update(@RequestBody QnaUpdateDto.Request dto) {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
+    public QnaUpdateResponse update(@RequestBody QnaUpdateRequest dto) {
         Long id = qnaService.update(dto);
-        if(id != null) {
-            map.put("id", id);
-        } else {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+        return new QnaUpdateResponse(id);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Map<String, Object>> delete(@PathVariable Long id) {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
-        if(!qnaService.delete(id)) {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+    public QnaDeleteResponse delete(@PathVariable Long id) {
+        qnaService.delete(id);
+        return new QnaDeleteResponse(true);
     }
 
     @PostMapping("/password")
@@ -100,6 +53,22 @@ public class QnaController {
         String msg = "success";
         HttpStatus status = HttpStatus.OK;
         if(!qnaService.authPassword(dto)) {
+            msg = "fail";
+            status = HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        map.put("message", msg);
+        return new ResponseEntity<>(map, status);
+    }
+
+    @PostMapping("/answer")
+    public ResponseEntity<Map<String, Object>> createAnswer(@RequestBody AnswerSaveDto.Request dto) {
+        Map<String, Object> map = new HashMap<>();
+        String msg = "success";
+        HttpStatus status = HttpStatus.OK;
+        Long id = qnaService.createAnswer(dto);
+        if(id != null) {
+            map.put("id", id);
+        } else {
             msg = "fail";
             status = HttpStatus.INTERNAL_SERVER_ERROR;
         }
