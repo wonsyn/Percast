@@ -1,8 +1,11 @@
 package b101.percast.service;
 
+import b101.percast.Exception.AnswerNotFoundException;
+import b101.percast.Exception.NoParentQnaException;
 import b101.percast.Exception.QnaNotFoundException;
 import b101.percast.dto.Qna.*;
-import b101.percast.dto.answer.AnswerSaveDto;
+import b101.percast.dto.answer.AnswerSaveRequest;
+import b101.percast.dto.answer.AnswerUpdateRequest;
 import b101.percast.entity.Answer;
 import b101.percast.entity.Qna;
 import b101.percast.repository.AnswerRepository;
@@ -57,40 +60,32 @@ public class QnaServiceImpl implements QnaService {
     }
 
     @Override
-    public boolean authPassword(QnaAuthDto.Request dto) {
+    public boolean authPassword(QnaAuthRequest dto) {
         Optional<Qna> qnaOptional = qnaRepository.findById(dto.getId());
         return qnaOptional.map(qna -> qna.getPassword().equals(dto.getPassword())).orElse(false);
     }
 
     @Transactional
     @Override
-    public Long createAnswer(AnswerSaveDto.Request dto) {
-        Optional<Qna> qnaOptional = qnaRepository.findById(dto.getQnaId());
-        if(qnaOptional.isPresent()) {
-            Qna qna = qnaOptional.get();
-//            Long answerId = answerRepository.save(Answer.builder().qna(qna).content(dto.getContent()).build()).getId());
-//            Long answerId = answerRepository.save(Answer.builder().content(dto.getContent()).build()).getId();
-            Answer answer = answerRepository.save(Answer.builder().content(dto.getContent()).build());
-            qna.updateAnswer(answer);
-            return answer.getId();
+    public Long createAnswer(AnswerSaveRequest dto) {
+        Qna qna = qnaRepository.findById(dto.getQnaId()).orElseThrow(NoParentQnaException::new);
+        Answer answer = answerRepository.save(dto.toEntity());
+        qna.updateAnswer(answer);
+        return answer.getId();
+    }
 
-//            QnaUpdateDto.Request qnaDto = QnaUpdateDto.Request.builder().id(qna.getId()).title(qna.getTitle()).content(qna.getContent()).tel(qna.getTel()).build();
-//            Optional<Answer> ansOptional = answerRepository.findById(answerId);
-//            if(ansOptional.isPresent()) {
-//                qnaRepository.save(qnaDto.toEntity(qna.getPassword(), null, ansOptional.get()));
-//                return answerId;
-//            } else {
-//                return null;
-//            }
-        } else {
-            return null;
-        }
+    @Transactional
+    @Override
+    public Long updateAnswer(AnswerUpdateRequest dto) {
+        Answer answer = answerRepository.findById(dto.getId()).orElseThrow(AnswerNotFoundException::new);
+        return answer.update(dto.getContent()).getId();
+    }
 
-//        dto.toEntity()
-//        QnaFindDto.Response = this.
-//        if(qnaOptional.isPresent()) {
-//            return answerRepository.save(dto.toEntity(qnaOptional.get())).getId();
-//        }
-//        return null;
+    @Transactional
+    @Override
+    public void deleteAnswer(Long qnaId, Long answerId) {
+        Qna qna = qnaRepository.findById(qnaId).orElseThrow(QnaNotFoundException::new);
+        qna.updateAnswer(null);
+        answerRepository.deleteById(answerId);
     }
 }

@@ -1,16 +1,12 @@
 package b101.percast.controller;
 
 import b101.percast.dto.Qna.*;
-import b101.percast.dto.answer.AnswerSaveDto;
+import b101.percast.dto.answer.*;
 import b101.percast.service.QnaService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/qna")
@@ -48,31 +44,25 @@ public class QnaController {
     }
 
     @PostMapping("/password")
-    public ResponseEntity<Map<String, Object>> authPassword(@RequestBody QnaAuthDto.Request dto) {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
-        if(!qnaService.authPassword(dto)) {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+    public QnaAuthResponse authPassword(@RequestBody QnaAuthRequest dto) {
+        return new QnaAuthResponse(qnaService.authPassword(dto));
     }
 
     @PostMapping("/answer")
-    public ResponseEntity<Map<String, Object>> createAnswer(@RequestBody AnswerSaveDto.Request dto) {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
+    public AnswerSaveResponse createAnswer(@RequestBody AnswerSaveRequest dto) {
         Long id = qnaService.createAnswer(dto);
-        if(id != null) {
-            map.put("id", id);
-        } else {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+        return new AnswerSaveResponse(id);
+    }
+
+    @PutMapping("/answer")
+    public AnswerUpdateResponse updateAnswer(@RequestBody AnswerUpdateRequest dto) {
+        Long id = qnaService.updateAnswer(dto);
+        return new AnswerUpdateResponse(id);
+    }
+
+    @DeleteMapping("/answer")
+    public AnswerDeleteResponse deleteAnswer(@RequestParam Long qnaid, @RequestParam Long answerid) {
+        qnaService.deleteAnswer(qnaid, answerid);
+        return new AnswerDeleteResponse(true);
     }
 }
