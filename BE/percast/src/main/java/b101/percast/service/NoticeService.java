@@ -1,19 +1,19 @@
 package b101.percast.service;
 
-import b101.percast.dto.notice.NoticeFindAllDto;
-import b101.percast.dto.notice.NoticeFindDto;
-import b101.percast.dto.notice.NoticeSaveDto;
+import b101.percast.dto.notice.NoticeFindAllResponseDto;
+import b101.percast.dto.notice.NoticeFindResponseDto;
+import b101.percast.dto.notice.NoticeSaveRequestDto;
 
 import java.util.List;
 
 public interface NoticeService {
-    List<NoticeFindAllDto.Response> getList();
+    List<NoticeFindAllResponseDto> getList();
 
-    void update(NoticeSaveDto.Request dto);
+    void update(NoticeSaveRequestDto dto);
 
     void delete(Long id);
 
-    Long save(NoticeSaveDto.Request dto);
+    Long save(NoticeSaveRequestDto dto);
 
-    NoticeFindDto.Response searchNoticeInfo(Long id);
+    NoticeFindResponseDto findById(Long id);
 }
