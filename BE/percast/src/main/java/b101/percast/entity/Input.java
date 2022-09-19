@@ -5,19 +5,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class Input {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long inputNum;
+public class Input implements Serializable {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long inputNum;
 
+    @Id
     @OneToOne
-    @JoinColumn(name = "gugunCode", nullable = false)
-    private Gugun gugun;
+    @JoinColumn(name = "sidoCode", nullable = false)
+    private Sido sido;
 
     private int temperature;
     private double humid;
