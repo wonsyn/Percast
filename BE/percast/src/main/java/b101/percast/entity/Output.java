@@ -5,19 +5,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class Output {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long outputNum;
+public class Output implements Serializable {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long outputNum;
 
+    @Id
     @OneToOne
-    @JoinColumn(name = "gugunCode")
-    private Gugun gugun;
+    @JoinColumn(name = "sidoCode")
+    private Sido sido;
 
     private int temperature;
     private double cold;

@@ -16,8 +16,8 @@ public class Sido {
     @Id
     private Long sidoCode;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "varchar(20)")
     private String sidoName;
-    @OneToMany(mappedBy = "sido")
-    private List<Gugun> guguns = new ArrayList<>();
+    private int nx;
+    private int ny;
 }
