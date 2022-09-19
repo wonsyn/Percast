@@ -14,28 +14,29 @@
 </template>
 
 <script>
-  import {computed} from 'vue';
-  import {useStore} from 'vuex';
-  import MenuMainItem from '@/components/menu/items/MenuMainItem.vue';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+import MenuMainItem from '@/components/menu/items/MenuMainItem.vue';
 
 export default {
   components: { MenuMainItem },
-  methods:{
-    back(){
-      this.store.dispatch("menuStore/set_depth",0);
+  methods: {
+    back() {
+      this.store.dispatch("menuStore/set_depth", 0);
     }
   },
-  setup(){
+  setup() {
     const store = useStore();
 
-    const depth = computed(()=>store.state.menuStore.depth);
-    const sido = computed(()=>store.state.menuStore.sido);
-    const gugun = computed(()=>store.state.menuStore.gugun);
+    const depth = computed(() => store.state.menuStore.depth);
+    const sido = computed(() => store.state.menuStore.sido);
+    const gugun = computed(() => store.state.menuStore.gugun);
 
-    return {store, depth, sido, gugun};
+    return { store, depth, sido, gugun };
   }
 }
 </script>
 
 <style>
+
 </style>

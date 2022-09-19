@@ -10,11 +10,15 @@
 					<p> {{texts[selNum]}} </p>
 				</div>
 			</div>
-			<div class="content">
-				<div class="button" style="font-size:200%" @click="showModal()">
-					확인하기
+			<div>
+				<div v-if="selNum!=4" class="content">
+					<div class="button" style="font-size:200%" @click="showModal()">
+						확인하기
+					</div>
 				</div>
 			</div>
+			<AboutModals v-if="isModalView" @close-modal="isModalView=false">
+			</AboutModals>
 			<nav>
 				<ul>
 					<li><a @click="openSeason(0)" href="#" :class="selected[0]">Spring</a></li>
@@ -27,16 +31,14 @@
 		</div>
 	</div>
 	<div id="bg" :class="season_class[selNum]"></div>
-	<about-modals-show v-if="isModalView" @close-modal="isModalView=false">
-	</about-modals-show>
 </template>
 
 <script>
-import AboutModalsShow from "@/components/about/modal/AboutModalsShow.vue";
+import AboutModals from "@/components/about/modal/AboutModals.vue";
 
 export default {
 	components: {
-		AboutModalsShow,
+		AboutModals,
 	},
 	data() {
 		return {
@@ -50,7 +52,7 @@ export default {
 				"원하는 날짜를 선택하세요. 해당 날짜에 맞는 질병에 대한 안내를 띄워드립니다."],
 			pictures: ["Spring.png", "Summer.png", "Autumn.png", "Winter.png", ""],
 			selNum: 4,
-			isModalView: false,
+			modal: false,
 		}
 	},
 	methods: {
@@ -68,7 +70,7 @@ export default {
 		},
 		showModal() {
 			console.log("click");
-			this.isModalView = true;
+			this.modal = true;
 		}
 	}
 }
