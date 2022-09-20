@@ -5,18 +5,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
-@Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "DTYPE")
 public class Sido {
     @Id
+    @Column(name = "sido_code")
     private Long sidoCode;
 
-    @Column(nullable = false, columnDefinition = "varchar(20)")
+    @Column(name = "sido_name",nullable = false, columnDefinition = "varchar(20)")
     private String sidoName;
     private int nx;
     private int ny;

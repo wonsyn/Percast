@@ -18,7 +18,7 @@ public class Input implements Serializable {
 
     @Id
     @OneToOne
-    @JoinColumn(name = "sidoCode", nullable = false)
+    @JoinColumn(name = "sido_Code", nullable = false)
     private Sido sido;
 
     private double so2;    // 아황산가스
