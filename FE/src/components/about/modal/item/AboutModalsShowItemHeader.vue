@@ -8,10 +8,17 @@
     <b-row>
       <b-card class="body" style="background-color:#1a2844; margin:10px,10px,10px,10px">
         <b-card-header>
-          <b-button v-for="(item,index) in content.entity" :key="item.index = index" @click="selItem(index)">{{item.name}}</b-button>
+          <b-button v-for="(item,index) in content.entity" :key="item.index = index" @click="selItem(index)">
+            {{item.name}}</b-button>
         </b-card-header>
         <b-card-body>
-          <p v-for="item in text" :key="item">{{item}}</p>
+          <div id="introduction">
+            <div v-for="item in content.entity[selectNum].explain" :key="item">{{item}}</div>
+          </div>
+          <div id="main_subject">
+            <about-modals-show-item-list v-for="item in content.entity[selectNum].elements" :key="item" v-bind="item">
+            </about-modals-show-item-list>
+          </div>
         </b-card-body>
       </b-card>
     </b-row>
@@ -24,16 +31,19 @@
 </template>
 
 <script>
-  import ModalBase from "@/components/about/modal/ModalBase.vue"
-  import {ref} from "vue";
-  export default {
-  components:{
+import ModalBase from "@/components/about/modal/ModalBase.vue"
+import AboutModalsShowItemList from "./AboutModalsShowItemList.vue";
+
+import { ref } from "vue";
+export default {
+  components: {
     ModalBase,
+    AboutModalsShowItemList,
   },
-  props:{
-    content:Object,
+  props: {
+    content: Object,
   },
-  setup(){
+  setup() {
     const baseModal = ref(null);
     // Promise 객체를 핸들링하기 위한 ref
     const resolvePromise = ref(null);
@@ -60,23 +70,20 @@
     };
     return { baseModal, show, confirm, cancel };
   },
-  data(){
-    return{
-      listnum:0,
-			selectNum:0,
-			text:["데이터에", "저장된 질병 리스트가" , "존재하지 않습니다."],
+  data() {
+    return {
+      listnum: 0,
+      selectNum: 0,
     }
   },
-  methods:{
-    selItem(idx){
-      console.log(idx);
+  methods: {
+    selItem(idx) {
       this.selectNum = idx;
       this.text = this.content.entity[idx].explain;
     },
-    close_modal(){
-      this.listnum=0;
-			this.selectNum=0;
-			this.text=["데이터에", "저장된 질병 리스트가" , "존재하지 않습니다."];
+    close_modal() {
+      this.listnum = 0;
+      this.selectNum = 0;
       this.cancel();
     }
   }
