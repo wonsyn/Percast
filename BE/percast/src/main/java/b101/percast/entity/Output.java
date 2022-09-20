@@ -7,20 +7,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class Output implements Serializable {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long outputNum;
-
-    @Id
-    @OneToOne
-    @JoinColumn(name = "sidoCode")
-    private Sido sido;
-
+@Entity
+@DiscriminatorValue("Output")
+@PrimaryKeyJoinColumn(name = "sido_code")
+public class Output extends Sido{
     private int temperature;
     private double cold;
     private double asthma;
