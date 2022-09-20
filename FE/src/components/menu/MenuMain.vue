@@ -1,6 +1,7 @@
 <template>
   <div>
     <div id="album">
+      지도 생성중
       <div id="bg_map">
         <div id="bubble" class="seoul">
           <div id="pic">
