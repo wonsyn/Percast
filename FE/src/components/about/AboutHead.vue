@@ -28,82 +28,82 @@
 			</nav>
 		</div>
 	</div>
-	<about-modals-show-item-header ref="modal" :content="data[selNum]"/>
+	<about-modals-show-item-header ref="modal" :content="data[selNum]" />
 	<div id="bg" :class="season_class[selNum]"></div>
 </template>
 
 <script>
-	import {computed,ref} from "vue";
-	import {useStore} from "vuex";
-	import AboutModalsShowItemHeader from './modal/item/AboutModalsShowItemHeader.vue';
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
+import AboutModalsShowItemHeader from './modal/item/AboutModalsShowItemHeader.vue';
 
-	export default {
-		components: {
+export default {
+	components: {
 		AboutModalsShowItemHeader,
+	},
+	setup() {
+		const store = useStore();
+		const data = computed(() => store.state.aboutStore.data);
+
+		const modal = ref(null);
+
+		const showModal = async () => {
+			const ok = await modal.value.show();
+			if (ok) {
+				console.log("모달 출력");
+			} else {
+				console.log("모달 종료");
+			}
+		};
+
+		return {
+			store,
+			data,
+			modal,
+			showModal
+		};
+	},
+	data() {
+		return {
+			selected: ["", "", "", ""],
+			season_class: ["Spring", "Summer", "Autumn", "Winter", "Select"],
+			seasons: ["Spring", "Summer", "Autumn", "Winter", "Select a Season"],
+			texts: ["봄은 미세먼지가 많아 기관지 관련 질병을 조심해야 합니다.",
+				"여름은 날씨가 덥고 습하여 온열질병을 조심해야 합니다.",
+				"가을은 온도변화로 인해 감기를 조심해주세요",
+				"겨울은 춥고 건조한 날씨로 질병에 쉽게 걸립니다.",
+				"원하는 날짜를 선택하세요. 해당 날짜에 맞는 질병에 대한 안내를 띄워드립니다."],
+			pictures: ["Spring.png", "Summer.png", "Autumn.png", "Winter.png", ""],
+			selNum: 4,
+		}
+	},
+	methods: {
+		openSeason(num) {
+			this.selNum = num;
+			this.changeCategorySeason(num);
 		},
-		setup(){
-			const store = useStore();
-			const data = computed(()=>store.state.aboutStore.data);
-
-			const modal = ref(null);
-
-			const showModal = async () => {
-				const ok = await modal.value.show();
-				if (ok) {
-					console.log("모달 출력");
-				} else {
-					console.log("모달 종료");
-				}
-			};
-
-			return {
-				store, 
-				data, 
-				modal,
-				showModal};
-		},
-		data() {
-			return {
-				selected: ["", "", "", ""],
-				season_class: ["Spring", "Summer", "Autumn", "Winter", "Select"],
-				seasons: ["Spring", "Summer", "Autumn", "Winter", "Select a Season"],
-				texts: ["봄은 미세먼지가 많아 기관지 관련 질병을 조심해야 합니다.",
-					"여름은 날씨가 덥고 습하여 온열질병을 조심해야 합니다.",
-					"가을은 온도변화로 인해 감기를 조심해주세요",
-					"겨울은 춥고 건조한 날씨로 질병에 쉽게 걸립니다.",
-					"원하는 날짜를 선택하세요. 해당 날짜에 맞는 질병에 대한 안내를 띄워드립니다."],
-				pictures: ["Spring.png", "Summer.png", "Autumn.png", "Winter.png", ""],
-				selNum: 4,
+		changeCategorySeason(el) {
+			for (let i = 0; i < this.selected.length; i++) {
+				this.selected[i] = "";
+			}
+			if (el != null) {
+				this.selected[el] = "on";
 			}
 		},
-		methods: {
-			openSeason(num) {
-				this.selNum = num;
-				this.changeCategorySeason(num);
-			},
-			changeCategorySeason(el) {
-				for (let i = 0; i < this.selected.length; i++) {
-					this.selected[i] = "";
-				}
-				if (el != null) {
-					this.selected[el] = "on";
-				}
-			},
-			ok(){
-				console.log("ok");
-			},
-			cancel(){
-				console.log("cancel");
-			},
-			hide(str){
-				console.log(str);
-			}
+		ok() {
+			console.log("ok");
+		},
+		cancel() {
+			console.log("cancel");
+		},
+		hide(str) {
+			console.log(str);
 		}
 	}
+}
 </script>
 
 <style>
-
 #header {
 	display: -moz-flex;
 	display: -webkit-flex;
