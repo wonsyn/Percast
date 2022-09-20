@@ -21,8 +21,15 @@ public class Input implements Serializable {
     @JoinColumn(name = "sidoCode", nullable = false)
     private Sido sido;
 
-    private int temperature;
-    private double humid;
-    private double micro;
-    // ...
+    private double so2;    // 아황산가스
+    private double co;     // 일산화탄소
+    private double o3;     // 오존
+    private double no2;    // 이산화질소
+    private double pm10;   // 미세먼지
+    private int tempAvg;    // 1시간 기온
+    private int tempMin;    // 최저 온도
+    private int tempMax;    // 최고 온도
+    private double windAvg;    // 풍속
+    private int humid;  // 습도
+    private int rain;   // 강수량 (강수없음)
 }
