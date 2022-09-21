@@ -19,7 +19,7 @@ public class MessageService {
     @Column(name = "message_disease", columnDefinition = "varchar(20)")
     private String disease;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "message_sidocode")
-    private Sido sido;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "message_sidocode")
+    private Long sidoCode;
 }
