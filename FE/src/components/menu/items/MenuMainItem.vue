@@ -1,7 +1,8 @@
 <template>
-  <li @click="InnerRegion()">
-    {{name}}
-  </li>
+  <div id="region" :class="classname">
+    <div>{{name}}</div>
+    <div class="pic" >{{score}}</div>
+  </div>
 </template>
 
 <script>
@@ -9,7 +10,13 @@
     import { useStore } from 'vuex';
 export default {
     props:{
-        name:String,
+        name:String,        //
+        classname: String,  // 클래스 지정
+        index:Number,       //
+        score:Number,
+    },
+    mounted(){
+        console.log("classname");
     },
     methods:{
         InnerRegion(){

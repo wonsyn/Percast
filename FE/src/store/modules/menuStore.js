@@ -68,6 +68,24 @@ const menuStore = {
         score: 86,
         danger: '안전',
         grade: 2,
+        map_data:[
+            {
+                name:"서울",
+                classname:"seoul",
+                index:1,
+            },
+            {
+                name:"대전",
+                classname:"daejeon",
+                index:2,
+            },
+            {
+                name:"부산",
+                classname:"busan",
+                index:3,
+            }
+        ],
+        scores:[87,33,25],
     },
     getters: {
     },

@@ -1,24 +1,10 @@
 <template>
   <div>
     <div id="album">
-      지도 생성중
       <div id="bg_map">
-        <div id="bubble" class="seoul">
-          <div id="pic">
-
-          </div>
-        </div>
+        <menu-main-item v-for="(items,index) in map_data" :key="items.score = scores[index]" v-bind="items"></menu-main-item>
       </div>
     </div>
-    <ul v-if="depth==0">
-      <menu-main-item v-for="(items,index) in sido" :key="items.index=index" v-bind="items"></menu-main-item>
-    </ul>
-    <ul v-else-if="depth==1">
-      <menu-main-item v-for="(items,index) in gugun" :key="items.index=index" v-bind="items"></menu-main-item>
-      <li @click="back()">
-        뒤로가기
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -29,10 +15,18 @@ import MenuMainItem from '@/components/menu/items/MenuMainItem.vue';
 
 export default {
   components: { MenuMainItem },
+  data(){
+    return{
+      circles:null,
+    }
+  },
   methods: {
     back() {
       this.store.dispatch("menuStore/set_depth", 0);
     }
+  },
+  mounted(){
+    console.log(this.map_data);
   },
   setup() {
     const store = useStore();
@@ -40,29 +34,86 @@ export default {
     const depth = computed(() => store.state.menuStore.depth);
     const sido = computed(() => store.state.menuStore.sido);
     const gugun = computed(() => store.state.menuStore.gugun);
-
-    return { store, depth, sido, gugun };
-  }
+    const map_data= computed(()=> store.state.menuStore.map_data);
+    const scores = computed(()=>store.state.menuStore.scores);
+    return { store, depth, sido, gugun, map_data,scores };
+  },
 }
 </script>
 
 <style>
+  #album{
+    position: relative;
+    width: auto;
+    height: 100vh;
+  }
 #bg_map {
-  position: relative;
-  width: 100px;
-  height: 100px;
+  min-width:100%;
+  max-width: 100%;
+  max-height:100%;
+  min-height: 100%;
   z-index: 1;
   background-image: url("../../assets/map.png");
   background-size: cover;
 }
 
-#pic {
-  position: relative;
+#region{
+  position: absolute;
+  margin: 0 auto;
+}
+
+#region .pic{
   width: 50px;
   height: 50px;
-  z-index: 2;
-  color: red;
-  background-size: cover;
-  background-image: url("../../assets/bubble.png");
+  background-color:rgb(255,255,255);
+  border-radius: 50%;
+}
+#region.seoul{
+  left:40%;
+  top:18%;
+}
+#region.busan{
+  left: 60%;
+  top : 80%;
+}
+#region.daegoo{
+  left: 60%;
+  top : 80%;
+}
+#region.incheon{
+  left:45%;
+  top:18%;
+}
+#region.daejeon{
+  left: 20%;
+  top : 50%;
+} 
+
+
+#region.Gwangju{
+
+}
+
+
+#menu_card{
+  background-color:#1a2844
+}
+#tempt{
+  width:40px;
+  height:40px;
+  background-image: url("../../assets/tempt.svg");
+  background-size:cover;
+}
+#humidity{
+  width:40px;
+  height:40px;
+  background-image: url("../../assets/humidity.svg");
+  background-size:cover;
+}
+#rainy{
+  width:40px;
+  height:40px;
+  background-image: url("../../assets/rainy.svg");
+  background-size:cover;
 }
 </style>

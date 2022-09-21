@@ -1,22 +1,24 @@
 <template>
-    <b-card>
-        <b-card-header> 날씨 </b-card-header>
+    <b-card id="menu_card">
         <b-card-body>
             <b-row>
-                <b-col>
-                    <b-card>
-                        기온
+                <b-col cols="4">
+                    <b-card class="inner_card" style="background-color:#1a2844; color:white">
+                        <div id="tempt"></div>
                         <b-card-text> 36.5 </b-card-text>
                     </b-card>
                 </b-col>
-                <b-col>
-                    <b-card>
-                        습도
+                <b-col cols="4">
+                    <b-card class="inner_card" style="background-color:#1a2844; color:white">
+                        <div id="humidity"></div>
                         <b-card-text>17</b-card-text>
                     </b-card>
                 </b-col>
-                <b-col>
-                    <b-card> 강수 </b-card>
+                <b-col cols="4">
+                    <b-card class="inner_card" style="background-color:#1a2844; color:white">
+                        <div id="rainy"></div>
+                        <b-card-text>17</b-card-text>
+                    </b-card>
                 </b-col>
             </b-row>
         </b-card-body>
