@@ -11,9 +11,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Entity
-@DiscriminatorValue("Output")
-@PrimaryKeyJoinColumn(name = "sido_code")
-public class Output extends Sido{
+public class Output{
+    @Id
+    @Column(name = "sidoCode")
+    private Long sidoCode;
     private int temperature;
     private double cold;
     private double asthma;
