@@ -6,6 +6,7 @@ import b101.percast.dto.notice.NoticeSaveRequestDto;
 import b101.percast.service.NoticeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ public class NoticeController {
 
     @GetMapping
     @ApiOperation(value = "목록조회", notes = "글목록을 조회한다.")
+    @ApiResponse(code = 200, message = "성공입니다.")
     public List<NoticeFindAllResponseDto> getNotices() {
         return noticeService.getList();
     }

@@ -15,7 +15,6 @@ public class Output{
     @Id
     @Column(name = "sidoCode")
     private Long sidoCode;
-    private int temperature;
     private double cold;
     private double asthma;
     private double skin;
