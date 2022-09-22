@@ -21,7 +21,6 @@ public class OutputFindAllResponseDto {
     private double foodPoison;
 
     public OutputFindAllResponseDto(Output Entity) {
-        this.temperature = Entity.getTemperature();
         this.cold = Entity.getCold();
         this.asthma = Entity.getAsthma();
         this.skin = Entity.getSkin();
