@@ -1,0 +1,12 @@
+기존
+docker image prune -a --force
+mkdir -p /var/jenkins_home/images_tar
+cd /var/jenkins_home/workspace/deploytest/FE/
+docker build -t vue .
+docker save vue > /var/jenkins_home/images_tar/vue.tar
+
+cd /var/jenkins_home/workspace/deploytest/BE/percast/
+docker build -t springboot .
+docker save springboot > /var/jenkins_home/images_tar/springboot.tar
+
+ls /var/jenkins_home/images_tar
