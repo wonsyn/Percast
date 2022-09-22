@@ -10,24 +10,70 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ApiExplorer {
     private static final String[] AREA_LIST = {"서울", "부산", "대구", "인천", "광주", "대전", "울산", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주", "세종"};
+    private static final String[] AREA_LIST_CODE
+            = {"1100000000", "2600000000", "2700000000", "2800000000", "2900000000", "3000000000", "3100000000", "3600000000", "4200000000", "4300000000", "4400000000", "4500000000", "4600000000", "4700000000", "4800000000", "5000000000", "3600000000"};
+
+
     private static final String[] NX = {"60", "98", "89", "55", "58", "67", "102", "66", "60", "73", "69", "68", "63", "51", "89", "91", "52"};
     private static final String[] NY = {"127", "76", "90", "124", "74", "100", "84", "103", "120", "134", "107", "100", "89", "67", "91", "77", "38"};
 
     private final static InputSaveRequest[] DTO_LIST = new InputSaveRequest[AREA_LIST.length];
 
-    public static InputSaveRequest[] getDtoList() throws IOException{
+    public static InputSaveRequest[] getDtoList() throws IOException {
         getPollution();
         getWeather();
         return DTO_LIST;
     }
 
+    public static List<String> getFoodPoison() throws IOException {
+        LocalDateTime localDate = LocalDateTime.now();
+        List<String> list = new ArrayList<>();
+        /*URL*/
+        for (int i = 0; i < AREA_LIST_CODE.length; i++) {
+            String urlBuilder =
+                    "http://apis.data.go.kr/1360000/HealthWthrIdxServiceV2/getFoodPoisoningIdxV2" + "?" + URLEncoder.encode("serviceKey", StandardCharsets.UTF_8) + "=x1nvvz%2B%2B9YKLTlgfoIvJNq3js7dxUm%2FrNmb6%2BdZZIabhci9k93C3T%2Ft0BWUxQW3sT648oKcv9f%2B6PqkNHnJyrw%3D%3D" + /*Service Key*/
+                            "&" + URLEncoder.encode("numOfRows", StandardCharsets.UTF_8) + "=" + URLEncoder.encode("1", StandardCharsets.UTF_8) + /*한 페이지 결과 수 Default: 10*/
+                            "&" + URLEncoder.encode("pageNo", StandardCharsets.UTF_8) + "=" + URLEncoder.encode("1", StandardCharsets.UTF_8) + /*페이지 번호 Default: 1*/
+                            "&" + URLEncoder.encode("dataType", StandardCharsets.UTF_8) + "=" + URLEncoder.encode("JSON", StandardCharsets.UTF_8) + /*요청자료형식(XML/JSON) Default: XML*/
+                            "&" + URLEncoder.encode("areaNo", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(AREA_LIST_CODE[i], StandardCharsets.UTF_8) + /*서울지점 공백일때: 전체지점조회*/
+                            "&" + URLEncoder.encode("time", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(localDate.format(DateTimeFormatter.ofPattern("yyyyMMddHH")), StandardCharsets.UTF_8); /*‘21년7월6일 18시 발표*/
+            URL url = new URL(urlBuilder);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Content-type", "application/json");
+            System.out.println("Response code: " + conn.getResponseCode());
+            BufferedReader rd;
+            if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+                rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            } else {
+                rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+            }
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = rd.readLine()) != null) {
+                sb.append(line);
+            }
+            rd.close();
+            conn.disconnect();
+            String item = new JSONObject(sb.toString()).getJSONObject(("response"))
+                    .getJSONObject("body").getJSONObject("items").getJSONArray("item").getJSONObject(0).getString("today");
+            list.add(item);
+        }
+        return list;
+    }
+
+
     private static void getPollution() throws IOException {
         System.out.println("pollution start");
-        for(int i = 0; i < AREA_LIST.length; i++) {
+        for (int i = 0; i < AREA_LIST.length; i++) {
             DTO_LIST[i] = new InputSaveRequest();
             DTO_LIST[i].setSidoCode(Long.parseLong(Integer.toString(i)));
             StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty"); /*URL*/
