@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 
 /**
  * A DTO for the {@link b101.percast.entity.Admin} entity
@@ -15,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AdminSaveDto implements Serializable {
+public class AdminSaveDto{
     private Long id;
     private String password;
     private String encryptedPassword;
