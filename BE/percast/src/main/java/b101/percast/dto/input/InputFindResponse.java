@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ApiModel(value = "현재 대기, 날씨 정보", description = "현재 대기, 날씨 정보를 담고 있는 dto")
+@ApiModel(value = "대기, 날씨 정보 조회 DTO", description = "현재 대기, 날씨 정보를 담고 있는 dto")
 public class InputFindResponse {
 
     @ApiModelProperty(value = "온도")
