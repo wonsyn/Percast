@@ -3,6 +3,7 @@ package b101.percast.service;
 import b101.percast.Exception.NoDiseaseDataException;
 import b101.percast.Exception.NoOutputDataException;
 import b101.percast.api.CoolSMSApi;
+import b101.percast.dto.message.MessageServiceSaveRequestDto;
 import b101.percast.entity.MessageService;
 import b101.percast.entity.Output;
 import b101.percast.repository.MessageServiceRepository;
@@ -73,5 +74,8 @@ public class MessageServiceServiceImpl implements MessageServiceService{
             messageList.add(CoolSMSApi.sendWarningMessage(tel, sb.toString()));
         }
         CoolSMSApi.sendAllMessage(messageList);
+    }
+    public void save(MessageServiceSaveRequestDto requestDto){
+        messageServiceRepository.save(requestDto.toEntity());
     }
 }
