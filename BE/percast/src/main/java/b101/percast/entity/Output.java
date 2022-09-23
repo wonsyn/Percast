@@ -20,4 +20,8 @@ public class Output{
     private double skin;
     private double eye;
     private double foodPoison;
+
+    public void updateFoodPoison(double foodPoison){
+        this.foodPoison = foodPoison;
+    }
 }
