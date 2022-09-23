@@ -1,0 +1,9 @@
+docker-compose.yml 설정
+
+image:mysql:8.0.30:debian
+
+apt update
+apt-get install vim
+
+mysql container 들어간 후
+my.cnf 파일로 들어가 secure-file-priv = "" 변경
