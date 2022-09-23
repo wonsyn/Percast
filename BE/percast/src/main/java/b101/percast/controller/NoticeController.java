@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/notice")
 @RequiredArgsConstructor
-@Api(tags = {"공지사항 API"})
+@Api(tags = {"공지사항 관련 API"})
 public class NoticeController {
 
     private final NoticeService noticeService;
