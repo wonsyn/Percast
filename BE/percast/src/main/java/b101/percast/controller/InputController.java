@@ -1,13 +1,10 @@
 package b101.percast.controller;
 
-import b101.percast.dto.input.InputSaveResponse;
 import b101.percast.service.InputService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
 
 @RestController
 @RequestMapping("/input")
@@ -15,9 +12,5 @@ import java.io.IOException;
 public class InputController {
     private final InputService inputService;
 
-    @GetMapping
-    public InputSaveResponse saveInput() throws IOException {
-        inputService.saveInputData();
-        return InputSaveResponse.builder().success(true).build();
     }
 }
