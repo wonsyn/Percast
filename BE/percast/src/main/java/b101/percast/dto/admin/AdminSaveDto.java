@@ -17,15 +17,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AdminSaveDto implements Serializable {
 @ApiModel(value = "어드민 정보", description = "비밀번호, 암호화된 비밀번호를 담고 있는 dto")
 public class AdminSaveDto{
     private Long id;
 
     @ApiModelProperty(value = "비밀번호")
     private String password;
-    private String encryptedPassword;
-
     @ApiModelProperty(value = "암호화된 비밀번호")
     private String encryptedPassword;
 
