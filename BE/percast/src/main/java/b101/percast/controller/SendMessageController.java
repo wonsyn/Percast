@@ -16,9 +16,5 @@ public class SendMessageController {
 
     private final MessageServiceService messageServiceService;
 
-    @GetMapping
-    public SendMessageResponse sendMessage() {
-        messageServiceService.sendAll();
-        return SendMessageResponse.builder().success(true).build();
     }
 }
