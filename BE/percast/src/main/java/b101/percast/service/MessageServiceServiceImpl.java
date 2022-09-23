@@ -3,6 +3,7 @@ package b101.percast.service;
 import b101.percast.Exception.NoDiseaseDataException;
 import b101.percast.Exception.NoOutputDataException;
 import b101.percast.api.CoolSMSApi;
+import b101.percast.dto.message.MessageServiceFindAllByTelResponseDto;
 import b101.percast.dto.message.MessageServiceSaveRequestDto;
 import b101.percast.entity.MessageService;
 import b101.percast.entity.Output;
@@ -17,6 +18,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -77,5 +79,17 @@ public class MessageServiceServiceImpl implements MessageServiceService{
     }
     public void save(MessageServiceSaveRequestDto requestDto){
         messageServiceRepository.save(requestDto.toEntity());
+    }
+
+    @Override
+    public List<MessageServiceFindAllByTelResponseDto> findAllByTel(String tel) {
+        return messageServiceRepository.findMessageServiceByTel(tel)
+                .stream().map(MessageServiceFindAllByTelResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void delete(Long id) {
+        messageServiceRepository.deleteById(id);
     }
 }
