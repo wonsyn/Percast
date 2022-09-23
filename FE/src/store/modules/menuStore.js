@@ -67,8 +67,10 @@ const menuStore = {
     region: "서울",
     score: 86,
     danger: "안전",
+    disease: "감기",
+    d_type: 1,
     grade: 2,
-
+    // 도 정보를 표시
     map_data: [
       {
         name: "서울",
@@ -187,15 +189,156 @@ const menuStore = {
         classname: "jeju",
         index: 17,
         x: 76,
-        y: 1070,
+        y: 1020,
       },
     ],
-    scores: [87, 33, 25],
+    // 수치를 표시한다.
+    scores: [
+      87, 33, 25, 32, 63, 55, 12, 36, 88, 94, 15, 88, 87, 65, 44, 70, 99,
+    ],
+    symptom: [
+      [
+        {
+          name: "감기에 대한 초기증상",
+          text: [],
+          list: ["첫번째 줄", "두번째 줄", "세번째 줄"],
+        },
+        {
+          name: "예방 방법",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+      ],
+      [
+        {
+          name: "천식에 대한 초기증상",
+          text: [],
+          list: ["첫번째 줄", "두번째 줄", "세번째 줄"],
+        },
+      ],
+      [
+        {
+          name: "피부병에 대한 초기증상",
+          text: [],
+          list: ["첫번째 줄", "두번째 줄", "세번째 줄"],
+        },
+      ],
+      [
+        {
+          name: "눈병에 대한 초기증상",
+          text: [],
+          list: ["첫번째 줄", "두번째 줄", "세번째 줄"],
+        },
+      ],
+      [
+        {
+          name: "식중독에 대한 초기증상",
+          text: [],
+          list: ["첫번째 줄", "두번째 줄", "세번째 줄"],
+        },
+      ],
+    ],
+    prevent: [
+      [
+        {
+          name: "예방 방법1",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+        {
+          name: "예방 방법2",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+      ],
+      [
+        {
+          name: "예방 방법3",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+      ],
+      [
+        {
+          name: "예방 방법4",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+      ],
+      [
+        {
+          name: "예방 방법5",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+      ],
+      [
+        {
+          name: "예방 방법6",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+      ],
+    ],
+    foods: [
+      [
+        {
+          name: "음식 하나",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+        {
+          name: "음식 둘",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+      ],
+      [
+        {
+          name: "음식 셋",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+      ],
+      [
+        {
+          name: "음식 넷",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+      ],
+      [
+        {
+          name: "음식 다섯",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+      ],
+      [
+        {
+          name: "예방 방법6",
+          text: ["선택한 질병에 대한", "데이터가 없습니다."],
+          list: [],
+        },
+      ],
+    ],
   },
   getters: {},
   mutations: {
     SET_DEPTH: (state, depth) => {
       state.depth = depth;
+    },
+    SET_DISEASE: (state, disease) => {
+      state.disease = disease;
+    },
+    SET_D_TYPE: (state, d_type) => {
+      state.d_type = d_type;
+    },
+    SET_REGION: (state, region) => {
+      state.region = region;
+    },
+    SET_SCORE: (state, score) => {
+      state.score = score;
     },
     SET_SIDO: (state, sido) => {
       state.sido = sido;
@@ -213,6 +356,18 @@ const menuStore = {
   actions: {
     set_depth({ commit }, depth) {
       commit("SET_DEPTH", depth);
+    },
+    set_disease({ commit }, disease) {
+      commit("SET_DISEASE", disease);
+    },
+    set_d_type({ commit }, d_type) {
+      commit("SET_D_TYPE", d_type);
+    },
+    set_region({ commit }, region) {
+      commit("SET_REGION", region);
+    },
+    set_score({ commit }, score) {
+      commit("SET_SCORE", score);
     },
     set_sido({ commit }, sido) {
       commit("SET_SIDO", sido);

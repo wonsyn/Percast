@@ -1,11 +1,8 @@
 <template>
-    <text class="TEXT" :x="x" :y="y+20">{{name}}</text>
-    <div :id="classname">
-    </div>
-    <div :id="classname" :x="x" :y="y">
-        <div class="TEXT">{{name}}</div>
-        <div class="pic">{{score}}</div>
-    </div>
+    <text class="TEXT" :x="x" :y="y">{{name}}</text>
+    <g filter="url(#dropshadow)">
+        <text v-if="score>=0 && score<=100" class="SCORE" :x="x" :y="y+20">{{score}}</text>
+    </g>
 </template>
 
 <script>
@@ -37,7 +34,6 @@ export default {
     setup() {
         const store = useStore();
         const depth = computed(() => store.state.menuStore.depth);
-
         return { store, depth };
     }
 }
