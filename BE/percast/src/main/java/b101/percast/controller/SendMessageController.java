@@ -24,7 +24,7 @@ public class SendMessageController {
     }
 
     @GetMapping("{tel}")
-    public ResponseEntity<List<MessageServiceFindAllByTelResponseDto>> findALlByTel(@PathVariable String tel){
+    public ResponseEntity<List<MessageServiceFindAllByTelResponseDto>> findAllByTel(@PathVariable String tel){
         return ResponseEntity.ok().body(messageServiceService.findAllByTel(tel));
     }
 
