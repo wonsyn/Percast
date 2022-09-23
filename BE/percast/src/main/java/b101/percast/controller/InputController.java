@@ -2,6 +2,7 @@ package b101.percast.controller;
 
 import b101.percast.dto.input.InputFindResponse;
 import b101.percast.service.InputService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/input")
 @RequiredArgsConstructor
+@Api(tags = {"날씨, 대기 정보 관련 API"})
 public class InputController {
     private final InputService inputService;
 

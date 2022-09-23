@@ -3,6 +3,7 @@ package b101.percast.controller;
 import b101.percast.config.PasswordEncrypt;
 import b101.percast.dto.admin.AdminSaveDto;
 import b101.percast.service.AdminService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -19,6 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/admin")
 @RequiredArgsConstructor
+@Api(tags = {"어드민 관련 API"})
 public class AdminController {
 
 
