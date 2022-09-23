@@ -31,8 +31,6 @@ public class Qna {
 
     @Column(name = "qna_password", nullable = false)
     private String password;
-    @Column(name = "qna_tel")
-    private String tel;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ans_id")
