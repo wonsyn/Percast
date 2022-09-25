@@ -94,10 +94,18 @@ export default {
 
 }
 
-
-#menu_card{
-  background-color:#1a2844
+#menu_progress{
+  background-color:#1a2844;
 }
+#menu_card{
+  background-color:#1a2844;
+  height: 140px;
+}
+
+#cards{
+  color:white;
+}
+
 #tempt{
   width:40px;
   height:40px;

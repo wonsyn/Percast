@@ -1,6 +1,5 @@
 <template>
-    <b-card>
-        <b-card-header> 환경 </b-card-header>
+    <b-card id="menu_card">
         <b-card-body>
             <b-row>
                 <b-col>

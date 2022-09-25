@@ -4,6 +4,7 @@
     <menu-l-option-progress></menu-l-option-progress>
     <h4 style="color:white; margin-top:10px">현재 대기 정보</h4>
     <menu-l-option-weather></menu-l-option-weather>
+    <h4 style="color:white; margin-top:10px">현재 날씨 정보</h4>
     <menu-l-option-env></menu-l-option-env>
   </div>
 </template>

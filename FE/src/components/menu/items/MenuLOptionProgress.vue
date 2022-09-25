@@ -1,6 +1,6 @@
 <template>
   <h3 style="color:white"> {{region}} 위험단계 </h3>
-  <b-card id="menu_card">
+  <b-card id="menu_progress">
     <b-card-body>
         <h1 style="color:red"> {{score}} </h1>
         <b-progress max='100' height="30px" style="background:gray">
