@@ -11,16 +11,25 @@
 </template>
 
 <script>
+import { computed } from "vue";
+import { useStore } from "vuex";
 export default {
-  data(){
-    return{
-      selected:["","","","",""],
+  setup() {
+    const store = useStore();
+    const scores = computed(() => store.state.menuStore.scores);
+    return { store, scores };
+  },
+  data() {
+    return {
+      disease: ["감기", "천식", "피부병", "눈병", "식중독"],
     }
   },
-  methods:{
-    getInfo(num){
-
+  methods: {
+    getInfo(num) {
       console.log(num);
+      this.fillRegions();
+      this.store.dispatch('menuStore/set_disease', this.disease[num]);
+      this.store.dispatch('menuStore/set_d_type', num);
       this.selected_class(num);
     },
     selected_class(num){
@@ -30,12 +39,57 @@ export default {
       }
       if(num!=null && num<this.selected.length)
         this.selected[num] = "on";
-    }
+    },
+    // scores에 따라 지역의 색이 변화하게 한다.
+    fillRegions() {
+      const regions = document.getElementsByClassName("OUTLINE");
+      for (let i = 0; i < regions.length; i++) {
+        const region = document.getElementById(regions[i].id);
+        let color = "#";
+        // 255 / 100 * scores[i]
+        let red = Math.floor(255 / 100 * this.scores[i]);
+        const code = ["", "", "", "", "", ""];
+        code[0] = Math.floor(red / 16);
+        code[1] = red - (code[0] * 16);
+        code[2] = 3//46 -> 32 + 14 = 2E
+        code[3] = 3
+        let blue = Math.floor(255 / 100 * (100 - this.scores[i]));
+        code[4] = Math.floor(blue / 16);
+        code[5] = blue - (code[4] * 16);
+
+        for (let j = 0; j < 6; j++) {
+          switch (code[j]) {
+            case 10:
+              color += 'A';
+              break;
+            case 11:
+              color += 'B';
+              break;
+            case 12:
+              color += 'C';
+              break;
+            case 13:
+              color += 'D';
+              break;
+            case 14:
+              color += 'E';
+              break;
+            case 15:
+              color += 'F';
+              break;
+            default:
+              color += code[j];
+          }
+        }
+        region.style.fill = color;
+      }
+    },
   }
 }
 </script>
 
 <style>
+<<<<<<< HEAD
   #menu_nav{
     margin:10px;
     width:100%;
