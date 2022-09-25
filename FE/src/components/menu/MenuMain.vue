@@ -72,8 +72,6 @@ export default {
 #menu_card {
   background-color: #1a2844
 }
-
-<<<<<<< HEAD
 #menu_progress{
   background-color:#1a2844;
 }
