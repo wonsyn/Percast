@@ -61,7 +61,7 @@ export default {
             currNum: -1,
             className: "",
             info: null,
-            mapsrc: "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=0b3e66bcb81a8bb4498994ff82980dda&libraries=services",
+            mapsrc: "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=3917030614cd5f07cc201a4cd63e1930&libraries=services",
         };
     },
 

@@ -1,16 +1,27 @@
 <template>
-    <b-card>
-        <b-card-header> 환경 </b-card-header>
+    <b-card id="menu_card">
         <b-card-body>
             <b-row>
-                <b-col>
-                    <b-card> 미세먼지 </b-card>
+                <b-col cols="4">
+                    <b-card class="inner_card" style="background-color:#1a2844; color:white">
+                        <div id="dust"></div>
+                        <div>미세먼지</div>
+                        <b-card-text> 36.5 </b-card-text>
+                    </b-card>
                 </b-col>
-                <b-col>
-                    <b-card> 초미세먼지 </b-card>
+                <b-col cols="4">
+                    <b-card class="inner_card" style="background-color:#1a2844; color:white">
+                        <div id="super_dust"></div>
+                        <div>초미세먼지</div>
+                        <b-card-text>17</b-card-text>
+                    </b-card>
                 </b-col>
-                <b-col>
-                    <b-card> 오존 </b-card>
+                <b-col cols="4">
+                    <b-card class="inner_card" style="background-color:#1a2844; color:white">
+                        <div id="ozon"></div>
+                        <div>오존</div>
+                        <b-card-text>17</b-card-text>
+                    </b-card>
                 </b-col>
             </b-row>
         </b-card-body>
@@ -19,7 +30,11 @@
 
 <script>
 export default {
-
+    methods: {
+        OnClick() {
+            console.log("click!");
+        }
+    }
 }
 </script>
 
