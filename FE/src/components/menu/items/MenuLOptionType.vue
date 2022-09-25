@@ -89,7 +89,6 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
   #menu_nav{
     margin:10px;
     width:100%;
