@@ -1,12 +1,14 @@
 package b101.percast.service;
 
+import b101.percast.api.ApiExplorer;
 import b101.percast.dto.output.OutputFindAllResponseDto;
 import b101.percast.entity.Output;
 import b101.percast.repository.OutputRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +22,11 @@ public class OutputServiceImpl implements OutputService {
     public List<OutputFindAllResponseDto> findAll() {
         return outputRepository.findAll().stream().map(OutputFindAllResponseDto::new)
                 .collect(Collectors.toList());
+    }
+
+    @Scheduled(cron = "0 35 * * * ?")
+    public void saveFoodPoison() throws IOException {
+        save(ApiExplorer.getFoodPoison());
     }
 
     @Override
