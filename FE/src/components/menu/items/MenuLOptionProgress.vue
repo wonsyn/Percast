@@ -27,19 +27,33 @@ export default {
     const danger = computed(() => store.state.menuStore.danger);
     return { store, region, score, danger };
   },
+  mounted(){
+    this.change_Score_Color(this.score);
+  },
   watch: {
     score: function (value) {
       console.log(value);
+      this.change_Score_Color(value);
+    }
+  },
+  data() {
+    return {
+      time: "2022.09.14 17:29:00",
+    }
+  },
+  methods:{
+    change_Score_Color(score)
+    {
       const num = document.getElementById("score");
       let color = "#";
       // 255 / 100 * scores[i]
-      let red = Math.floor(255 / 100 * value);
+      let red = Math.floor(255 / 100 * score);
       const code = ["", "", "", "", "", ""];
       code[0] = Math.floor(red / 16);
       code[1] = red - (code[0] * 16);
       code[2] = 4;
       code[3] = 6;
-      let blue = Math.floor(255 / 100 * (100 - value));
+      let blue = Math.floor(255 / 100 * (100 - score));
       code[4] = Math.floor(blue / 16);
       code[5] = blue - (code[4] * 16);
 
@@ -69,11 +83,6 @@ export default {
       }
       console.log(color);
       num.style.color = color;
-    }
-  },
-  data() {
-    return {
-      time: "2022.09.14 17:29:00",
     }
   }
 }
