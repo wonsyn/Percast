@@ -137,7 +137,6 @@
         d=" M 115 985 l 5 2 3 2 5 3 6 2 3 5 -1 4 0 0 1 0 0 0 1 1 2 1 -2 1 3 0 -1 7 -2 1 -3 7 -4 4 -3 5 -3 5 -5 4 -5 0 -3 1 0 0 0 0 0 0 -1 1 -2 1 0 1 -3 1 -8 2 -4 0 0 0 -2 0 -3 2 -6 3 -7 0 -8 1 -7 1 -7 -1 -8 0 -7 0 -6 1 -3 5 -6 -1 -3 -4 -4 -3 -5 -2 -2 -4 -2 -8 2 -7 3 -4 1 0 1 0 3 -3 4 -3 3 -5 3 -4 4 -2 6 -4 4 -2 5 -1 6 -1 7 -3 4 -2 4 -1 5 -1 -1 1 4 -1 7 -1 6 -2 3 -3 1 1 0 0 1 0 0 1 0 0 1 0 2 -1 2 0 1 0 0 0 1 0 6 -1 z "
       />
     </g>
-
     <menu-main-item
       v-for="(items, index) in map_data"
       :key="(items.score = scores[index])"
@@ -149,6 +148,7 @@
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import get_options_by_region from "@/store/modules/menuStore";
 
 import MenuMainItem from "@/components/menu/items/MenuMainItem.vue";
 
@@ -167,6 +167,7 @@ export default {
       console.log(num);
       this.store.dispatch("menuStore/set_score", this.scores[num]);
       this.store.dispatch("menuStore/set_region", this.map_data[num].name);
+      get_options_by_region(num);
     },
   },
 };
@@ -188,7 +189,7 @@ export default {
 .TEXT {
   pointer-events: none;
   fill: #aaaaaa;
-  font-size: 40;
+  font-size: 30px;
   font-weight: bold;
   text-anchor: middle;
   alignment-baseline: middle;
@@ -197,7 +198,7 @@ export default {
 .SCORE {
   pointer-events: none;
   fill: white;
-  font-size: 45;
+  font-size: 30px;
   font-weight: bold;
   text-anchor: middle;
   alignment-baseline: middle;

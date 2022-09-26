@@ -335,6 +335,13 @@ const menuStore = {
     set_environment({ commit }, environment) {
       commit("SET_ENVIRONMENT", environment);
     },
+    get_options_by_region({ commit }, region_number) {
+      console.log(region_number);
+      const weather = {};
+      const environment = {};
+      commit("SET_WEATHER", weather);
+      commit("SET_ENVIRONMENT", environment);
+    },
   },
 };
 

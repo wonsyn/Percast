@@ -692,7 +692,9 @@ const aboutStore = {
               },
               {
                 title: "감염방지를 위해서",
-                text: [],
+                text: [
+                  "처음 발행한 후 5일간 혹은 수포가 마를 때까지 환자를 격리",
+                ],
                 list: [],
                 emphasize: [],
               },
@@ -704,233 +706,783 @@ const aboutStore = {
         season: "여름",
         entity: [
           {
-            name: "",
-            english: "",
-            explain: [""],
+            name: "폴리오",
+            english: "Poliomyelitis",
+            explain: [
+              "급성회백수염. 기온이 20℃이상이 되는 6월부터 9월 사이에 환자가 많이 발생하는",
+              "소아이환율이 높고 마비를 일으키는 폴리오 바이러스에 의한 전염성 질환",
+            ],
             elements: [
               {
-                title: "",
-                text: [],
+                title: "원인균",
+                text: ["Polio virus"],
                 list: [],
                 emphasize: [],
               },
               {
-                title: "",
+                title: "감염경로",
+                text: ["경구감염으로 전파"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "잠복기",
+                text: [],
+                list: [
+                  {
+                    title: "불현성 간염",
+                    text: ["3~6일"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "마비성 폴리오",
+                    text: ["7~21일(4일정도로 단기간 일 수도 있음)"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
                 text: [],
                 list: [
                   {
                     title: "",
-                    text: [],
+                    text: [
+                      "경증으로 미열만 있거나 권태감, 두통, 구토, 설사 등",
+                    ],
                     list: [],
                     emphasize: [],
                   },
-                ],
-                emphasize: [
                   {
                     title: "",
-                    text: [],
+                    text: [
+                      "바이러스가 신경조직에 침입하면 근육통, 경부 배부경직",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "일부에서는 이완성 마비가 3~4일 지속됨(감염자중 90%이상이 무증상이고 경증으로 지나감)",
+                    ],
                     list: [],
                     emphasize: [],
                   },
                 ],
+                emphasize: [],
+              },
+              {
+                title: "예방접종",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: ["생후 12~24개월에 1~2주 간격으로 2회 기초접종"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["12개월 후 3차 기초접종"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["만 6세와 만 12세에 각 1회 추가접종"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "감염방지를 위해서",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: ["정해진 시기에 예방접종 실시"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["환자의 장내배설물 격리"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["환자의 목 분비물, 대변과 이에 오염된 물품 소독"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
               },
             ],
           },
           {
-            name: "",
+            name: "일본뇌염",
             english: "",
-            explain: [""],
+            explain: [
+              "일본뇌염 바이러스를 가진 모기에 의해 발병되는 전염병으로 우리나라의 일본뇌염",
+              "유행시기는 대체로 7월 중순부터 10월 초순까지이며",
+              "그 중에서 8월 하순부터 9월 중순까지 1개월 사이에 전체의 약 80%가 집중적으로 발생",
+            ],
             elements: [
               {
-                title: "",
+                title: "원인균",
                 text: [],
                 list: [],
                 emphasize: [],
               },
               {
-                title: "",
+                title: "감염경로",
+                text: [
+                  "감염된 돼지를 흡혈한 작은 빨간집 모기가 사람을 흡혈하여 전염",
+                ],
+                list: [],
+                emphasize: [
+                  {
+                    title: "",
+                    text: [
+                      "보통모기는 꼬리를 쳐들고 앉는데 비하여 뇌염 모기는 수평으로 앉으며 밤 8시~10시에 가장 활발하게 활동함",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+              },
+              {
+                title: "잠복기",
+                text: ["7일~14일"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
                 text: [],
                 list: [
                   {
                     title: "",
-                    text: [],
+                    text: [
+                      "감염자의 95%이상이 무증상이며 일부에서 열을 동반하는 가벼운 뇌염으로 진행",
+                    ],
                     list: [],
                     emphasize: [],
                   },
-                ],
-                emphasize: [
                   {
                     title: "",
-                    text: [],
+                    text: [
+                      "뇌염의 경우 성격변화와 신경증상이 나타난 후 오한과 두통이 심해지면서 고열과 함께 경련 및 의식 소실과",
+                      "혼수상태로 (약30%의 사망률)진행",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "뇌염의 경우 회복되어서도 1/3에서 침범부위에 따른",
+                      "다양한 신경계 합병증(기억력 상실, 판단력 저하, 운동장애 등)이 나타남",
+                    ],
                     list: [],
                     emphasize: [],
                   },
                 ],
+                emphasize: [],
+              },
+              {
+                title: "예방접종",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: ["생후 12~24개월에 1~2주 간격으로 2회 기초접종"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["12개월 후 3차 기초접종"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["만 6세와 만 12세에 각 1회 추가접종"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "감염방지를 위해서",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: ["정해진 시기에 예방접종 실시"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["모기의 번식지와 서식지의 환경개선"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["모기에 물리지 않도록 주의"],
+                    list: [],
+                    emphasize: [
+                      {
+                        title: "",
+                        text: [
+                          "12세 이하 아동, 50세 이상의 고령자는 특히 주의",
+                        ],
+                        list: [],
+                        emphasize: [],
+                      },
+                    ],
+                  },
+                ],
+                emphasize: [],
               },
             ],
           },
           {
-            name: "",
+            name: "수족구병",
             english: "",
-            explain: [""],
+            explain: [
+              "입 안의 물집과 궤양, 손과 발의 수포성 발진이 특징인",
+              "생후 6개월에서 4~5세 아동에게 많이 발생하는 장내바이러스에 의해 발병하는 질환",
+            ],
             elements: [
               {
-                title: "",
-                text: [],
+                title: "원인균",
+                text: ["Coxsakie virus A16, Enterovirus 71"],
                 list: [],
                 emphasize: [],
               },
               {
-                title: "",
+                title: "감염경로",
+                text: [
+                  "환자의 분변, 또는 호흡기 분비물(침, 가래, 콧물)을 통해서 전파",
+                ],
+                list: [],
+                emphasize: [
+                  {
+                    title: "",
+                    text: ["발병 1주일이 전염력이 강함"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+              },
+              {
+                title: "잠복기",
+                text: ["3일~5일"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
                 text: [],
                 list: [
                   {
                     title: "",
-                    text: [],
+                    text: ["발열, 인후통, 식욕부진 등으로 시작"],
                     list: [],
                     emphasize: [],
                   },
-                ],
-                emphasize: [
                   {
                     title: "",
-                    text: [],
+                    text: [
+                      "발열 후 1~2일째에 수포성 구진이 손바닥, 손가락, 발바닥에 생김",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["구내 병변은 볼의 점막, 잇몸이나 혀에 나타남"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "때로는 둔부에도 나타나지만, 수포 대신 발진만 나타나는 경우도 많음",
+                    ],
                     list: [],
                     emphasize: [],
                   },
                 ],
+                emphasize: [],
+              },
+              {
+                title: "감염방지를 위해서",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: ["발병 초기 수일간 환자격리"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["환자의 배설물이 묻은 옷 등은 철저히 소독"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["개인위생(손씻기 등) 철저"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
               },
             ],
           },
           {
-            name: "",
-            english: "",
-            explain: [""],
+            name: "비브리오 패혈증",
+            english: "Vibrio vulnificus sepsis",
+            explain: [
+              "국내에서는 간질환을 갖고 있는 고위험군으로부터 매년 20~40환례가 발생하고 있으며,",
+              "치명률이 50% 이상인 여름철 서남 해안지역의 수온이 18~20℃이상이고 염도가 25‰정도 일 때",
+              "주로 발생하는 감염성 질환",
+            ],
             elements: [
               {
-                title: "",
-                text: [],
+                title: "원인균",
+                text: ["Vibrio vulnificus(바다에 살고 있는 호염성 세균)"],
                 list: [],
                 emphasize: [],
               },
               {
-                title: "",
+                title: "감염경로",
                 text: [],
                 list: [
                   {
                     title: "",
-                    text: [],
+                    text: [
+                      "만성 간질환 등 저항력이 약한 허약자들이 어패류를 생식(패혈증)",
+                    ],
                     list: [],
                     emphasize: [],
                   },
-                ],
-                emphasize: [
                   {
                     title: "",
-                    text: [],
+                    text: [
+                      "해안지역에서 낚시 또는 어패류 손질 시 균에 오염된 해수 및 갯벌 등에서 피부상처를 통해서 감염(창상감염형)",
+                    ],
                     list: [],
                     emphasize: [],
                   },
                 ],
+                emphasize: [],
+              },
+              {
+                title: "잠복기",
+                text: [],
+                list: [
+                  {
+                    title: "패혈증",
+                    text: ["16~24시간"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "창상감염형",
+                    text: ["12시간"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
+                text: [],
+                list: [
+                  {
+                    title: "패혈증",
+                    text: [
+                      "발열, 오한, 구토, 전신쇠약감, 설사, 하지부종, 반상출혈, 수포, 궤양, 괴사",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "창상감염형",
+                    text: ["창상부위 부종, 홍반, 수포성 괴사 등"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "감염방지를 위해서",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: ["상처가 있는 사람은 바다에 들어가는 것을 삼가"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "여름철 어패류는 가급적으로 -5℃이하로 저온저장, 또는 60℃이상으로 가열처리 하거나 수돗물에 씻은 후 섭취",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "고위험자는 하절기 어패류 생식을 삼가",
+                      "고위험자: 간질환자, 알코올중독자, 만성질환자, 위장관질환자, 재생불량성 빈혈, 부신피질호르몬제나 항암제를 복용 중인 자,",
+                      "악성종양, 백혈병 환자, 면역결핍환자(AIDS, 백혈구감소증)",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
               },
             ],
           },
           {
-            name: "",
-            english: "",
-            explain: [""],
+            name: "레지오넬라증",
+            english: "Legionellosis",
+            explain: [
+              "여름철 대형건물(병원, 호텔, 빌딩, 공장 등)에서 주로 발생하며",
+              "치료를 받지 않으면 치명율이 15~20%로 높은 급성 호흡기 질환",
+            ],
             elements: [
               {
-                title: "",
-                text: [],
+                title: "원인균",
+                text: [
+                  "Legionella pneumopfila(수돗물이나 증류수 안에서 수 개월간 생존)",
+                ],
                 list: [],
                 emphasize: [],
               },
               {
-                title: "",
+                title: "감염경로",
+                text: [
+                  "대형건물의 냉각탑, 에어컨, 샤워기, 중증호흡치료기기, 분수, 분무기 등 오염된 물에 존재하는 균이 비말로",
+                  "인체에 흡입되어 전파. 퐌자의 접촉으로 직접 전파는 되지 않음",
+                ],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "잠복기",
+                text: [],
+                list: [
+                  {
+                    title: "레지오넬라 폐렴",
+                    text: ["2일~11일"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "폰티악열(독감형)",
+                    text: ["5시간~65시간"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
+                text: [],
+                list: [
+                  {
+                    title: "레지오넬라 폐렴",
+                    text: [
+                      "식욕부진, 근육통, 두통, 오한, 발열, 기침, 설사, 오심, 복통, 폐렴",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "폰티악열(독감형)",
+                    text: ["폐렴형과 유사한 증상(비교적 경미)"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "감염방지를 위해서",
                 text: [],
                 list: [
                   {
                     title: "",
-                    text: [],
+                    text: ["대형 쟁각탑 및 저수 탱크의 청소(연2~4회)외 소독"],
                     list: [],
                     emphasize: [],
                   },
-                ],
-                emphasize: [
                   {
                     title: "",
-                    text: [],
+                    text: ["에어컨의 필터, 물받이 등 청소(주1회 이상) 및 소독"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["가습기의 내부 청결 유지 및 신선한 물 사용"],
                     list: [],
                     emphasize: [],
                   },
                 ],
+                emphasize: [],
               },
             ],
           },
           {
-            name: "",
+            name: "말라리아",
             english: "",
-            explain: [""],
+            explain: [
+              "학질, 세계보건기구(WTO)가 선정한 6대 열대병 중에서도 가장 중요한 질환으로 말라리아 원충이 적혈구 도는 간세포 안에 기생하면서 적펼구를 파괴,",
+              "주기적인 열발작을 일으키는 급성열성 전신감염증",
+            ],
             elements: [
               {
-                title: "",
-                text: [],
+                title: "원인균",
+                text: [
+                  "삼일열원충(Plasmodium vivax): 우리나라의 토착 말라리아",
+                ],
                 list: [],
                 emphasize: [],
               },
               {
-                title: "",
+                title: "감염경로",
+                text: [
+                  "말라리아 원충에 감염된 모기가 사람을 흡혈하여 전염드물게 수혈, 주사기 공동사용으로도 전파가능",
+                ],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "잠복기",
+                text: ["우리나라의 삼일열 말라리아: 9개월~13개월"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
                 text: [],
                 list: [
                   {
                     title: "",
-                    text: [],
+                    text: [
+                      "권태감과 서서히 상승하는 발열이 초기에 수 일간 지속",
+                    ],
                     list: [],
                     emphasize: [],
                   },
-                ],
-                emphasize: [
                   {
                     title: "",
-                    text: [],
+                    text: ["오한, 발열, 발한 후 해열이 반복적으로 나타남"],
+                    list: [
+                      {
+                        title: "",
+                        text: [
+                          "오한기(춥고 떨리는 시기): 춥고 떨린 후 체온이 상승",
+                        ],
+                        list: [],
+                        emphasize: [],
+                      },
+                      {
+                        title: "",
+                        text: [
+                          "고열기: 체온이 39~41℃까지 상승하며 피부가 건조함(~90분)",
+                        ],
+                        list: [],
+                        emphasize: [],
+                      },
+                      {
+                        title: "",
+                        text: [
+                          "하열기(발한기): 심하게 땀을 흘린 후 체온이 정상으로 떨어짐(4~6시간)",
+                        ],
+                        list: [],
+                        emphasize: [],
+                      },
+                    ],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["두통이나 구역, 설사 등을 동반할 수 있음"],
                     list: [],
                     emphasize: [],
                   },
                 ],
+                emphasize: [],
+              },
+              {
+                title: "감염방지를 위해서",
+                text: [
+                  "매개모기가 활발하게 흡혈 활동을 하는 5~9월까지 야간(밤10시부터 새벽4시)에",
+                  "야외(낚시터, 야외캠핑 등)활동을 자제",
+                ],
+                list: [
+                  {
+                    title: "",
+                    text: ["야간 외출 시, 긴팔 및 긴 바지를 착용할 것"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["의복에 모기 기피제 살포"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["환자의 혈액격리(헌혈금지)"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "말라리아 검사는 보건소에서 무료로 실시하며 검사결과 양성자는 무료로 치료를 받을 수 있음",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
               },
             ],
           },
           {
-            name: "",
+            name: "유행성결막염",
             english: "",
-            explain: [""],
+            explain: ["아데노 바이러스에 의해 결막에 생긴 염증성 질환 =EKC"],
             elements: [
               {
-                title: "",
-                text: [],
+                title: "원인균",
+                text: ["adenovirus 제8형과 제 19형"],
                 list: [],
                 emphasize: [],
               },
               {
-                title: "",
+                title: "감염경로",
+                text: [
+                  "환자와의 직접적인 접촉, 환자가 사용한 물건, 세면도구, 수영장, 목욕탕 등을 통해 전파",
+                ],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "잠복기",
+                text: ["5일~12일"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
                 text: [],
                 list: [
                   {
                     title: "",
-                    text: [],
+                    text: ["충혈, 동통, 눈물, 눈꼽, 눈부심 등"],
                     list: [],
                     emphasize: [],
                   },
-                ],
-                emphasize: [
                   {
                     title: "",
-                    text: [],
+                    text: ["아동의 경우 두통, 오한, 인두통, 설사 등 동반"],
                     list: [],
                     emphasize: [],
                   },
                 ],
+                emphasize: [],
+              },
+            ],
+          },
+          {
+            name: "급성출혈성결막염",
+            english: "",
+            explain: ["아폴로눈병. 눈에 심한 통증을 수반하는 출혈성 결막염"],
+            elements: [
+              {
+                title: "원인균",
+                text: [
+                  "엔테로바이러스 70, 아데노바이러스 11, 콕사키바이러스 A24 등",
+                ],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "감염경로",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [
+                      "감염된 눈의 분비물에 의한 직접 또는 간접 접촉에 의해 전파",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["분변접촉에 의한 전파도 가능"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "잠복기",
+                text: ["8시간~48시간"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: ["안통, 이물감, 많은 눈물, 눈꼽, 눈부심"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["결막충혈, 부종, 결막하출혈, 결막여포, 각막염 등"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
               },
             ],
           },
