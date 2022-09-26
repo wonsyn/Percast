@@ -63,24 +63,7 @@
             <path id="CD50" class="OUTLINE" @click="onClickMap(16)"
                 d=" M 115 985 l 5 2 3 2 5 3 6 2 3 5 -1 4 0 0 1 0 0 0 1 1 2 1 -2 1 3 0 -1 7 -2 1 -3 7 -4 4 -3 5 -3 5 -5 4 -5 0 -3 1 0 0 0 0 0 0 -1 1 -2 1 0 1 -3 1 -8 2 -4 0 0 0 -2 0 -3 2 -6 3 -7 0 -8 1 -7 1 -7 -1 -8 0 -7 0 -6 1 -3 5 -6 -1 -3 -4 -4 -3 -5 -2 -2 -4 -2 -8 2 -7 3 -4 1 0 1 0 3 -3 4 -3 3 -5 3 -4 4 -2 6 -4 4 -2 5 -1 6 -1 7 -3 4 -2 4 -1 5 -1 -1 1 4 -1 7 -1 6 -2 3 -3 1 1 0 0 1 0 0 1 0 0 1 0 2 -1 2 0 1 0 0 0 1 0 6 -1 z " />
         </g>
-        <!-- <g filter="url(#dropshadow)"><text id="LCD11" class="TEXT" x="156" y="214">서울특별시</text>
-            <text id="LCD26" class="TEXT" x="503" y="695">부산광역시</text>
-            <text id="LCD27" class="TEXT" x="418" y="567">대구광역시</text>
-            <text id="LCD28" class="TEXT" x="67" y="177">인천광역시</text>
-            <text id="LCD29" class="TEXT" x="127" y="707">광주광역시</text>
-            <text id="LCD30" class="TEXT" x="221" y="463">대전광역시</text>
-            <text id="LCD31" class="TEXT" x="531" y="622">울산광역시</text>
-            <text id="LCD36" class="TEXT" x="199" y="418">세종특별자치시</text>
-            <text id="LCD41" class="TEXT" x="216" y="245">경기도</text>
-            <text id="LCD42" class="TEXT" x="370" y="179">강원도</text>
-            <text id="LCD43" class="TEXT" x="294" y="381">충청북도</text>
-            <text id="LCD44" class="TEXT" x="105" y="449">충청남도</text>
-            <text id="LCD45" class="TEXT" x="179" y="592">전라북도</text>
-            <text id="LCD46" class="TEXT" x="138" y="764">전라남도</text>
-            <text id="LCD47" class="TEXT" x="447" y="460">경상북도</text>
-            <text id="LCD48" class="TEXT" x="367" y="672">경상남도</text>
-            <text id="LCD50" class="TEXT" x="76" y="1070">제주특별자치도</text>
-        </g> -->
+        
         <menu-main-item v-for="(items,index) in map_data" :key="items.score = scores[index]" v-bind="items">
         </menu-main-item>
     </svg>

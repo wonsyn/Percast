@@ -28,14 +28,14 @@ const navStore = {
         menu: "Map",
         name: "/maps",
       },
-      {
-        title: "챗봇",
-        comments: "카카오 API로 구성된 챗봇을 호출합니다.",
-        menu: "Chat",
-        name: "/chat",
-      },
+      // {
+      //   title: "챗봇",
+      //   comments: "카카오 API로 구성된 챗봇을 호출합니다.",
+      //   menu: "Chat",
+      //   name: "/chat",
+      // },
     ],
-    maxsize: 5,
+    maxsize: 4,
   },
   getters: {},
   mutations: {

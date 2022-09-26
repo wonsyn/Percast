@@ -21,15 +21,7 @@ export default {
         console.log("classname");
     },
     methods: {
-        InnerRegion() {
-            if (this.depth == 0) {
-                console.log("get gugun! - " + this.name);
-                this.store.dispatch("menuStore/set_depth", 1);
-            }
-            else {
-                console.log("just gugun : " + this.name);
-            }
-        },
+        
     },
     setup() {
         const store = useStore();
