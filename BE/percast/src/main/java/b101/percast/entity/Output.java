@@ -5,24 +5,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class Output {
+@Entity
+public class Output{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long outputNum;
-
-    @OneToOne
-    @JoinColumn(name = "gugunCode")
-    private Gugun gugun;
-
-    private int temperature;
+    @Column(name = "sidoCode")
+    private Long sidoCode;
     private double cold;
     private double asthma;
     private double skin;
     private double eye;
     private double foodPoison;
+
+    public void updateFoodPoison(double foodPoison){
+        this.foodPoison = foodPoison;
+    }
 }
