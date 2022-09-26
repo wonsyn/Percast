@@ -2,68 +2,24 @@ const menuStore = {
   namespaced: true,
   state: {
     depth: 0,
-    sido: [
-      {
-        name: "서울",
-      },
-      {
-        name: "대전",
-      },
-      {
-        name: "대구",
-      },
-      {
-        name: "광주",
-      },
-      {
-        name: "부산",
-      },
-    ],
-    gugun: [
-      {
-        name: "서구",
-      },
-      {
-        name: "동구",
-      },
-      {
-        name: "대덕구",
-      },
-      {
-        name: "유성구",
-      },
-      {
-        name: "중구",
-      },
-    ],
-    weather: [
+    weather:
       {
         // 기온
-        value: 36.5,
-      },
-      {
+        tempt: 36.5,
         // 습도
-        value: 53,
-      },
-      {
+        humidity: 53,
         // 강수량
-        value: 13,
+        rainy: 13,
       },
-    ],
-    environment: [
+    environment:
       {
         // 미세먼지
-        value: 33,
-      },
-      {
+        dust: 33,
         // 초미세먼지
-        value: 25,
-      },
-      {
+        super_dust: 25,
         // 오존
-        value: 23,
+        ozon: 23,
       },
-    ],
     region: "서울",
     score: 86,
     danger: "안전",

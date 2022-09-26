@@ -2,8 +2,11 @@
   <div>
     <b-navbar id="head-nav">
       <b-navbar-nav>
-
-        <router-link :to="{path: menuArray[(selected_num+maxsize-2)%maxsize].name}"
+        <router-link v-for="(item, index) in menuArray" :key="item.index = index" :to="{path: item.name}" @click="getSelnum(item)" class="nav-link">
+          {{item.menu}}
+        </router-link>
+        
+        <!-- <router-link :to="{path: menuArray[(selected_num+maxsize-2)%maxsize].name}"
           @click="getSelnum((selected_num+maxsize-2)%maxsize)" class="nav-link">
           {{menuArray[(selected_num+maxsize-2)%maxsize].menu}}
         </router-link>
@@ -20,13 +23,7 @@
         <router-link :to="{path: menuArray[(selected_num+1)%maxsize].name}" @click="getSelnum((selected_num+1)%maxsize)"
           class="nav-link">
           {{menuArray[(selected_num+1)%maxsize].menu}}
-        </router-link>
-
-        <router-link :to="{path: menuArray[(selected_num+2)%maxsize].name}" @click="getSelnum((selected_num+2)%maxsize)"
-          class="nav-link">
-          {{menuArray[(selected_num+2)%maxsize].menu}}
-        </router-link>
-
+        </router-link> -->
       </b-navbar-nav>
     </b-navbar>
   </div>
@@ -45,8 +42,9 @@ export default {
   mounted() {
   },
   methods: {
-    getSelnum(nums) {
-      console.log(nums);
+    getSelnum(item) {
+      console.log(item.index);
+      console.log(item.name);
       //this.store.dispatch('navStore/set_selected_num', nums);
 
     }
