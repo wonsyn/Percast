@@ -1,8 +1,10 @@
 <template>
   <b-card id="menu_card">
     <b-card-text>
-      <menu-r-option-lists v-bind="list = lists[d_type]"></menu-r-option-lists>
-      <div style="color:white">{{lists[d_type][0].name}}</div>
+      <menu-r-option-lists
+        v-bind="(list = lists[d_type])"
+      ></menu-r-option-lists>
+      <div style="color: white">{{ lists[d_type][0].name }}</div>
     </b-card-text>
   </b-card>
 </template>
@@ -21,10 +23,8 @@ export default {
   },
   components: {
     MenuROptionLists,
-  }
-}
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

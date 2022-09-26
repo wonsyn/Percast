@@ -119,7 +119,7 @@ const aboutStore = {
             elements: [
               {
                 title: "원인균",
-                text: [""],
+                text: ["Mumps virus"],
                 list: [],
                 emphasize: [],
               },
@@ -144,44 +144,24 @@ const aboutStore = {
               },
               {
                 title: "잠복기",
-                text: ["8일~12일"],
+                text: ["14일~21일"],
                 list: [],
                 emphasize: [],
               },
               {
                 title: "주요 증상",
-                text: [],
-                list: [
-                  {
-                    title: "전구기",
-                    text: [
-                      "기침, 콧물, 결막염, 발열(38℃ 이상) 등이 발생하며 전염력이 가장 강한 시기로 3~5일간 지속됨",
-                    ],
-                    list: [],
-                    emphasize: [],
-                  },
-                  {
-                    title: "발진기",
-                    text: [
-                      "특징적으로 머리에서 시작하여 얼굴, 목, 팔, 몸통 순으로 발진이 나타나며 이때 40℃ 이상의 고열이 동반",
-                    ],
-                    list: [],
-                    emphasize: [],
-                  },
-                  {
-                    title: "회복기",
-                    text: [
-                      "피부발진이 작은 겨 껍질모양으로 벗겨지며 이 시기에 폐렴, 중이염, 기관지염 등의 합병증이 유발될 수 있음",
-                    ],
-                    list: [],
-                    emphasize: [],
-                  },
+                text: [
+                  "잠복기 후 1~2일간의 발열, 두통, 근육통, 구토 등의 전구 증상이 있다가",
+                  "침샘(주로 이하선)을 침범하여 종창, 동통(통증), 부종을 유발합니다.",
                 ],
+                list: [],
                 emphasize: [],
               },
               {
                 title: "예방접종",
-                text: ["MMR(홍역) 기초 1회, 생후 12~15개월 추가 1회 만 4~6세"],
+                text: [
+                  "MMR을 생후 12~15개월에 1회 기초접종 만 4~5세에 1회 추가접종",
+                ],
                 list: [],
                 emphasize: [],
               },
@@ -197,17 +177,523 @@ const aboutStore = {
                   },
                   {
                     title: "",
-                    text: ["환자는 발진 후 5일까지 격리"],
+                    text: ["환자는 발병 후 9~10일동안 격리"],
                     list: [],
                     emphasize: [],
                   },
                   {
                     title: "",
-                    text: ["외출 후 곧바로 손발을 씻고 양치질"],
+                    text: [
+                      "환자의 타액이나 호흡기 분비물에 오염된 물품을 소독",
+                    ],
                     list: [],
                     emphasize: [],
                   },
                 ],
+                emphasize: [
+                  {
+                    title: "",
+                    text: ["꼭 예방접종을 맞도록 합시다."],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "풍진",
+            english: "Rubella",
+            explain: [
+              "학생들을 중심으로 2월~3월에서 초여름인 6월까지 유행하며 임신초기의 여성이 걸렸을 경우 풍진 증후군이라 부르며 뱃속 아이에게 심장기형이나 백내장, 청력장애 등을 유발하여",
+              "각별하게 주의를 요하는 급성 열성 질환",
+            ],
+            elements: [
+              {
+                title: "원인균",
+                text: ["Rubella virus"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "감염경로",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [
+                      "기침, 재채기 등으로 체내에 침입(공기감염, 비말감염)하여 감염",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "감염된 산모의 태반을 통해 태아에 수직 감염되기도 함",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "잠복기",
+                text: ["14일 ~ 21일 (평균 16일 ~ 18일)"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
+                text: [
+                  "두통, 전신쇠약 등을 일으키며 홍역보다 증세는 가볍고 비교적 짧은 기간 내 소실합니다.",
+                  "비교적 경한 임상경과를 취하며(30~50%는 증상이 없음)",
+                  "얼굴에서 시작하여 몸통으로 퍼지는 발진과 발열이 나타납니다.",
+                ],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "예방접종",
+                text: [
+                  "MMR을 생후 12~15개월에 1회 기초 접종. 만 4~5세 때 1회 추가접종",
+                ],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "감염방지를 위해서",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: ["정해진 시기에 예방접종 실시"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["환자는 발진 후 5까지 격리"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "임신 4개월 미만의 임산부는 환자와의 접촉을 절대적으로 피함",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [
+                  {
+                    title: "",
+                    text: ["감염 가능기간 발진이 나타난 후 5일까지"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["꼭 예방접종을 맞도록 합시다."],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "백일해",
+            english: "Pertussis",
+            explain: [
+              "격렬한 기침을 주증상으로 하는 급성 호흡기 질환으로 4계절에 발생하나 봄, 여름에 걸쳐 호발하며",
+              "주로 영유아기에 발생하는 치명률(15%)이 높은 질환",
+            ],
+            elements: [
+              {
+                title: "원인균",
+                text: ["Bordetella pertussis"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "감염경로",
+                text: [
+                  "직접적인 접촉에 의해서 전파 되거나 기침을 할 때 튀어나온 작은 침방울에 의해 호흡기로 전파",
+                ],
+                list: [],
+                emphasize: [
+                  {
+                    title: "",
+                    text: ["감염력이 매우 높아 2차 발병율이 80%이상"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+              },
+              {
+                title: "잠복기",
+                text: ["7일~20일"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
+                text: [],
+                list: [
+                  {
+                    title: "전구기(카타르기 1~2주)",
+                    text: [
+                      "콧물, 눈물, 경한 기침, 미열 등의 상기도염 증세*가장 감염력이 강한 시기",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "경해기(2~4주)",
+                    text: ["발작적인 기침 후 구토, 끈근한 점액성 가래"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "회복기(1~2주)",
+                    text: ["기침의 정도와 횟수 및 구토 감소"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "예방접종",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [
+                      "DTap를 생후 2개월부터 2개월 간격으로 3회 기초 접종",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["생후 18개월과 만 4~6세에 추가 접종"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "감염방지를 위해서",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: ["예방접종 스케줄에 따라 예방접종을 실시"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "백일해 환자는 격리하고 환자의 비인두 분비물, 분비물에 오염된 물품은 소독",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "예방접종이 안된 영유아는 사람들이 모이는 장소를 피함",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+            ],
+          },
+          {
+            name: "파상풍",
+            english: "Tetanus",
+            explain: [
+              "상처 부위에서 혐기적으로 발육하는 파상풍균이 생산하는 독소인 신경독에 의한 급성 중독성 질환으로",
+              "약물남용자와 미접종 산모로부터 태어난 신생아 등에서 많이 발생하는 근육의 긴장성 연축을 일으키는 질환",
+            ],
+            elements: [
+              {
+                title: "원인균",
+                text: ["Clostridium tetani"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "감염경로",
+                text: [
+                  "흙, 먼지, 동물의 대변 등에 포함된 파상풍의 포자가 피부의 상처를 통해 침투하여 전파됨",
+                ],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "잠복기",
+                text: ["1일 ~ 수개월 (평균 3일 ~ 21일)"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
+                text: [],
+                list: [
+                  {
+                    title: "전신파상풍(가장 흔한 형태)",
+                    text: [
+                      "입주위 근육의 수축으로 인한 개구불능이 가장 먼저 나타나며 경직에 따른 통증을 동반,",
+                      "복부강직 및 호흡근육 경직에 의한 호흡곤란",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "국소파상풍",
+                    text: ["국소부위의 긴장 유발"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "뇌파상풍",
+                    text: [
+                      "중추신경이 지배하는 근육(안면신경, 외안근등)의 마비",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "신생아파상풍",
+                    text: [
+                      "비위생적인 탯줄관리로 인해 발생하며 초기에는 무력감만 보이나 후기에는 경직",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "예방접종",
+                text: [
+                  "DTap를 생후 2개월부터 2개월 간격으로 3회 기초접종 15~18개월과 만 4~6세, 만 11세~12세에 Tb 추가 접종",
+                ],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "감염방지를 위해서",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: ["정해진 시기에 예방접종을 실시"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "상처가 났을 때에는 상처부위를 소독하고 괴사 조직을 제거하는 등의 적절한 처리를 함",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+            ],
+          },
+          {
+            name: "성홍열",
+            english: "Scarlet fever",
+            explain: [
+              "늦은 겨울과 초봄에 호발하는 질환으로 주로 6세~12세 아동에 발생하는 연쇄구균의 발열성 외독소에 의한 급성 열성 질환",
+            ],
+            elements: [
+              {
+                title: "원인균",
+                text: ["Group A β- hemolytic streptococci"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "감염경로",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [
+                      "주로 비말감염 또는 환자와 보균자의 분비물과 직접 접촉에 의해 전파",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "드물게 손이나 물건을 통한 간접 접축에 의해서도 전파",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "균에 오염된 우유, 아이스크림이나 기타 음식물을 통해서도 전파가능",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "긴밀한 접촉이 흔한 학교, 어린이 보호시설, 군대 등에서 유행발생이 가능함",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "잠복기",
+                text: ["1일 ~ 3일"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: ["발열(39~40℃), 인두통등이 생긴 후 발진이 발생"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["심한 인후 충혈, 연구개 및 목젖의 출혈반, 딸기혀"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["편도선이나 인두 후부에 점액 농성의 삼출액"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "감염방지를 위해서",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [
+                      "환자는 치료를 시작하고 24시간동안은 감염성이 있으므로 격리",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["매액 및 분비물로 오염된 물품 소독"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+            ],
+          },
+          {
+            name: "수두",
+            english: "Chickenpox",
+            explain: [
+              "수두-대상포진 바이러스에 의한 급성발진성 질환으로",
+              "매년 약 18만명의 수두 환자가 발생하며, 대부분 3~6세 소아에서 발생하고 감염력이 강한 질환 (2005. 7.1 제2군 감염병에 추가됨)",
+            ],
+            elements: [
+              {
+                title: "원인균",
+                text: ["Varicella-zoster virus"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "감염경로",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [
+                      "수두나 대상포진 수포액의 직접접촉이나 공기를 통한 전파",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["수두 감염자의 타액에 의한 감염"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "잠복기",
+                text: ["10일 ~ 21일 (평균 14일 ~ 16일)"],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "주요증상",
+                text: [],
+                list: [
+                  {
+                    title: "전구증상",
+                    text: ["발열, 권태감, 식욕 부진 등"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["발진 → 3~4일간의 수포(물집)기 → 가피(딱지)"],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [],
+              },
+              {
+                title: "예방접종",
+                text: [
+                  "피하주사용 생백신을 1~12세까지 감수성이 있는 사람에게 접종",
+                  "(성인이 4~8주 간격으로 2회 투여하면 약 70%에서 효과)",
+                ],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "감염방지를 위해서",
+                text: [],
+                list: [],
                 emphasize: [],
               },
             ],
@@ -217,6 +703,204 @@ const aboutStore = {
       {
         season: "여름",
         entity: [
+          {
+            name: "",
+            english: "",
+            explain: [""],
+            elements: [
+              {
+                title: "",
+                text: [],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "",
+            english: "",
+            explain: [""],
+            elements: [
+              {
+                title: "",
+                text: [],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "",
+            english: "",
+            explain: [""],
+            elements: [
+              {
+                title: "",
+                text: [],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "",
+            english: "",
+            explain: [""],
+            elements: [
+              {
+                title: "",
+                text: [],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "",
+            english: "",
+            explain: [""],
+            elements: [
+              {
+                title: "",
+                text: [],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "",
+            english: "",
+            explain: [""],
+            elements: [
+              {
+                title: "",
+                text: [],
+                list: [],
+                emphasize: [],
+              },
+              {
+                title: "",
+                text: [],
+                list: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+                emphasize: [
+                  {
+                    title: "",
+                    text: [],
+                    list: [],
+                    emphasize: [],
+                  },
+                ],
+              },
+            ],
+          },
           {
             name: "",
             english: "",
@@ -671,23 +1355,25 @@ const aboutStore = {
           {
             name: "수막구균성 수막염",
             english: "Meningococcal meningitis",
-            explain: [""],
+            explain: ["수막염균 감염에 의한 치명률이 높은 급성 중추신경계질환"],
             elements: [
               {
                 title: "원인균",
-                text: [],
+                text: ["Neisseria meningitidis"],
                 list: [],
                 emphasize: [],
               },
               {
                 title: "감염경로",
-                text: [],
+                text: [
+                  "감염자의 호흡기 분비물에 의한 비말 감염 도는 직접 감염",
+                ],
                 list: [],
                 emphasize: [],
               },
               {
                 title: "잠복기",
-                text: [],
+                text: ["2일~10일"],
                 list: [],
                 emphasize: [],
               },
@@ -697,7 +1383,26 @@ const aboutStore = {
                 list: [
                   {
                     title: "",
-                    text: [],
+                    text: [
+                      "무증상부터 전격형까지 매우 다양한 증상",
+                      "초기: 인두염, 발열, 근육통, 전신쇠약",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "패혈증 시 저혈압, 범발성 혈관내 응고증, 산증, 부신출혈, 신부전, 심부전 등 패혈성 쇼크로 급속히 진행 될 수 있음",
+                    ],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: [
+                      "뇌막염의 증상(두통, 구토, 고열, 의식저하) 등을 나타냄",
+                    ],
                     list: [],
                     emphasize: [],
                   },
@@ -710,7 +1415,19 @@ const aboutStore = {
                 list: [
                   {
                     title: "",
-                    text: [],
+                    text: ["환자의 코, 목 분비물과 이에 오염된 물품 소독"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["환자는 격리 치료"],
+                    list: [],
+                    emphasize: [],
+                  },
+                  {
+                    title: "",
+                    text: ["폐쇄 환경에 의한 밀집생활을 피함"],
                     list: [],
                     emphasize: [],
                   },

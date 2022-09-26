@@ -2,24 +2,22 @@ const menuStore = {
   namespaced: true,
   state: {
     depth: 0,
-    weather:
-      {
-        // 기온
-        tempt: 36.5,
-        // 습도
-        humidity: 53,
-        // 강수량
-        rainy: 13,
-      },
-    environment:
-      {
-        // 미세먼지
-        dust: 33,
-        // 초미세먼지
-        super_dust: 25,
-        // 오존
-        ozon: 23,
-      },
+    weather: {
+      // 기온
+      tempt: 36.5,
+      // 습도
+      humidity: 53,
+      // 강수량
+      rainy: 13,
+    },
+    environment: {
+      // 미세먼지
+      dust: 33,
+      // 초미세먼지
+      super_dust: 25,
+      // 오존
+      ozon: 23,
+    },
     region: "서울",
     score: 86,
     danger: "안전",

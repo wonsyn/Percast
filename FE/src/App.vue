@@ -1,5 +1,5 @@
 <template>
-  <div id='body'>
+  <div id="body">
     <header-nav-bar></header-nav-bar>
     <router-view />
   </div>
@@ -11,10 +11,9 @@ import HeaderNavBar from "./components/layout/HeaderNavBar.vue";
 export default {
   components: {
     HeaderNavBar,
-  }
-}
+  },
+};
 </script>
-
 
 <style>
 #app {
@@ -47,7 +46,7 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #BBBBBB;
+  color: #bbbbbb;
 }
 
 .card {
