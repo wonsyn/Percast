@@ -34,6 +34,11 @@ const routes = [
     path:'/maps',
     name:'map',
     component:()=>import("@/views/MapView.vue"),
+  },
+  {
+    path:'/board',
+    name:'board',
+    component:()=>import("@/views/BoardView.vue"),
   }
 ]
 
