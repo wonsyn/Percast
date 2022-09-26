@@ -1,109 +1,117 @@
 package b101.percast.controller;
 
 import b101.percast.dto.Qna.*;
+import b101.percast.dto.answer.*;
 import b101.percast.service.QnaService;
+import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/qna")
 @RequiredArgsConstructor
+@Api(tags = {"QnA API"})
 public class QnaController {
     private final QnaService qnaService;
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> create(@RequestBody QnaSaveDto.Request dto) {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
-        Long id = qnaService.create(dto);
-        if(id == null) {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        } else {
-            map.put("id", id);
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+    @ApiOperation(value = "QnA 작성", notes = "QnA를 작성하는 요청")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "요청 성공"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
+    public QnaSaveResponse create(@RequestBody @ApiParam(value = "작성할 QnA의 정보가 담긴 객체", required = true) QnaSaveRequest request) {
+        Long id = qnaService.create(request);
+        return new QnaSaveResponse(id);
     }
 
     @GetMapping
-    public ResponseEntity<Map<String, Object>> readAll() {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
-        List<QnaFindAllDto.Response> list = qnaService.findAll();
-        if(list == null) {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        } else {
-            map.put("data", list);
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+    @ApiOperation(value = "QnA 전체조회", notes = "모든 QnA 리스트를 조회한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "요청 성공"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
+    public List<QnaFindAllResponse> readAll() {
+        List<QnaFindAllResponse> list = qnaService.findAll();
+        return list;
     }
 
+    @ApiOperation(value = "QnA 상세조회", notes = "QnA 의 정보를 상세조회한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "요청 성공"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
     @GetMapping("/detail")
-    public ResponseEntity<Map<String, Object>> read(@RequestParam Long qnaId) {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
-        QnaFindDto.Response qna = qnaService.findById(qnaId);
-        if(qna != null) {
-            map.put("data", qna);
-        } else {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+    public QnaFindResponse read(@RequestParam @ApiParam(value = "QnA ID", required = true) Long qnaId) {
+        return qnaService.findById(qnaId);
     }
 
+    @ApiOperation(value = "QnA 수정", notes = "QnA 를 수정하는 요청")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "요청 성공"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
     @PutMapping
-    public ResponseEntity<Map<String, Object>> update(@RequestBody QnaUpdateDto.Request dto) {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
+    public QnaUpdateResponse update(@RequestBody @ApiParam(value = "수정할 정보를 담고있는 QnA 객체", required = true) QnaUpdateRequest dto) {
         Long id = qnaService.update(dto);
-        if(id != null) {
-            map.put("id", id);
-        } else {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+        return new QnaUpdateResponse(id);
     }
 
+    @ApiOperation(value = "QnA 삭제", notes = "QnA 를 삭제하는 요청")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "요청 성공"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
     @DeleteMapping("{id}")
-    public ResponseEntity<Map<String, Object>> delete(@PathVariable Long id) {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
-        if(!qnaService.delete(id)) {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+    public QnaDeleteResponse delete(@PathVariable @ApiParam(value = "삭제할 QnA의 ID", required = true) Long id) {
+        qnaService.delete(id);
+        return new QnaDeleteResponse(true);
     }
 
+    @ApiOperation(value = "QnA 비밀번호 인증", notes = "QnA 수정, 삭제를 위한 비밀번호를 인증하는 요청")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "요청 성공"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
     @PostMapping("/password")
-    public ResponseEntity<Map<String, Object>> authPassword(@RequestBody QnaAuthDto.Request dto) {
-        Map<String, Object> map = new HashMap<>();
-        String msg = "success";
-        HttpStatus status = HttpStatus.OK;
-        if(!qnaService.authPassword(dto)) {
-            msg = "fail";
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        map.put("message", msg);
-        return new ResponseEntity<>(map, status);
+    public QnaAuthResponse authPassword(@RequestBody @ApiParam(value = "QnA의 ID와 비밀번호를 담고 있는 객체", required = true) QnaAuthRequest dto) {
+        return new QnaAuthResponse(qnaService.authPassword(dto));
+    }
+
+    @ApiOperation(value = "Answer 작성", notes = "Answer를 작성하는 요청")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "요청 성공"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
+    @PostMapping("/answer")
+    public AnswerSaveResponse createAnswer(@RequestBody @ApiParam(value = "작성할 Answer의 내용을 담고 있는 객체", required = true) AnswerSaveRequest dto) {
+        Long id = qnaService.createAnswer(dto);
+        return new AnswerSaveResponse(id);
+    }
+
+    @ApiOperation(value = "Answer 수정", notes = "Answer를 수정하는 요청")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "요청 성공"),
+            @ApiResponse(code = 400, message = "잘못된 요청 또는 해당 Answer 없음"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
+    @PutMapping("/answer")
+    public AnswerUpdateResponse updateAnswer(@RequestBody @ApiParam(value = "수정할 Answer의 내용을 담고 있는 객체", required = true) AnswerUpdateRequest dto) {
+        Long id = qnaService.updateAnswer(dto);
+        return new AnswerUpdateResponse(id);
+    }
+
+    @ApiOperation(value = "Answer 삭제", notes = "Answer를 삭제하는 요청")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "요청 성공"),
+            @ApiResponse(code = 204, message = "해당 QnA객체 없음"),
+            @ApiResponse(code = 500, message = "서버 에러"),
+    })
+    @DeleteMapping("/answer")
+    public AnswerDeleteResponse deleteAnswer(@RequestParam @ApiParam(value = "답변을 삭제할 Answer가 붙어있는 QnA ID", required = true) Long qnaid, @RequestParam @ApiParam(value = "삭제할 Answer의 ID") Long answerid) {
+        qnaService.deleteAnswer(qnaid, answerid);
+        return new AnswerDeleteResponse(true);
     }
 }
