@@ -5,17 +5,17 @@
                 <b-col id="cards" cols="4">
                     <div id="tempt"></div>
                     <div > 기온 </div>
-                    <div > 36.5 </div>
+                    <div > {{weather.tempt}}℃ </div>
                 </b-col>
                 <b-col id="cards" cols="4">
                     <div id="humidity"></div>
                     <div> 습도 </div>
-                    <div> 17 </div>
+                    <div> {{weather.humidity}} </div>
                 </b-col>
                 <b-col id="cards" cols="4">
                     <div id="rainy"></div>
                     <div>강우량</div>
-                    <div>17</div>
+                    <div>{{weather.rainy}}</div>
                 </b-col>
             </b-row>
         </div>
@@ -23,8 +23,15 @@
 </template>
 
 <script>
+    import {computed} from "vue";
+    import {useStore} from "vuex";
 export default {
+    setup(){
+        const store = useStore();
+        const weather = computed(()=>store.state.menuStore.weather);
 
+        return {store,weather};
+    }
 }
 </script>
 

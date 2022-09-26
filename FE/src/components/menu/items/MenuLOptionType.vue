@@ -21,8 +21,12 @@ export default {
   },
   data() {
     return {
+      selected:["","","","",""],
       disease: ["감기", "천식", "피부병", "눈병", "식중독"],
     }
+  },
+  mounted(){
+    this.fillRegions();
   },
   methods: {
     getInfo(num) {
