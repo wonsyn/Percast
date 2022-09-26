@@ -2,13 +2,15 @@
 //const api = apiInstance();
 import { api } from "./index.js";
 
-// 로그인
-async function get_weather(user, success, fail) {
-  await api.get(``, JSON.stringify(user)).then(success).catch(fail);
+async function get_env(sidoCode, success, fail) {
+  await api
+    .get(`/input/env`, JSON.stringify(sidoCode))
+    .then(success)
+    .catch(fail);
 }
 
-async function get_environment(user, success, fail) {
-  await api.get(``, JSON.stringify(user)).then(success).catch(fail);
+async function get_data(success, fail) {
+  await api.get(`/output`).then(success).catch(fail);
 }
 
-export { get_weather, get_environment };
+export { get_env, get_data };

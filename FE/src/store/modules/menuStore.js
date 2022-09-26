@@ -1,3 +1,5 @@
+import { get_env, get_data } from "@/api/menu";
+
 const menuStore = {
   namespaced: true,
   state: {
@@ -20,11 +22,13 @@ const menuStore = {
     },
     region: "서울",
     score: 86,
-    danger: "안전",
-    disease: "감기",
-    d_type: 1,
+    // 현재 등급을 표시
     grade: 2,
-    // 도 정보를 표시
+    danger: "안전",
+    // 선택한 질병명을 표시
+    disease: "감기",
+    d_type: 0,
+    // 지역별 svg좌표 및 클래스명, 지역명 등을 표시
     map_data: [
       {
         name: "서울",
@@ -146,10 +150,31 @@ const menuStore = {
         y: 1020,
       },
     ],
-    // 수치를 표시한다.
+    // 값을 저장한다.
+    city_score: [
+      { cold: 99, asthma: 87, skin: 65, eye: 70, foodPoison: 44 },
+      { cold: 87, asthma: 33, skin: 44, eye: 99, foodPoison: 70 },
+      { cold: 33, asthma: 25, skin: 70, eye: 87, foodPoison: 99 },
+      { cold: 25, asthma: 32, skin: 99, eye: 33, foodPoison: 87 },
+      { cold: 32, asthma: 63, skin: 87, eye: 25, foodPoison: 33 },
+      { cold: 63, asthma: 55, skin: 33, eye: 32, foodPoison: 25 },
+      { cold: 55, asthma: 12, skin: 25, eye: 63, foodPoison: 32 },
+      { cold: 12, asthma: 36, skin: 32, eye: 55, foodPoison: 63 },
+      { cold: 36, asthma: 88, skin: 63, eye: 12, foodPoison: 55 },
+      { cold: 88, asthma: 94, skin: 55, eye: 36, foodPoison: 12 },
+      { cold: 94, asthma: 15, skin: 12, eye: 88, foodPoison: 36 },
+      { cold: 15, asthma: 88, skin: 36, eye: 94, foodPoison: 88 },
+      { cold: 88, asthma: 87, skin: 88, eye: 15, foodPoison: 94 },
+      { cold: 87, asthma: 65, skin: 94, eye: 88, foodPoison: 15 },
+      { cold: 65, asthma: 44, skin: 15, eye: 87, foodPoison: 88 },
+      { cold: 44, asthma: 70, skin: 88, eye: 65, foodPoison: 87 },
+      { cold: 70, asthma: 99, skin: 87, eye: 44, foodPoison: 65 },
+    ],
+    // 실제로 표시하는 곳
     scores: [
       87, 33, 25, 32, 63, 55, 12, 36, 88, 94, 15, 88, 87, 65, 44, 70, 99,
     ],
+    // 증상을 담는다.
     symptom: [
       [
         {
@@ -192,6 +217,8 @@ const menuStore = {
         },
       ],
     ],
+
+    // 예방방법을 담는다.
     prevent: [
       [
         {
@@ -234,6 +261,8 @@ const menuStore = {
         },
       ],
     ],
+
+    // 음식을 담는다 (폐기 예정)
     foods: [
       [
         {
@@ -279,6 +308,9 @@ const menuStore = {
   },
   getters: {},
   mutations: {
+    SET_CITY_SCORE: (state, city_score) => {
+      state.city_score = city_score;
+    },
     SET_DEPTH: (state, depth) => {
       state.depth = depth;
     },
@@ -293,6 +325,9 @@ const menuStore = {
     },
     SET_SCORE: (state, score) => {
       state.score = score;
+    },
+    SET_SCORES: (state, scores) => {
+      state.scores = scores;
     },
     SET_SIDO: (state, sido) => {
       state.sido = sido;
@@ -323,6 +358,9 @@ const menuStore = {
     set_score({ commit }, score) {
       commit("SET_SCORE", score);
     },
+    set_scores({ commit }, scores) {
+      commit("SET_SCORES", scores);
+    },
     set_sido({ commit }, sido) {
       commit("SET_SIDO", sido);
     },
@@ -335,12 +373,52 @@ const menuStore = {
     set_environment({ commit }, environment) {
       commit("SET_ENVIRONMENT", environment);
     },
-    get_options_by_region({ commit }, region_number) {
-      console.log(region_number);
-      const weather = {};
-      const environment = {};
-      commit("SET_WEATHER", weather);
-      commit("SET_ENVIRONMENT", environment);
+    //일단 나중에 다시 수정
+    async get_options_by_region({ commit }, sidoCode) {
+      await get_env(
+        sidoCode,
+        (response) => {
+          console.log(response.data);
+          console.log(response);
+          if (response.data.msg === "SUCCESS") {
+            console.log("success");
+            const weather = {};
+            const environment = {};
+            weather.rain = response.data.rain;
+            weather.temp = response.data.temp;
+            weather.humid = response.data.humid;
+
+            environment.co = response.data.co;
+            environment.pm10 = response.data.pm10;
+            environment.o3 = response.data.o3;
+
+            commit("SET_WEATHER", weather);
+            commit("SET_ENVIRONMENT", environment);
+          } else {
+            console.log("connect fail");
+          }
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    },
+    async get_scores({ commit }) {
+      await get_data(
+        (response) => {
+          console.log(response.data);
+          console.log(response);
+          if (response.data.msg === "SUCCESS") {
+            console.log("success");
+            commit("SET_CITY_SCORE", response.data);
+          } else {
+            console.log("connect fail");
+          }
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
     },
   },
 };

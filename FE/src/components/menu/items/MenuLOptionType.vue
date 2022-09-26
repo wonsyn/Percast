@@ -27,7 +27,9 @@ export default {
   setup() {
     const store = useStore();
     const scores = computed(() => store.state.menuStore.scores);
-    return { store, scores };
+    const d_type = computed(() => store.state.menuStore.d_type);
+    const city_score = computed(() => store.state.menuStore.city_score);
+    return { store, scores, d_type, city_score };
   },
   data() {
     return {
@@ -36,16 +38,37 @@ export default {
     };
   },
   mounted() {
-    console.log("mounted");
     this.fillRegions();
   },
   methods: {
     getInfo(num) {
-      console.log(num);
-      this.fillRegions();
-      this.store.dispatch("menuStore/set_disease", this.disease[num]);
-      this.store.dispatch("menuStore/set_d_type", num);
+      this.store.dispatch("menuStore/set_disease", this.disease[num]); // 질병명 설정
+      this.store.dispatch("menuStore/set_d_type", num); // 질병코드 설정
+      const data = [];
+      for (let i = 0; i < this.scores.length; i++) {
+        switch (num) {
+          case 0:
+            data.push(this.city_score[i].cold);
+            break;
+          case 1:
+            data.push(this.city_score[i].asthma);
+            break;
+          case 2:
+            data.push(this.city_score[i].eye);
+            break;
+          case 3:
+            data.push(this.city_score[i].skin);
+            break;
+          case 4:
+            data.push(this.city_score[i].foodPoison);
+            break;
+          default:
+            break;
+        }
+      }
+      this.store.dispatch("menuStore/set_scores", data);
       this.selected_class(num);
+      this.fillRegions();
     },
     selected_class(num) {
       for (let i = 0; i < this.selected.length; i++) {

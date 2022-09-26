@@ -1,9 +1,9 @@
 <template>
   <text class="TEXT" :x="x" :y="y">{{ name }}</text>
   <g filter="url(#dropshadow)">
-    <text v-if="score >= 0 && score <= 100" class="SCORE" :x="x" :y="y + 20">{{
-      score
-    }}</text>
+    <text v-if="score >= 0 && score <= 100" class="SCORE" :x="x" :y="y + 20">
+      {{ score }}
+    </text>
   </g>
 </template>
 
@@ -21,6 +21,7 @@ export default {
   },
   mounted() {
     console.log("classname");
+    console.log(this.score);
   },
   methods: {},
   setup() {
