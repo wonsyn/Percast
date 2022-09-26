@@ -14,7 +14,7 @@ class AdminServiceImplTest {
         String requestP = "암호화된 키값";
         adminService.checkByEncryptedP(requestP);
 
-        Assertions.assertThat();
+//        Assertions.assertThat();
 
 
     }
