@@ -1,17 +1,22 @@
 <template>
   <modal-base ref="baseModal">
     <b-row>
-      <div class="header">
-        <h1>{{content.season}}</h1>
-      </div>
+      <b-col>
+        <div class="header">
+          <h1>{{content.season}}</h1>
+        </div>
+      </b-col>
+      <b-col>
+        <a @click = "close_modal()"> X </a>
+      </b-col>
     </b-row>
     <b-row>
-      <b-card class="body" style="background-color:#1a2844; margin:10px,10px,10px,10px">
-        <b-card-header>
+      <b-card class="body" style="background-color:#1a2844; margin:10px,10px,10px,10px;">
+        <div>
           <b-button v-for="(item,index) in content.entity" :key="item.index = index" @click="selItem(index)">
             {{item.name}}</b-button>
-        </b-card-header>
-        <b-card-body>
+        </div>
+        <b-card-body style="overflow:auto; height:300px">
           <div id="introduction">
             <div v-for="item in content.entity[selectNum].explain" :key="item">{{item}}</div>
           </div>
