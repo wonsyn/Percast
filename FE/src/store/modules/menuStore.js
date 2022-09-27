@@ -6,19 +6,19 @@ const menuStore = {
     depth: 0,
     weather: {
       // 기온
-      temp: 36.5,
+      temp: 0,
       // 습도
-      humi: 53,
+      humid: 1,
       // 강수량
-      rain: 13,
+      rain: 2,
     },
     environment: {
       // 일산화탄소
-      co: 33,
+      co: 0,
       // 미세먼지
-      pm10: 25,
+      pm10: 1,
       // 오존
-      o3: 23,
+      o3: 2,
     },
 
     // 현재 선택한 지역 정보를 표시
