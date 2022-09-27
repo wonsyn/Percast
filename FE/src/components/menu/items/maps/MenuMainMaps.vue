@@ -159,7 +159,11 @@ export default {
     const store = useStore();
     const map_data = computed(() => store.state.menuStore.map_data);
     const scores = computed(() => store.state.menuStore.scores);
-    return { store, map_data, scores };
+    const r_num = computed(() => store.state.menuStore.r_num);
+    return { store, map_data, scores, r_num };
+  },
+  mounted() {
+    this.store.dispatch("menuStore/get_options_by_region", this.r_num);
   },
   methods: {
     onClickMap(num) {
