@@ -15,11 +15,13 @@ public class TwitFindAllResponseDto {
     private Long id;
     private String disease;
     private Long count;
+    private String keyword;
 
     /* Entity -> DTO */
     public TwitFindAllResponseDto(Twit entity){
         this.id = entity.getId();
         this.disease = entity.getDisease();
         this.count = entity.getCount();
+        this.keyword = entity.getKeyword();
     }
 }

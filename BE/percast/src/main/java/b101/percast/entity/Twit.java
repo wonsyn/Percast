@@ -22,4 +22,6 @@ public class Twit {
     private String disease;
     @Column(name = "twit_count")
     private Long count;
+    @Column(name = "twit_keyword")
+    private String keyword;
 }

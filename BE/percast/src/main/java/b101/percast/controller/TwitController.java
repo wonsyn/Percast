@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,8 +20,7 @@ public class TwitController {
 
     @GetMapping
     @ApiOperation(value = "트윗 리스트 조회", notes = "wordCount된 단어들의 순위를 조회한다.")
-    public List<TwitFindAllResponseDto> getNotices() {
-        return twitService.getTwits();
+    public List<TwitFindAllResponseDto> getNotices(@RequestParam String disease) {
+        return twitService.getTwits(disease);
     }
-
 }
