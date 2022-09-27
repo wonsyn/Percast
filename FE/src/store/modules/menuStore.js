@@ -24,7 +24,7 @@ const menuStore = {
     // 현재 선택한 지역 정보를 표시
     r_num: 0,
     region: "서울",
-    score: 86,
+    score: 0,
     // 현재 등급을 표시
     grade: 2,
     danger: "안전",
