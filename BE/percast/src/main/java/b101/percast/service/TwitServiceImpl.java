@@ -2,18 +2,16 @@ package b101.percast.service;
 
 import b101.percast.dto.twit.TwitFindAllResponseDto;
 import b101.percast.entity.Twit;
+import b101.percast.entity.disease.*;
 import b101.percast.repository.TwitRepository;
 import b101.percast.repository.disease.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -27,35 +25,69 @@ public class TwitServiceImpl implements TwitService {
     private final SkinDiseaseOutputRepository skinDiseaseOutputRepository;
 
     @Override
-    public List<TwitFindAllResponseDto> getTwits() {
-        return twitRepository.findAll()
+    public List<TwitFindAllResponseDto> getTwits(String disease) {
+        return twitRepository.findTop10ByDiseaseOrderByCountDesc(disease)
                 .stream().map(TwitFindAllResponseDto::new)
                 .collect(Collectors.toList());
     }
 
-
-    @Scheduled(cron = "* 6 6 * * ?")
+    @Scheduled(cron = "0 6 6 * * ?")
     public void saveDiseaseOutput() {
-        diseaseOutput(Arrays.stream(asthmaOutputRepository.findAll().toArray()));
-        diseaseOutput(Arrays.stream(coldOutputRepository.findAll().toArray()));
-        diseaseOutput(Arrays.stream(eyeDiseaseOutputRepository.findAll().toArray()));
-        diseaseOutput(Arrays.stream(foodPoisoningOutputRepository.findAll().toArray()));
-        diseaseOutput(Arrays.stream(skinDiseaseOutputRepository.findAll().toArray()));
-    }
+        List<Twit> resList = new ArrayList<>();
 
-    private void diseaseOutput(Stream<Object> stream) {
-        Map<String, Integer> map = new HashMap<>();
-        stream.map(outputObject -> outputObject.toString().split("a"))
-                .map(stringArray -> map.put(stringArray[1], Integer.parseInt(stringArray[0])));
-
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            twitRepository.save(Twit.builder()
-                    .disease("asthma")
-                    .count(Long.valueOf(entry.getValue()))
-                    .keyword(entry.getKey())
+        List<FoodPoisoningOutput> foodPoisoningOutputs = foodPoisoningOutputRepository.findAll();
+        for(FoodPoisoningOutput beforeString : foodPoisoningOutputs){
+            String[] arr = beforeString.getResult().split("a");
+            resList.add(Twit.builder()
+                    .disease("foodPoison")
+                    .count(Long.valueOf(arr[0].trim()))
+                    .keyword(arr[1])
                     .build());
         }
 
-    }
+        List<AsthmaOutput> asthmaOutputs = asthmaOutputRepository.findAll();
+        for(AsthmaOutput beforeString : asthmaOutputs){
+            String[] arr = beforeString.getResult().split("a");
+            resList.add(Twit.builder()
+                    .disease("asthma")
+                    .count(Long.valueOf(arr[0].trim()))
+                    .keyword(arr[1])
+                    .build());
+        }
 
+        List<ColdOutput> coldOutputs = coldOutputRepository.findAll();
+        for(ColdOutput beforeString : coldOutputs){
+            String[] arr = beforeString.getResult().split("a");
+            resList.add(Twit.builder()
+                    .disease("cold")
+                    .count(Long.valueOf(arr[0].trim()))
+                    .keyword(arr[1])
+                    .build());
+        }
+
+
+        List<EyeDiseaseOutput> eyeDiseaseOutputs = eyeDiseaseOutputRepository.findAll();
+        for(EyeDiseaseOutput beforeString : eyeDiseaseOutputs){
+            String[] arr = beforeString.getResult().split("a");
+            resList.add(Twit.builder()
+                    .disease("eye")
+                    .count(Long.valueOf(arr[0].trim()))
+                    .keyword(arr[1])
+                    .build());
+        }
+
+
+        List<SkinDiseaseOutput> skinDiseaseOutputs = skinDiseaseOutputRepository.findAll();
+        for(SkinDiseaseOutput beforeString : skinDiseaseOutputs){
+            String[] arr = beforeString.getResult().split("a");
+            resList.add(Twit.builder()
+                    .disease("skin")
+                    .count(Long.valueOf(arr[0].trim()))
+                    .keyword(arr[1])
+                    .build());
+        }
+
+        twitRepository.deleteAll();
+        twitRepository.saveAll(resList);
+    }
 }
