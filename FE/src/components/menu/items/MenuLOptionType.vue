@@ -28,8 +28,9 @@ export default {
     const store = useStore();
     const scores = computed(() => store.state.menuStore.scores);
     const d_type = computed(() => store.state.menuStore.d_type);
+    const r_num = computed(() => store.state.menuStore.r_num);
     const city_score = computed(() => store.state.menuStore.city_score);
-    return { store, scores, d_type, city_score };
+    return { store, scores, d_type, city_score, r_num };
   },
   data() {
     return {
@@ -48,6 +49,7 @@ export default {
       this.getscores();
       this.selected_class(num);
       this.fillRegions();
+      this.store.dispatch("menuStore/set_score", this.scores[this.r_num]);
     },
     getscores() {
       console.log("::" + this.d_type);
