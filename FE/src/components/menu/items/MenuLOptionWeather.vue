@@ -5,17 +5,17 @@
         <b-col id="cards" cols="4">
           <div id="tempt"></div>
           <div>기온</div>
-          <div>{{ weather.tempt }}℃</div>
+          <div>{{ weather.temp }}℃</div>
         </b-col>
         <b-col id="cards" cols="4">
           <div id="humidity"></div>
           <div>습도</div>
-          <div>{{ weather.humidity }}</div>
+          <div>{{ weather.humi }}</div>
         </b-col>
         <b-col id="cards" cols="4">
           <div id="rainy"></div>
           <div>강우량</div>
-          <div>{{ weather.rainy }}</div>
+          <div>{{ weather.rain }}</div>
         </b-col>
       </b-row>
     </div>

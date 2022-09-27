@@ -6,20 +6,23 @@ const menuStore = {
     depth: 0,
     weather: {
       // 기온
-      tempt: 36.5,
+      temp: 36.5,
       // 습도
-      humidity: 53,
+      humi: 53,
       // 강수량
-      rainy: 13,
+      rain: 13,
     },
     environment: {
+      // 일산화탄소
+      co: 33,
       // 미세먼지
-      dust: 33,
-      // 초미세먼지
-      super_dust: 25,
+      pm10: 25,
       // 오존
-      ozon: 23,
+      o3: 23,
     },
+
+    // 현재 선택한 지역 정보를 표시
+    r_num: 0,
     region: "서울",
     score: 86,
     // 현재 등급을 표시
@@ -33,121 +36,121 @@ const menuStore = {
       {
         name: "서울",
         classname: "seoul",
-        index: 1,
+        index: 0,
         x: 156,
         y: 214,
       },
       {
         name: "부산",
         classname: "busan",
-        index: 2,
+        index: 1,
         x: 503,
         y: 695,
       },
       {
         name: "대구",
         classname: "daegoo",
-        index: 3,
+        index: 2,
         x: 418,
         y: 567,
       },
       {
         name: "인천",
         classname: "incheon",
-        index: 4,
+        index: 3,
         x: 67,
         y: 177,
       },
       {
         name: "광주",
         classname: "gwangjoo",
-        index: 5,
+        index: 4,
         x: 127,
         y: 707,
       },
       {
         name: "대전",
         classname: "daejeon",
-        index: 6,
+        index: 5,
         x: 221,
         y: 463,
       },
       {
         name: "울산",
         classname: "ulsan",
-        index: 7,
+        index: 6,
         x: 531,
         y: 622,
       },
       {
-        name: "세종",
-        classname: "sejong",
-        index: 8,
-        x: 199,
-        y: 418,
-      },
-      {
         name: "경기도",
         classname: "gyunggi",
-        index: 9,
+        index: 7,
         x: 216,
         y: 245,
       },
       {
         name: "강원도",
         classname: "gangwon",
-        index: 10,
+        index: 8,
         x: 370,
         y: 179,
       },
       {
         name: "충북",
         classname: "chungbook",
-        index: 11,
+        index: 9,
         x: 294,
         y: 381,
       },
       {
         name: "충남",
         classname: "chungnam",
-        index: 12,
+        index: 10,
         x: 105,
         y: 449,
       },
       {
         name: "전북",
         classname: "jeonbook",
-        index: 13,
+        index: 11,
         x: 179,
         y: 592,
       },
       {
         name: "전남",
         classname: "jeonnam",
-        index: 14,
+        index: 12,
         x: 138,
         y: 764,
       },
       {
         name: "경북",
         classname: "gyungbook",
-        index: 15,
+        index: 13,
         x: 447,
         y: 460,
       },
       {
         name: "경남",
         classname: "gyungnam",
-        index: 16,
+        index: 14,
         x: 367,
         y: 672,
       },
       {
         name: "제주",
         classname: "jeju",
-        index: 17,
+        index: 15,
         x: 76,
         y: 1020,
+      },
+      {
+        name: "세종",
+        classname: "sejong",
+        index: 16,
+        x: 199,
+        y: 418,
       },
     ],
     // 값을 저장한다.
@@ -339,6 +342,9 @@ const menuStore = {
     SET_ENVIRONMENT: (state, environment) => {
       state.environment = environment;
     },
+    SET_R_NUM: (state, r_num) => {
+      state.r_num = r_num;
+    },
   },
   actions: {
     set_depth({ commit }, depth) {
@@ -352,6 +358,9 @@ const menuStore = {
     },
     set_region({ commit }, region) {
       commit("SET_REGION", region);
+    },
+    set_r_num({ commit }, r_num) {
+      commit("SET_R_NUM", r_num);
     },
     set_score({ commit }, score) {
       commit("SET_SCORE", score);
