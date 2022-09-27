@@ -53,7 +53,6 @@ export default {
       this.store.dispatch("menuStore/set_score", this.scores[this.r_num]);
     },
     getscores() {
-      console.log("::" + this.d_type);
       const data = [];
       for (let i = 0; i < this.scores.length; i++) {
         switch (this.d_type) {

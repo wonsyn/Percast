@@ -84,7 +84,6 @@ export default {
             color += code[j];
         }
       }
-      console.log(color);
       num.style.color = color;
     },
   },

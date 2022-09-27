@@ -19,10 +19,7 @@ export default {
     x: Number,
     y: Number,
   },
-  mounted() {
-    console.log("classname");
-    console.log(this.score);
-  },
+  mounted() {},
   methods: {},
   setup() {
     const store = useStore();
