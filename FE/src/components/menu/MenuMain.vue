@@ -28,9 +28,7 @@ export default {
       this.store.dispatch("menuStore/set_depth", 0);
     },
   },
-  mounted() {
-    console.log(this.map_data);
-  },
+  mounted() {},
   setup() {
     const store = useStore();
 
