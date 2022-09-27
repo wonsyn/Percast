@@ -1,16 +1,26 @@
 <template>
-  <b-card>
-    <b-card-header> 증상 </b-card-header>
-    <b-card-body></b-card-body>
+  <b-card id="menu_card">
+    <b-card-body>
+      <menu-r-option-lists :v-bind="lists"></menu-r-option-lists>
+    </b-card-body>
   </b-card>
 </template>
 
 <script>
-export default {
+import { computed } from "vue";
+import { useStore } from "vuex";
+import MenuROptionLists from "./lists/MenuROptionLists.vue";
 
-}
+export default {
+  setup() {
+    const store = useStore();
+    const lists = computed(() => store.state.menuStore.symptom);
+    return { store, lists };
+  },
+  components: {
+    MenuROptionLists,
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

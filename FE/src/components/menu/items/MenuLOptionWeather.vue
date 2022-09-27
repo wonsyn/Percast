@@ -1,34 +1,38 @@
 <template>
-    <b-card>
-        <b-card-header> 날씨 </b-card-header>
-        <b-card-body>
-            <b-row>
-                <b-col>
-                    <b-card>
-                        기온
-                        <b-card-text> 36.5 </b-card-text>
-                    </b-card>
-                </b-col>
-                <b-col>
-                    <b-card>
-                        습도
-                        <b-card-text>17</b-card-text>
-                    </b-card>
-                </b-col>
-                <b-col>
-                    <b-card> 강수 </b-card>
-                </b-col>
-            </b-row>
-        </b-card-body>
-    </b-card>
+  <b-card id="menu_card">
+    <div>
+      <b-row>
+        <b-col id="cards" cols="4">
+          <div id="tempt"></div>
+          <div>기온</div>
+          <div>{{ weather.temp }}℃</div>
+        </b-col>
+        <b-col id="cards" cols="4">
+          <div id="humidity"></div>
+          <div>습도</div>
+          <div>{{ weather.humid }}</div>
+        </b-col>
+        <b-col id="cards" cols="4">
+          <div id="rainy"></div>
+          <div>강우량</div>
+          <div>{{ weather.rain }}</div>
+        </b-col>
+      </b-row>
+    </div>
+  </b-card>
 </template>
 
 <script>
+import { computed } from "vue";
+import { useStore } from "vuex";
 export default {
+  setup() {
+    const store = useStore();
+    const weather = computed(() => store.state.menuStore.weather);
 
-}
+    return { store, weather };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

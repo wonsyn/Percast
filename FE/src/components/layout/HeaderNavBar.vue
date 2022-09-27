@@ -2,8 +2,17 @@
   <div>
     <b-navbar id="head-nav">
       <b-navbar-nav>
+        <router-link
+          v-for="(item, index) in menuArray"
+          :key="(item.index = index)"
+          :to="{ path: item.name }"
+          @click="getSelnum(item)"
+          class="nav-link"
+        >
+          {{ item.menu }}
+        </router-link>
 
-        <router-link :to="{path: menuArray[(selected_num+maxsize-2)%maxsize].name}"
+        <!-- <router-link :to="{path: menuArray[(selected_num+maxsize-2)%maxsize].name}"
           @click="getSelnum((selected_num+maxsize-2)%maxsize)" class="nav-link">
           {{menuArray[(selected_num+maxsize-2)%maxsize].menu}}
         </router-link>
@@ -20,36 +29,27 @@
         <router-link :to="{path: menuArray[(selected_num+1)%maxsize].name}" @click="getSelnum((selected_num+1)%maxsize)"
           class="nav-link">
           {{menuArray[(selected_num+1)%maxsize].menu}}
-        </router-link>
-
-        <router-link :to="{path: menuArray[(selected_num+2)%maxsize].name}" @click="getSelnum((selected_num+2)%maxsize)"
-          class="nav-link">
-          {{menuArray[(selected_num+2)%maxsize].menu}}
-        </router-link>
-
+        </router-link> -->
       </b-navbar-nav>
     </b-navbar>
   </div>
 </template>
 
 <script>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { computed } from "vue";
+import { useStore } from "vuex";
 
 export default {
   data() {
-    return {
-
-    }
+    return {};
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
-    getSelnum(nums) {
-      console.log(nums);
+    getSelnum(item) {
+      console.log(item.index);
+      console.log(item.name);
       //this.store.dispatch('navStore/set_selected_num', nums);
-
-    }
+    },
   },
   setup() {
     const store = useStore();
@@ -58,8 +58,8 @@ export default {
     const menuArray = computed(() => store.state.navStore.menuArray);
     const selected_num = computed(() => store.state.navStore.selected_num);
     return { store, maxsize, menuArray, selected_num };
-  }
-}
+  },
+};
 </script>
 
 <style>
