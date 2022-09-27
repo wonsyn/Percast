@@ -9,7 +9,7 @@
           >
             <div id="dust"></div>
             <div>미세먼지</div>
-            <b-card-text>{{ environment.dust }}</b-card-text>
+            <b-card-text>{{ environment.pm10 }}</b-card-text>
           </b-card>
         </b-col>
         <b-col cols="4">
@@ -18,8 +18,8 @@
             style="background-color: #1a2844; color: white"
           >
             <div id="super_dust"></div>
-            <div>초미세먼지</div>
-            <b-card-text>{{ environment.super_dust }}</b-card-text>
+            <div>일산화탄소</div>
+            <b-card-text>{{ environment.co }}</b-card-text>
           </b-card>
         </b-col>
         <b-col cols="4">
@@ -29,7 +29,7 @@
           >
             <div id="ozon"></div>
             <div>오존</div>
-            <b-card-text>{{ environment.ozon }}</b-card-text>
+            <b-card-text>{{ environment.o3 }}</b-card-text>
           </b-card>
         </b-col>
       </b-row>

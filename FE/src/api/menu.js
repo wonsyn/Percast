@@ -3,10 +3,7 @@
 import { api } from "./index.js";
 
 async function get_env(sidoCode, success, fail) {
-  await api
-    .get(`/input/env`, JSON.stringify(sidoCode))
-    .then(success)
-    .catch(fail);
+  await api.get(`/input/env?sidoCode=${sidoCode}`).then(success).catch(fail);
 }
 
 async function get_data(success, fail) {
