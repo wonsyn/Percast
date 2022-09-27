@@ -1,7 +1,9 @@
 package b101.percast.controller;
 
+import b101.percast.Exception.AdminUnauthorizationException;
 import b101.percast.dto.Qna.*;
 import b101.percast.dto.answer.*;
+import b101.percast.service.AdminService;
 import b101.percast.service.QnaService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ import java.util.List;
 @Api(tags = {"QnA API"})
 public class QnaController {
     private final QnaService qnaService;
+    private final AdminService adminService;
 
     @PostMapping
     @ApiOperation(value = "QnA 작성", notes = "QnA를 작성하는 요청")
@@ -86,7 +89,8 @@ public class QnaController {
             @ApiResponse(code = 500, message = "서버 에러")
     })
     @PostMapping("/answer")
-    public AnswerSaveResponse createAnswer(@RequestBody @ApiParam(value = "작성할 Answer의 내용을 담고 있는 객체", required = true) AnswerSaveRequest dto) {
+    public AnswerSaveResponse createAnswer(@RequestHeader("Authorization") @ApiParam(value = "Admin 로그인 인증 코드") String code, @RequestBody @ApiParam(value = "작성할 Answer의 내용을 담고 있는 객체", required = true) AnswerSaveRequest dto) {
+        if(!adminService.checkByEncryptedP(code)) throw new AdminUnauthorizationException();
         Long id = qnaService.createAnswer(dto);
         return new AnswerSaveResponse(id);
     }
@@ -98,7 +102,8 @@ public class QnaController {
             @ApiResponse(code = 500, message = "서버 에러")
     })
     @PutMapping("/answer")
-    public AnswerUpdateResponse updateAnswer(@RequestBody @ApiParam(value = "수정할 Answer의 내용을 담고 있는 객체", required = true) AnswerUpdateRequest dto) {
+    public AnswerUpdateResponse updateAnswer(@RequestHeader("Authorization") @ApiParam(value = "Admin 로그인 인증 코드") String code, @RequestBody @ApiParam(value = "수정할 Answer의 내용을 담고 있는 객체", required = true) AnswerUpdateRequest dto) {
+        if(!adminService.checkByEncryptedP(code)) throw new AdminUnauthorizationException();
         Long id = qnaService.updateAnswer(dto);
         return new AnswerUpdateResponse(id);
     }
@@ -110,7 +115,8 @@ public class QnaController {
             @ApiResponse(code = 500, message = "서버 에러"),
     })
     @DeleteMapping("/answer")
-    public AnswerDeleteResponse deleteAnswer(@RequestParam @ApiParam(value = "답변을 삭제할 Answer가 붙어있는 QnA ID", required = true) Long qnaid, @RequestParam @ApiParam(value = "삭제할 Answer의 ID") Long answerid) {
+    public AnswerDeleteResponse deleteAnswer(@RequestHeader("Authorization") @ApiParam(value = "Admin 로그인 인증 코드") String code, @RequestParam @ApiParam(value = "답변을 삭제할 Answer가 붙어있는 QnA ID", required = true) Long qnaid, @RequestParam @ApiParam(value = "삭제할 Answer의 ID") Long answerid) {
+        if(!adminService.checkByEncryptedP(code)) throw new AdminUnauthorizationException();
         qnaService.deleteAnswer(qnaid, answerid);
         return new AnswerDeleteResponse(true);
     }
