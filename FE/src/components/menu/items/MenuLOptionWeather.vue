@@ -10,7 +10,7 @@
         <b-col id="cards" cols="4">
           <div id="humidity"></div>
           <div>습도</div>
-          <div>{{ weather.humi }}</div>
+          <div>{{ weather.humid }}</div>
         </b-col>
         <b-col id="cards" cols="4">
           <div id="rainy"></div>
