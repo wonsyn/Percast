@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import AboutHead from '@/components/about/AboutHead.vue'
-import AboutTypes from '@/components/about/AboutTypes.vue'
+import AboutHead from "@/components/about/AboutHead.vue";
+import AboutTypes from "@/components/about/AboutTypes.vue";
 export default {
-  name: 'AboutView',
+  name: "AboutView",
   components: { AboutHead, AboutTypes },
-}
+};
 </script>
 
 <style>
@@ -21,4 +21,3 @@ export default {
   background-color: #0f1421;
 }
 </style>
-

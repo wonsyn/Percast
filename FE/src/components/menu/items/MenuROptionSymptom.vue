@@ -19,10 +19,8 @@ export default {
   },
   components: {
     MenuROptionLists,
-  }
-}
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

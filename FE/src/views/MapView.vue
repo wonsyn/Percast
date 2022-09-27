@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import MapsMain from '@/components/maps/MapsMain.vue';
-import MapLOption from '@/components/maps/MapLOption.vue'
+import MapsMain from "@/components/maps/MapsMain.vue";
+import MapLOption from "@/components/maps/MapLOption.vue";
 //import MapROption from '@/components/maps/MapROption.vue'
 
 export default {
@@ -26,10 +26,8 @@ export default {
     MapsMain,
     MapLOption,
     //MapROption,
-  }
-}
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
