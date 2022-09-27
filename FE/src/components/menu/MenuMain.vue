@@ -2,7 +2,7 @@
   <div>
     <div id="album">
       <div id="bg_map">
-        <div hover="color:red;" style="color:blue;">알림 설정</div>
+        <div hover="color:red;" style="color: blue">알림 설정</div>
         <menu-main-maps></menu-main-maps>
       </div>
     </div>
@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { computed } from "vue";
+import { useStore } from "vuex";
 import MenuMainMaps from "./items/maps/MenuMainMaps.vue";
 
 export default {
@@ -21,12 +21,12 @@ export default {
   data() {
     return {
       circles: null,
-    }
+    };
   },
   methods: {
     back() {
       this.store.dispatch("menuStore/set_depth", 0);
-    }
+    },
   },
   mounted() {
     console.log(this.map_data);
@@ -39,7 +39,7 @@ export default {
     const gugun = computed(() => store.state.menuStore.gugun);
     return { store, depth, sido, gugun };
   },
-}
+};
 </script>
 
 <style>
@@ -71,18 +71,18 @@ export default {
 }
 
 #menu_card {
-  background-color: #1a2844
+  background-color: #1a2844;
 }
-#menu_progress{
-  background-color:#1a2844;
+#menu_progress {
+  background-color: #1a2844;
 }
-#menu_card{
-  background-color:#1a2844;
+#menu_card {
+  background-color: #1a2844;
   height: 140px;
 }
 
-#cards{
-  color:white;
+#cards {
+  color: white;
 }
 
 #tempt {
