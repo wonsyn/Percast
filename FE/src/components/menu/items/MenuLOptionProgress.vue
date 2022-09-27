@@ -1,28 +1,40 @@
 <template>
   <h3 style="color: white">{{ region }} 위험단계</h3>
   <b-card id="menu_progress">
-    <b-card-body>
-      <h1 id="score">{{ score }}</h1>
+    <b-card-header>
+      <div id="menu_text" style="font-size: 15px; margin-top: 5px">
+        현재 {{ region }} 의 경계지수는
+      </div>
+      <a id="score" style="font-size: 30px">{{ score }}</a>
+      <a id="menu_text" style="font-size: 13px; margin-top: 20px"> 점</a>
+      <div id="menu_text" style="font-size: 13px">입니다.</div>
       <b-progress max="100" height="30px" style="background: gray">
         <b-progress-bar
           :value="score"
           style="background: linear-gradient(to left, red, blue)"
         ></b-progress-bar>
       </b-progress>
-      <div id="menu_text" style="font-size: 13px; margin-top: 20px">
-        현재 온도, 습도, 풍속, 미세먼지 등 요소를 분석한 결과
+    </b-card-header>
+    <b-card-body>
+      <div id="menu_text" style="font-size: 15px">
+        <div>현재</div>
+        <div>{{ time }} 기준</div>
+        <div>{{ region }}의 {{ disease }} 위험지수는</div>
+        <div>
+          <a id="danger_set">{{ danger }}</a> 입니다.
+        </div>
       </div>
-      <div id="menu_text" style="font-size: 18px">
-        현재 {{ time }} 기준 {{ region }}은
+      <div style="font-size: 14px; color: white; margin-top: 5px">
+        건강 조심하시고 행복한 하루 되시길 바랍니다.
       </div>
-      <div id="menu_text">{{ danger }} 단계입니다.</div>
-      <div id="menu_text" style="font-size: 15px">{{ text }}</div>
+      <div id="button" @click="showModal">[알림 설정]</div>
     </b-card-body>
   </b-card>
+  <menu-l-option-progress-modal ref="modal"></menu-l-option-progress-modal>
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
 export default {
   setup() {
@@ -30,7 +42,25 @@ export default {
     const region = computed(() => store.state.menuStore.region);
     const score = computed(() => store.state.menuStore.score);
     const danger = computed(() => store.state.menuStore.danger);
-    return { store, region, score, danger };
+    const disease = computed(() => store.state.menuStore.disease);
+
+    const modal = ref(null);
+
+    const showModal = async () => {
+      const ok = await modal.value.show();
+      if (ok) {
+        console.log("모달 출력");
+      } else {
+        console.log("모달 종료");
+      }
+    };
+
+    return { store, region, score, danger, disease, modal, showModal };
+  },
+  created() {
+    this.nowTimes();
+    this.setDate();
+    setInterval(this.nowTimes.bind(this), 1000);
   },
   mounted() {
     this.change_Score_Color(this.score);
@@ -38,18 +68,85 @@ export default {
   watch: {
     score: function (value) {
       this.change_Score_Color(value);
+      let setting = "좋음";
+      let color = "#46EE46";
+      if (value > 80) {
+        setting = "심각";
+        color = this.setColor(100);
+      } else if (value > 60) {
+        setting = "경계";
+        color = this.setColor(80);
+      } else if (value > 40) {
+        setting = "관심";
+        color = "#FF7746";
+      } else if (value > 20) {
+        setting = "주의";
+        color = "#FFED46";
+      }
+      this.store.dispatch("menuStore/set_danger", setting);
+      const d = document.getElementById("danger_set");
+      d.style.color = color;
     },
   },
   data() {
     return {
-      time: "2022.09.14 17:29:00",
+      time: "none",
     };
   },
   methods: {
+    setDate() {
+      let year = new Date().getFullYear();
+      let month =
+        new Date().getMonth() + 1 < 10
+          ? "0" + (new Date().getMonth() + 1)
+          : new Date().getMonth() + 1;
+      let date =
+        new Date().getDate() < 10
+          ? "0" + new Date().getDate()
+          : new Date().getDate();
+      let hh =
+        new Date().getHours() < 10
+          ? "0" + new Date().getHours()
+          : new Date().getHours();
+      let mm =
+        new Date().getMinutes() < 10
+          ? "0" + new Date().getMinutes()
+          : new Date().getMinutes();
+      let ss =
+        new Date().getSeconds() < 10
+          ? "0" + new Date().getSeconds()
+          : new Date().getSeconds();
+      return {
+        year: year,
+        month: month,
+        date: date,
+        hh: hh,
+        mm: mm,
+        ss: ss,
+      };
+    },
+
+    nowTimes() {
+      this.time =
+        this.setDate().year +
+        "-" +
+        this.setDate().month +
+        "-" +
+        this.setDate().date +
+        " " +
+        this.setDate().hh +
+        ":" +
+        this.setDate().mm +
+        ":" +
+        this.setDate().ss;
+    },
     change_Score_Color(score) {
       const num = document.getElementById("score");
-      let color = "#";
       // 255 / 100 * scores[i]
+      num.style.color = this.setColor(score);
+    },
+
+    setColor(score) {
       let red = Math.floor((255 / 100) * score);
       const code = ["", "", "", "", "", ""];
       code[0] = Math.floor(red / 16);
@@ -59,7 +156,7 @@ export default {
       let blue = Math.floor((255 / 100) * (100 - score));
       code[4] = Math.floor(blue / 16);
       code[5] = blue - code[4] * 16;
-
+      let color = "#";
       for (let j = 0; j < 6; j++) {
         switch (code[j]) {
           case 10:
@@ -84,7 +181,7 @@ export default {
             color += code[j];
         }
       }
-      num.style.color = color;
+      return color;
     },
   },
 };
@@ -93,5 +190,16 @@ export default {
 <style>
 #menu_text {
   color: #bbbbbb;
+}
+#button {
+  color: #5673eb;
+  background-color: #2b3855;
+  margin-top: 20px;
+  height: 30px;
+}
+
+#button:hover {
+  background-color: rgba(200, 200, 200, 0.075);
+  color: gray;
 }
 </style>

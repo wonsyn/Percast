@@ -2,7 +2,6 @@
   <div>
     <div id="album">
       <div id="bg_map">
-        <div hover="color:red;" style="color: blue">알림 설정</div>
         <menu-main-maps></menu-main-maps>
       </div>
     </div>
