@@ -148,7 +148,6 @@
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
-import get_options_by_region from "@/store/modules/menuStore";
 
 import MenuMainItem from "@/components/menu/items/MenuMainItem.vue";
 
@@ -167,7 +166,8 @@ export default {
       console.log(num);
       this.store.dispatch("menuStore/set_score", this.scores[num]);
       this.store.dispatch("menuStore/set_region", this.map_data[num].name);
-      get_options_by_region(num);
+      // axios 처리 : 로컬에서는 주석처리하고 사용할 것!
+      this.store.dispatch("menuStore/get_options_by_region", num);
     },
   },
 };

@@ -6,11 +6,19 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
 import HeaderNavBar from "./components/layout/HeaderNavBar.vue";
 
 export default {
+  setup() {
+    const store = useStore();
+    return { store };
+  },
   components: {
     HeaderNavBar,
+  },
+  mounted() {
+    this.store.dispatch("menuStore/get_scores");
   },
 };
 </script>

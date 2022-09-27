@@ -38,15 +38,22 @@ export default {
     };
   },
   mounted() {
+    this.getscores();
     this.fillRegions();
   },
   methods: {
     getInfo(num) {
       this.store.dispatch("menuStore/set_disease", this.disease[num]); // 질병명 설정
       this.store.dispatch("menuStore/set_d_type", num); // 질병코드 설정
+      this.getscores();
+      this.selected_class(num);
+      this.fillRegions();
+    },
+    getscores() {
+      console.log("::" + this.d_type);
       const data = [];
       for (let i = 0; i < this.scores.length; i++) {
-        switch (num) {
+        switch (this.d_type) {
           case 0:
             data.push(this.city_score[i].cold);
             break;
@@ -67,8 +74,6 @@ export default {
         }
       }
       this.store.dispatch("menuStore/set_scores", data);
-      this.selected_class(num);
-      this.fillRegions();
     },
     selected_class(num) {
       for (let i = 0; i < this.selected.length; i++) {
