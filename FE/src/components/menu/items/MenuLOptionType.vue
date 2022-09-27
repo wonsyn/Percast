@@ -29,8 +29,9 @@ export default {
     const scores = computed(() => store.state.menuStore.scores);
     const d_type = computed(() => store.state.menuStore.d_type);
     const r_num = computed(() => store.state.menuStore.r_num);
+    const map_data = computed(() => store.state.menuStore.map_data);
     const city_score = computed(() => store.state.menuStore.city_score);
-    return { store, scores, d_type, city_score, r_num };
+    return { store, scores, d_type, city_score, r_num, map_data };
   },
   data() {
     return {
@@ -87,6 +88,7 @@ export default {
     fillRegions() {
       const regions = document.getElementsByClassName("OUTLINE");
       for (let i = 0; i < regions.length; i++) {
+        console.log(this.map_data[i].name + this.scores[i]);
         const region = document.getElementById(regions[i].id);
         let color = "#";
         // 255 / 100 * scores[i]
