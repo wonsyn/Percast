@@ -378,7 +378,7 @@ const menuStore = {
         (response) => {
           console.log(response.data);
           console.log(response);
-          if (response.data.msg === "SUCCESS") {
+          if (response.status === 200) {
             console.log("success");
             const weather = {};
             const environment = {};
@@ -406,7 +406,8 @@ const menuStore = {
         (response) => {
           console.log(response.data);
           console.log(response);
-          if (response.data.msg === "SUCCESS") {
+          console.log(response.status);
+          if (response.status === 200) {
             console.log("success");
             commit("SET_CITY_SCORE", response.data);
           } else {
