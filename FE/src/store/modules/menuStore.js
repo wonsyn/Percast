@@ -26,8 +26,8 @@ const menuStore = {
     region: "서울",
     score: 0,
     // 현재 등급을 표시
-    grade: 2,
-    danger: "안전",
+    grade: 2, // 단계
+    danger: "안전", // 문자
     // 선택한 질병명을 표시
     disease: "감기",
     d_type: 0,
@@ -312,6 +312,9 @@ const menuStore = {
     SET_CITY_SCORE: (state, city_score) => {
       state.city_score = city_score;
     },
+    SET_DANGER: (state, danger) => {
+      state.danger = danger;
+    },
     SET_DEPTH: (state, depth) => {
       state.depth = depth;
     },
@@ -347,6 +350,9 @@ const menuStore = {
     },
   },
   actions: {
+    set_danger({ commit }, danger) {
+      commit("SET_DANGER", danger);
+    },
     set_depth({ commit }, depth) {
       commit("SET_DEPTH", depth);
     },
