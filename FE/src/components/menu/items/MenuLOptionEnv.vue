@@ -48,9 +48,7 @@ export default {
     return { store, environment };
   },
   methods: {
-    OnClick() {
-      console.log("click!");
-    },
+    OnClick() {},
   },
 };
 </script>

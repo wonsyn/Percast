@@ -163,7 +163,6 @@ export default {
   },
   methods: {
     onClickMap(num) {
-      console.log(num);
       this.store.dispatch("menuStore/set_score", this.scores[num - 1]);
       this.store.dispatch("menuStore/set_region", this.map_data[num - 1].name);
       this.store.dispatch("menuStore/set_r_num", num - 1);
