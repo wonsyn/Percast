@@ -41,6 +41,7 @@ export default {
   mounted() {
     this.getscores();
     this.fillRegions();
+    this.store.dispatch("menuStore/set_score", this.scores[this.r_num]);
   },
   methods: {
     getInfo(num) {

@@ -37,7 +37,6 @@ export default {
   },
   watch: {
     score: function (value) {
-      console.log(value);
       this.change_Score_Color(value);
     },
   },
