@@ -385,10 +385,7 @@ const menuStore = {
       await get_env(
         sidoCode,
         (response) => {
-          console.log(response.data);
-          console.log(response);
           if (response.status === 200) {
-            console.log("success");
             const weather = {};
             const environment = {};
             weather.rain = response.data.rain;
@@ -413,11 +410,7 @@ const menuStore = {
     async get_scores({ commit }) {
       await get_data(
         (response) => {
-          console.log(response.data);
-          console.log(response);
-          console.log(response.status);
           if (response.status === 200) {
-            console.log("success");
             commit("SET_CITY_SCORE", response.data);
           } else {
             console.log("connect fail");
