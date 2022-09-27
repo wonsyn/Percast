@@ -11,25 +11,25 @@
     </b-row>
   </b-container>
 </template>
-  
+
 <script>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-import HomeHeader from './HomeHeader.vue';
-import HomeBody from './HomeBody.vue';
-import HomeFooter from './HomeFooter.vue';
+import { computed } from "vue";
+import { useStore } from "vuex";
+import HomeHeader from "./HomeHeader.vue";
+import HomeBody from "./HomeBody.vue";
+import HomeFooter from "./HomeFooter.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
     HomeHeader,
     HomeBody,
-    HomeFooter
+    HomeFooter,
   },
   methods: {
     movePage(link) {
       this.$router.push(link);
-    }
+    },
   },
   setup() {
     const store = useStore();
@@ -38,10 +38,10 @@ export default {
     const menuArray = computed(() => store.state.navStore.menuArray);
     const selected_num = computed(() => store.state.navStore.selected_num);
     return { store, maxsize, menuArray, selected_num };
-  }
-}
+  },
+};
 </script>
-  
+
 <style>
 .menu {
   min-width: 20rem;
@@ -50,5 +50,6 @@ export default {
   min-height: 20rem;
 }
 
-.menu_col {}
+.menu_col {
+}
 </style>

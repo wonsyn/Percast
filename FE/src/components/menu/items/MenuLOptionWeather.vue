@@ -1,40 +1,38 @@
 <template>
-    <b-card id="menu_card">
-        <div>
-            <b-row>
-                <b-col id="cards" cols="4">
-                    <div id="tempt"></div>
-                    <div > 기온 </div>
-                    <div > {{weather.tempt}}℃ </div>
-                </b-col>
-                <b-col id="cards" cols="4">
-                    <div id="humidity"></div>
-                    <div> 습도 </div>
-                    <div> {{weather.humidity}} </div>
-                </b-col>
-                <b-col id="cards" cols="4">
-                    <div id="rainy"></div>
-                    <div>강우량</div>
-                    <div>{{weather.rainy}}</div>
-                </b-col>
-            </b-row>
-        </div>
-    </b-card>
+  <b-card id="menu_card">
+    <div>
+      <b-row>
+        <b-col id="cards" cols="4">
+          <div id="tempt"></div>
+          <div>기온</div>
+          <div>{{ weather.tempt }}℃</div>
+        </b-col>
+        <b-col id="cards" cols="4">
+          <div id="humidity"></div>
+          <div>습도</div>
+          <div>{{ weather.humidity }}</div>
+        </b-col>
+        <b-col id="cards" cols="4">
+          <div id="rainy"></div>
+          <div>강우량</div>
+          <div>{{ weather.rainy }}</div>
+        </b-col>
+      </b-row>
+    </div>
+  </b-card>
 </template>
 
 <script>
-    import {computed} from "vue";
-    import {useStore} from "vuex";
+import { computed } from "vue";
+import { useStore } from "vuex";
 export default {
-    setup(){
-        const store = useStore();
-        const weather = computed(()=>store.state.menuStore.weather);
+  setup() {
+    const store = useStore();
+    const weather = computed(() => store.state.menuStore.weather);
 
-        return {store,weather};
-    }
-}
+    return { store, weather };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

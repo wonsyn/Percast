@@ -6,16 +6,16 @@
 </template>
 
 <script>
-import HomeMain from "@/components/home/HomeMain.vue"
+import HomeMain from "@/components/home/HomeMain.vue";
 import FooterNavBar from "@/components/layout/FooterNavBar.vue";
 
 export default {
-name: 'HomeView',
-components: {
-HomeMain,
-FooterNavBar,
-}
-}
+  name: "HomeView",
+  components: {
+    HomeMain,
+    FooterNavBar,
+  },
+};
 </script>
 
 <style>
@@ -26,5 +26,6 @@ FooterNavBar,
   min-height: 20rem;
 }
 
-.menu_col {}
+.menu_col {
+}
 </style>

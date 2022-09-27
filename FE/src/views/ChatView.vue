@@ -1,14 +1,11 @@
 <template>
-    <div id="view_body">
-        <router-view></router-view>
-    </div>
+  <div id="view_body">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-</style>
+<style></style>
