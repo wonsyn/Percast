@@ -86,6 +86,7 @@ public class QnaController {
     @ApiOperation(value = "Answer 작성", notes = "Answer를 작성하는 요청")
     @ApiResponses({
             @ApiResponse(code = 200, message = "요청 성공"),
+            @ApiResponse(code = 401, message = "Admin 인증 실패"),
             @ApiResponse(code = 500, message = "서버 에러")
     })
     @PostMapping("/answer")
@@ -99,6 +100,7 @@ public class QnaController {
     @ApiResponses({
             @ApiResponse(code = 200, message = "요청 성공"),
             @ApiResponse(code = 400, message = "잘못된 요청 또는 해당 Answer 없음"),
+            @ApiResponse(code = 401, message = "Admin 인증 실패"),
             @ApiResponse(code = 500, message = "서버 에러")
     })
     @PutMapping("/answer")
@@ -112,6 +114,7 @@ public class QnaController {
     @ApiResponses({
             @ApiResponse(code = 200, message = "요청 성공"),
             @ApiResponse(code = 204, message = "해당 QnA객체 없음"),
+            @ApiResponse(code = 401, message = "Admin 인증 실패"),
             @ApiResponse(code = 500, message = "서버 에러"),
     })
     @DeleteMapping("/answer")
