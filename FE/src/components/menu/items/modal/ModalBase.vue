@@ -2,8 +2,8 @@
   <!-- teleport: 렌더링 시 위치를 지정합니다. -->
   <teleport to="body">
     <!-- Modal의 열리고 닫힘을 관리합니다. -->
-    <div class="backdrop" v-if="isVisible">
-      <div class="modal-container">
+    <div class="menu_modal_backdrop" v-if="isVisible">
+      <div class="menu_modal_container">
         <!-- slot을 통해 BaseComponent를 확장시킵니다. -->
         <slot></slot>
       </div>
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style>
-.backdrop {
+.menu_modal_backdrop {
   z-index: 999;
   display: flex;
   position: fixed;
@@ -49,12 +49,12 @@ export default {
   height: 100%;
   background: (0, 0, 0, 50);
 }
-.modal-container {
-  background: #0f1421;
+.menu_modal_container {
+  background: gray;
   min-width: 500px;
   max-width: 500px;
-  min-height: 600px;
-  max-height: 600px;
+  min-height: 200px;
+  max-height: 200px;
   width: 100%;
   padding: 1.5rem;
   color: white;
