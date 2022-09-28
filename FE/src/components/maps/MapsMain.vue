@@ -402,6 +402,21 @@ export default {
   background: #fff;
   overflow: hidden;
   z-index: 2;
+  width: 110px;
+  height: 80px;
+}
+
+#HP8 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 0;
+}
+
+#PM9 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 0;
 }
 
 #category li {
@@ -421,8 +436,8 @@ export default {
 
 #category li:hover {
   background: #ffe6e6;
-  border-left: 1px solid #acacac;
-  margin-left: -1px;
+  border-left: #acacac;
+  /* margin-left: -1px; */
 }
 
 #category li:last-child {

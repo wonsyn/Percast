@@ -1,6 +1,10 @@
 <template>
   <div id="jumbotron">
-    <div class="jumbotron jumbotron-fluid">
+    <div
+      class="jumbotron jumbotron-fluid"
+      data-aos="fade-up"
+      data-aos-offset="300"
+    >
       <!-- <h1 class="display-4">Fluid jumbotron</h1>
         <p class="lead">
           This is a modified jumbotron that occupies the entire horizontal space
@@ -29,6 +33,8 @@
 <script>
 import { defineComponent } from "vue";
 import { Carousel, Pagination, Slide } from "vue3-carousel";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import "vue3-carousel/dist/carousel.css";
 
@@ -46,19 +52,23 @@ export default defineComponent({
       carousel__item: ["a", "b", "c", "d"],
     };
   },
+  created() {
+    AOS.init();
+    // console.log(this.comments);
+  },
 });
 </script>
 
 <style>
 #jumbotron {
-  height: 500px;
+  height: 700px;
   width: 100%;
   color: white;
-  padding-top: 20px;
+  padding-top: 40px;
   /* background-color: gray; */
 }
 #carousel__item {
-  min-height: 400px;
+  min-height: 500px;
   width: 100%;
   color: var(--vc-clr-white);
   font-size: 20px;
