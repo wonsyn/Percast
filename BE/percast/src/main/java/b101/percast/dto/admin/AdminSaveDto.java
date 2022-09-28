@@ -8,10 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-/**
- * A DTO for the {@link b101.percast.entity.Admin} entity
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

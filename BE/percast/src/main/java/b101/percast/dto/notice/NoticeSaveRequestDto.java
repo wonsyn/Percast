@@ -26,7 +26,6 @@ public class NoticeSaveRequestDto {
     @ApiModelProperty(value = "글 내용")
     private String content;
 
-    /* DTO -> Entity */
     public Notice toEntity() {
         return Notice.builder()
                 .id(id)
@@ -35,5 +34,4 @@ public class NoticeSaveRequestDto {
                 .date(LocalDateTime.now())
                 .build();
     }
-
 }

@@ -16,7 +16,6 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void update(String password, String encryptedPassword) {
-
         Optional<Admin> OptionalAdmin = adminRepository.findByPassword(password);
         if (OptionalAdmin.isPresent()) {
             Admin admin = OptionalAdmin.get();
@@ -24,7 +23,6 @@ public class AdminServiceImpl implements AdminService {
                     .password(admin.getPassword()).encryptedPassword(encryptedPassword).build();
             adminRepository.save(dto.toEntity());
         }
-
     }
 
     @Override
@@ -35,8 +33,6 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public boolean checkByPass(String password) {
         Optional<Admin> optionalAdmin = adminRepository.findByPassword(password);
-        System.out.println("찍습니다. 하나 둘 ");
-        System.out.println(optionalAdmin.isPresent());
         return optionalAdmin.isPresent();
     }
 }

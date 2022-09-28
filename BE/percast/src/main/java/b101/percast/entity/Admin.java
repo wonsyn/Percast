@@ -7,14 +7,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-
 @Entity
 @Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Admin {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "admin_id")
