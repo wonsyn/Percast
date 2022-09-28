@@ -36,7 +36,12 @@
 <script>
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
+import MenuLOptionProgressModal from "@/components/menu/items/modal/MenuLOptionProgressModal.vue";
+
 export default {
+  components: {
+    MenuLOptionProgressModal,
+  },
   setup() {
     const store = useStore();
     const region = computed(() => store.state.menuStore.region);
@@ -129,21 +134,27 @@ export default {
     nowTimes() {
       this.time =
         this.setDate().year +
-        "-" +
+        "년 " +
         this.setDate().month +
-        "-" +
+        "월 " +
         this.setDate().date +
-        " " +
+        "일 " +
         this.setDate().hh +
-        ":" +
-        this.setDate().mm +
-        ":" +
-        this.setDate().ss;
+        "시";
     },
     change_Score_Color(score) {
       const num = document.getElementById("score");
-      // 255 / 100 * scores[i]
-      num.style.color = this.setColor(score);
+      let color = "#46EE46";
+      if (score > 80) {
+        color = this.setColor(100);
+      } else if (score > 60) {
+        color = this.setColor(80);
+      } else if (score > 40) {
+        color = "#FF7746";
+      } else if (score > 20) {
+        color = "#FFED46";
+      }
+      num.style.color = color;
     },
 
     setColor(score) {
@@ -182,6 +193,15 @@ export default {
         }
       }
       return color;
+    },
+    ok() {
+      console.log("ok");
+    },
+    cancel() {
+      console.log("cancel");
+    },
+    hide(str) {
+      console.log(str);
     },
   },
 };
