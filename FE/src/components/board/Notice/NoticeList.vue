@@ -1,9 +1,9 @@
 <template>
   <div class="container pt-5">
-    <strong class="percast-font" style="font-size: 50px">QnA</strong>
-    <div class="pt-5 pb-3 d-flex">
-      <div class="d-flex justify-end mb-6">
-        <button class="btn btn-primary" @click="moveToWrite">글작성</button>
+    <strong class="percast-font" style="font-size: 50px">공지사항</strong>
+    <div class="pt-5 pb-3">
+      <div class="d-flex justify-content-end me-3 mb-3">
+        <button class="btn btn-success" @click="moveToWrite">글작성</button>
       </div>
       <table class="table percast-font">
         <thead>
@@ -14,9 +14,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="notice in notices" :key="notice.id">
+          <tr
+            v-for="notice in notices"
+            :key="notice.id"
+            @click="moveToDetail(notice.id)"
+          >
             <td style="margin-top: 11px">{{ notice.id }}</td>
-            <td @click="moveToDetail(notice.id)">
+            <td>
               {{ notice.title }}
             </td>
             <td>
@@ -37,18 +41,18 @@ export default {
   computed: {
     ...mapState("noticeStore", ["notices"]),
   },
-  mounted() {
-    this.$store.dispatch("noticeStore/getNotices");
+  async created() {
+    await this.$store.dispatch("noticeStore/getNotices");
   },
   methods: {
     moveToDetail(id) {
       this.$router.push({
-        path: `/notice/${id}`,
+        path: `/notice/detail/${id}`,
       });
     },
     moveToWrite() {
       this.$router.push({
-        path: "/notice",
+        path: "/notice/write",
       });
     },
   },

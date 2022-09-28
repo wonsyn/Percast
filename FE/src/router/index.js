@@ -12,8 +12,28 @@ const routes = [
     children: [
       {
         path: "list",
-        name: "list",
+        name: "NoticeList",
         component: () => import("@/components/board/Notice/NoticeList.vue"),
+      },
+      {
+        name: "delete",
+        path: "delete/:id",
+        component: () => import("@/components/board/Notice/NoticeDetail.vue"),
+      },
+      {
+        name: "update",
+        path: "update/:id",
+        component: () => import("@/components/board/Notice/NoticeUpdate.vue"),
+      },
+      {
+        path: "write",
+        name: "NoticeWrite",
+        component: () => import("@/components/board/Notice/NoticeWrite.vue"),
+      },
+      {
+        path: "detail",
+        name: "NoticeDetail",
+        component: () => import("@/components/board/Notice/NoticeDetail.vue"),
       },
     ],
   },
