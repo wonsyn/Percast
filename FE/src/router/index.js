@@ -8,6 +8,17 @@ const routes = [
     component: HomeView,
   },
   {
+    path: "/notice",
+    children: [
+      {
+        path: "list",
+        name: "list",
+        component: () => import("@/components/board/Notice/NoticeList.vue"),
+      },
+    ],
+  },
+
+  {
     path: "/about",
     name: "about",
     component: () => import("@/views/AboutView.vue"),
@@ -26,7 +37,7 @@ const routes = [
       {
         path: "/chat/main",
         name: "chatmain",
-        component: () => import("@/components/chatBot/ChatMain.vue"),
+        component: () => import("@/components/board/ChatMain.vue"),
       },
     ],
   },
