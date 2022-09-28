@@ -112,6 +112,8 @@ export default {
       this.container = document.getElementById("container");
       this.mapWrapper = document.getElementById("mapWrapper");
       this.mapContainer = document.getElementById("map");
+      this.mapContainer.style.width = "96%";
+      this.mapContainer.style.height = "100%";
 
       this.map = new kakao.maps.Map(container, options);
 
@@ -338,6 +340,9 @@ export default {
 </script>
 
 <style>
+body {
+  overflow-x: hidden;
+}
 #container {
   overflow: hidden;
   height: 100%;
@@ -345,9 +350,14 @@ export default {
   position: relative;
 }
 
+.map_wrap {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
 .map_wrap,
 .map_wrap * {
-  margin: 10px;
+  /* margin: 10px; */
   padding: 0;
   font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
   font-size: 12px;
@@ -471,15 +481,15 @@ export default {
 
 .placeinfo_wrap {
   position: absolute;
-  bottom: 28px;
+  /* bottom: 28px;
   left: -150px;
-  width: 300px;
+  width: 300px; */
 }
 
 .placeinfo {
   position: relative;
   width: 100%;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   border: 1px solid #ccc;
   border-bottom: 2px solid #ddd;
   padding-bottom: 10px;
@@ -525,7 +535,7 @@ export default {
 .placeinfo .title {
   font-weight: bold;
   font-size: 14px;
-  border-radius: 6px 6px 0 0;
+  /* border-radius: 6px 6px 0 0; */
   margin: -1px -1px 0 -1px;
   padding: 10px;
   color: #fff;
