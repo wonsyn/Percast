@@ -1,19 +1,33 @@
-import { get_notices } from "@/api/notice";
+import { get_notices, regist_notice } from "@/api/notice";
 
 const noticeStore = {
   namespaced: true,
-  state: { notices: [] },
+  state: { notices: [], notice: {} },
   getters: {},
   mutations: {
     GET_NOTICES(state, payload) {
       state.notices = payload;
     },
+    WRITE_NOTICE(state, payload) {
+      state.notices.push(payload);
+    },
   },
   actions: {
-    async getNotices({ commit }) {
-      await get_notices(
+    getNotices({ commit }) {
+      get_notices(
         (res) => {
-          commit("GET_NOTICES", res.data.p.content);
+          commit("GET_NOTICES", res.data);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    },
+    registNotice({ commit }, newNotice) {
+      regist_notice(
+        newNotice,
+        (res) => {
+          commit("WRITE_NOTICE", res.data);
         },
         (error) => {
           console.log(error);
