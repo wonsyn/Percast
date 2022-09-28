@@ -39,7 +39,7 @@ export default {
 }
 
 #view_body {
-  width: 100%;
+  width: 100vw;
   height: auto;
   background-color: #0f1421;
 }
