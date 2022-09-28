@@ -8,8 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.swing.border.EtchedBorder;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,5 +32,4 @@ public class OutputFindAllResponseDto {
         this.eye = (int)Entity.getEye();
         this.foodPoison = (int)Entity.getFoodPoison();
     }
-
 }

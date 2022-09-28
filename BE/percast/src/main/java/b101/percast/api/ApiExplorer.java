@@ -49,7 +49,6 @@ public class ApiExplorer {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-type", "application/json");
-            System.out.println("Response code: " + conn.getResponseCode());
             BufferedReader rd;
             if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
                 rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -72,7 +71,6 @@ public class ApiExplorer {
 
 
     private static void getPollution() throws IOException {
-        System.out.println("pollution start");
         for (int i = 0; i < AREA_LIST.length; i++) {
             DTO_LIST[i] = new InputSaveRequest();
             DTO_LIST[i].setSidoCode(Long.parseLong(Integer.toString(i)));
@@ -86,7 +84,6 @@ public class ApiExplorer {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-type", "application/json");
-            System.out.println("Response code: " + conn.getResponseCode());
             BufferedReader rd;
             if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
                 rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -100,7 +97,6 @@ public class ApiExplorer {
             }
             rd.close();
             conn.disconnect();
-            System.out.println("pollution" + sb.toString());
             JSONObject jsonObject = new JSONObject(sb.toString());
             JSONObject response = jsonObject.getJSONObject("response");
             JSONObject body = response.getJSONObject("body");
@@ -145,7 +141,6 @@ public class ApiExplorer {
     }
 
     private static void getWeather() throws IOException{
-        System.out.println("weather start");
         LocalDateTime localDate = LocalDateTime.now();
         if(localDate.getHour() < 2) {
             localDate = localDate.minusDays(1);
@@ -165,11 +160,9 @@ public class ApiExplorer {
             urlBuilder.append("&" + URLEncoder.encode("nx", "UTF-8") + "=" + URLEncoder.encode(NX[i], "UTF-8")); /*예보지점의 X 좌표값*/
             urlBuilder.append("&" + URLEncoder.encode("ny", "UTF-8") + "=" + URLEncoder.encode(NY[i], "UTF-8")); /*예보지점의 Y 좌표값*/
             URL url = new URL(urlBuilder.toString());
-            System.out.println("weather: " + urlBuilder.toString());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-type", "application/json");
-            System.out.println("Response code: " + conn.getResponseCode());
             BufferedReader rd;
             if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
                 rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -183,9 +176,6 @@ public class ApiExplorer {
             }
             rd.close();
             conn.disconnect();
-
-            System.out.println("weather" + sb.toString());
-
             JSONObject jsonObeject = new JSONObject(sb.toString());
             JSONObject list = jsonObeject.getJSONObject("response").getJSONObject("body").getJSONObject("items");
             JSONArray items = list.getJSONArray("item");
@@ -224,12 +214,10 @@ public class ApiExplorer {
                     }
                 }
                 if (type.equals("TMN")) {
-                    System.out.println("tmn check");
                     tmnCount++;
                     double temp = item.getDouble("fcstValue");
                     tmnSum += temp;
                 } else if (type.equals("TMX")) {
-                    System.out.println("tmx check");
                     tmxCount++;
                     double temp = item.getDouble("fcstValue");
                     tmxSum += temp;

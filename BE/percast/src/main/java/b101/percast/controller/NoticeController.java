@@ -9,7 +9,6 @@ import b101.percast.service.NoticeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +21,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Api(tags = {"공지사항 관련 API"})
 public class NoticeController {
-
     private final NoticeService noticeService;
     private final AdminService adminService;
 
