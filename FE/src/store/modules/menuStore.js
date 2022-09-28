@@ -305,7 +305,7 @@ const menuStore = {
     SET_R_NUM: (state, r_num) => {
       state.r_num = r_num;
     },
-    SET_MAX_SCOER: (state, max_score) => {
+    SET_MAX_SCORE: (state, max_score) => {
       state.max_score = max_score;
     },
     SET_MIN_SCORE: (state, min_score) => {
@@ -425,8 +425,6 @@ const menuStore = {
             }
             commit("SET_MAX_SCORE", max);
             commit("SET_MIN_SCORE", min);
-            console.log(max);
-            console.log(min);
           } else {
             console.log("connect fail");
           }
