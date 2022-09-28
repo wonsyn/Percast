@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 @Builder
 @ApiModel(value = "공지사항 글 상세조회", description = "공지사항 글 상세조회 대한 DTO 입니다.")
 public class NoticeFindResponseDto {
-
     @ApiModelProperty(value = "글 번호")
     private Long id;
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
@@ -30,12 +29,10 @@ public class NoticeFindResponseDto {
     @ApiModelProperty(value = "글 내용")
     private String content;
 
-    /* Entity -> DTO */
     public NoticeFindResponseDto(Notice entity) {
         this.id = entity.getId();
         this.date = entity.getDate();
         this.title = entity.getTitle();
         this.content = entity.getContent();
     }
-
 }

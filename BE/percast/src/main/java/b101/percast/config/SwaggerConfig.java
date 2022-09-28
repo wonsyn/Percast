@@ -17,15 +17,8 @@ public class SwaggerConfig {
     public Docket restAPI(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any()) // 대상 패키
+                .apis(RequestHandlerSelectors.any()) // 대상 패키지
                 .paths(PathSelectors.any()) // 어떤 식으로 시작하는 api를 보여줄 것인지
                 .build();
     }
-//    private ApiInfo apiInfo(){
-//        return new ApiInfoBuilder()
-//                .title("percast Spring Boot REST API")
-//                .version("1.0.0")
-//                .description("특화 B101 swagger api입니다.")
-//                .build();
-//    }
 }
