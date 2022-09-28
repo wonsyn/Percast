@@ -18,7 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Api(tags = {"위험지수 알림 API"})
 public class OutputController {
-
     private final OutputService outputService;
 
     @GetMapping
@@ -31,5 +30,4 @@ public class OutputController {
     public List<OutputFindAllResponseDto> readAll(){
         return outputService.findAll();
     }
-
 }

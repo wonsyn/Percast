@@ -16,7 +16,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Api(tags = {"메시지 알림 설정 API"})
 public class SendMessageController {
-
     private final MessageServiceService messageServiceService;
 
     @PostMapping
@@ -51,6 +50,4 @@ public class SendMessageController {
         messageServiceService.delete(id);
         return ResponseEntity.ok().build();
     }
-
-
 }

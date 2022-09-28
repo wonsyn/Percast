@@ -20,7 +20,6 @@ public class NoticeFindAllResponseDto {
     @ApiModelProperty(value = "글 번호")
     private Long id;
 
-
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     @ApiModelProperty(value = "등록 일시")
     private LocalDateTime date;
@@ -31,12 +30,10 @@ public class NoticeFindAllResponseDto {
     @ApiModelProperty(value = "글 내용")
     private String content;
 
-    /* Entity -> DTO */
     public NoticeFindAllResponseDto(Notice entity) {
         this.id = entity.getId();
         this.date = entity.getDate();
         this.title = entity.getTitle();
         this.content = entity.getContent();
     }
-
 }

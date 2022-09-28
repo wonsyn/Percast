@@ -8,8 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.swing.border.EtchedBorder;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,22 +15,21 @@ import javax.swing.border.EtchedBorder;
 @ApiModel(value = "위험지수 정보", description = "감기, 천식, 피부병, 눈병, 식중독 위험지수를 담고 있는 DTO 클래스")
 public class OutputFindAllResponseDto {
     @ApiModelProperty(value = "감기 위험지수")
-    private double cold;
+    private int cold;
     @ApiModelProperty(value = "천식 위험지수")
-    private double asthma;
+    private int asthma;
     @ApiModelProperty(value = "피부병 위험지수")
-    private double skin;
+    private int skin;
     @ApiModelProperty(value = "눈병 위험지수")
-    private double eye;
+    private int eye;
     @ApiModelProperty(value = "식중독 위험지수")
-    private double foodPoison;
+    private int foodPoison;
 
     public OutputFindAllResponseDto(Output Entity) {
-        this.cold = Entity.getCold();
-        this.asthma = Entity.getAsthma();
-        this.skin = Entity.getSkin();
-        this.eye = Entity.getEye();
-        this.foodPoison = Entity.getFoodPoison();
+        this.cold = (int)Entity.getCold();
+        this.asthma = (int)Entity.getAsthma();
+        this.skin = (int)Entity.getSkin();
+        this.eye = (int)Entity.getEye();
+        this.foodPoison = (int)Entity.getFoodPoison();
     }
-
 }

@@ -8,12 +8,8 @@ import java.util.List;
 
 public interface NoticeService {
     List<NoticeFindAllResponseDto> getList();
-
     void update(NoticeSaveRequestDto dto);
-
     void delete(Long id);
-
     Long save(NoticeSaveRequestDto dto);
-
     NoticeFindResponseDto findById(Long id);
 }
