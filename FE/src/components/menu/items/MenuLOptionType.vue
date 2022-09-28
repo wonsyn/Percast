@@ -114,7 +114,8 @@ export default {
         // 9.99999 ~ 0.00000 까지의 범위 -> x10
         if (this.max_score[this.d_type] - this.min_score[this.d_type] < 10) {
           let green = Math.floor(
-            (255 / 100) * Math.floor((this.max_score - this.scores[i]) * 10),
+            (255 / 100) *
+              Math.floor((this.scores[i] - this.min_score[this.d_type]) * 10),
           );
           code[2] = Math.floor(green / 16);
           code[3] = green - code[2] * 16;
@@ -123,7 +124,8 @@ export default {
           1
         ) {
           let green = Math.floor(
-            (255 / 100) * Math.floor((this.max_score - this.scores[i]) * 100),
+            (255 / 100) *
+              Math.floor((this.scores[i] - this.min_score[this.d_type]) * 100),
           );
           code[2] = Math.floor(green / 16);
           code[3] = green - code[2] * 16;
