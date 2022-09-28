@@ -13,9 +13,8 @@
       </b-col>
       <b-col class="menu" data-aos="fade-left" data-aos-offset="300">
         <b-card style="background-color: transparent">
-          <b-card-text>
-            <img :src="require(`@/assets/${imageUrl}`)" />
-          </b-card-text>
+          <img :src="require(`@/assets/${imageUrl}`)" />
+
           <b-card-footer @click="movePage(name, index)" style="color: white">
             이동하기 ->
           </b-card-footer>
@@ -25,9 +24,8 @@
     <b-row v-else style="height: 500px">
       <b-col class="menu" data-aos="fade-right" data-aos-offset="300">
         <b-card style="background-color: transparent">
-          <b-card-text>
-            <img :src="require(`@/assets/${imageUrl}`)" />
-          </b-card-text>
+          <img :src="require(`@/assets/${imageUrl}`)" />
+
           <b-card-footer @click="movePage(name, index)" style="color: white">
             이동하기 ->
           </b-card-footer>
@@ -82,11 +80,13 @@ export default {
 <style>
 #menu {
   margin: 10px;
-  /* width: 99%; */
-  /* background-color: gray; */
+  width: 99%;
+  background-color: gray;
   background-color: transparent;
   align-items: center;
+  flex-grow: 1;
 }
+
 #card-body {
   background-color: transparent;
 }

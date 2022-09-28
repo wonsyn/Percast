@@ -175,6 +175,8 @@ const menuStore = {
     ],
     // 실제로 표시하는 곳
     scores: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    min_score: [-1, -1, -1, -1, -1],
+    max_score: [-1, -1, -1, -1, -1],
     // 증상을 담는다.
     symptom: [
       [
@@ -303,6 +305,12 @@ const menuStore = {
     SET_R_NUM: (state, r_num) => {
       state.r_num = r_num;
     },
+    SET_MAX_SCOER: (state, max_score) => {
+      state.max_score = max_score;
+    },
+    SET_MIN_SCORE: (state, min_score) => {
+      state.min_score = min_score;
+    },
   },
   actions: {
     set_danger({ commit }, danger) {
@@ -341,6 +349,12 @@ const menuStore = {
     set_environment({ commit }, environment) {
       commit("SET_ENVIRONMENT", environment);
     },
+    set_max_score({ commit }, max_score) {
+      commit("SET_MAX_SCORE", max_score);
+    },
+    set_min_score({ commit }, min_score) {
+      commit("SET_MIN_SCORE", min_score);
+    },
     //일단 나중에 다시 수정
     async get_options_by_region({ commit }, sidoCode) {
       await get_env(
@@ -372,7 +386,47 @@ const menuStore = {
       await get_data(
         (response) => {
           if (response.status === 200) {
+            const max = [-1, -1, -1, -1, -1];
+            const min = [101, 101, 101, 101, 101];
             commit("SET_CITY_SCORE", response.data);
+            for (let i = 0; i < response.data.length; i++) {
+              //min
+              if (response.data[i].cold < min[0]) {
+                min[0] = response.data[i].cold;
+              }
+              if (response.data[i].asthma < min[1]) {
+                min[1] = response.data[i].asthma;
+              }
+              if (response.data[i].eye < min[2]) {
+                min[2] = response.data[i].eye;
+              }
+              if (response.data[i].foodPoison < min[3]) {
+                min[3] = response.data[i].foodPoison;
+              }
+              if (response.data[i].skin < min[4]) {
+                min[4] = response.data[i].skin;
+              }
+              // max
+              if (response.data[i].cold > max[0]) {
+                max[0] = response.data[i].cold;
+              }
+              if (response.data[i].asthma > max[1]) {
+                max[1] = response.data[i].asthma;
+              }
+              if (response.data[i].eye > max[2]) {
+                max[2] = response.data[i].eye;
+              }
+              if (response.data[i].foodPoison > max[3]) {
+                max[3] = response.data[i].foodPoison;
+              }
+              if (response.data[i].skin > max[4]) {
+                max[4] = response.data[i].skin;
+              }
+            }
+            commit("SET_MAX_SCORE", max);
+            commit("SET_MIN_SCORE", min);
+            console.log(max);
+            console.log(min);
           } else {
             console.log("connect fail");
           }
