@@ -1,6 +1,6 @@
 <template>
   <b-card id="menu" style="height: 600px; background-color: transparent">
-    <b-row v-if="index % 2 == 0" style="height: 500px; width: auto">
+    <b-row v-if="index % 2 == 0" style="height: 500px">
       <b-col class="menu" data-aos="fade-right" data-aos-offset="300">
         <b-card style="background-color: transparent">
           <h1 style="color: white">
@@ -82,7 +82,7 @@ export default {
 <style>
 #menu {
   margin: 10px;
-  width: 99%;
+  /* width: 99%; */
   /* background-color: gray; */
   background-color: transparent;
   align-items: center;
