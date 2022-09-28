@@ -78,13 +78,14 @@ export default {
 </script>
 
 <style>
-#menu {
+/* #menu {
   margin: 10px;
-  /* width: 99%; */
-  /* background-color: gray; */
+  width: 99%;
+  background-color: gray;
   background-color: transparent;
   align-items: center;
 }
+
 #card-body {
   background-color: transparent;
 }
@@ -95,5 +96,5 @@ export default {
 
 #col .aos-init .aos-animate {
   align-items: center;
-}
+} */
 </style>
