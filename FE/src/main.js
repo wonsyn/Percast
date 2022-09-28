@@ -8,6 +8,7 @@ import Vue3Geolocation from "vue3-geolocation";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import "./assets/css/main.css";
 
 const app = createApp(App);
 app
