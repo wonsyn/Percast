@@ -30,8 +30,19 @@ export default {
     const d_type = computed(() => store.state.menuStore.d_type);
     const r_num = computed(() => store.state.menuStore.r_num);
     const map_data = computed(() => store.state.menuStore.map_data);
+    const max_score = computed(() => store.state.menuStore.max_score);
+    const min_score = computed(() => store.state.menuStore.min_score);
     const city_score = computed(() => store.state.menuStore.city_score);
-    return { store, scores, d_type, city_score, r_num, map_data };
+    return {
+      store,
+      scores,
+      d_type,
+      city_score,
+      r_num,
+      map_data,
+      max_score,
+      min_score,
+    };
   },
   data() {
     return {
@@ -86,6 +97,8 @@ export default {
     },
     // scores에 따라 지역의 색이 변화하게 한다.
     fillRegions() {
+      console.log("max : " + this.max_score[this.d_type]);
+      console.log("min : " + this.min_score[this.d_type]);
       const regions = document.getElementsByClassName("OUTLINE");
       for (let i = 0; i < regions.length; i++) {
         console.log(this.map_data[i].name + this.scores[i]);
@@ -94,10 +107,31 @@ export default {
         // 255 / 100 * scores[i]
         let red = Math.floor((255 / 100) * this.scores[i]);
         const code = ["", "", "", "", "", ""];
+        //빨강
         code[0] = Math.floor(red / 16);
         code[1] = red - code[0] * 16;
-        code[2] = 3; //46 -> 32 + 14 = 2E
-        code[3] = 3;
+        //녹색
+        // 9.99999 ~ 0.00000 까지의 범위 -> x10
+        if (this.max_score[this.d_type] - this.min_score[this.d_type] < 10) {
+          let green = Math.floor(
+            (255 / 100) * Math.floor((this.max_score - this.scores[i]) * 10),
+          );
+          code[2] = Math.floor(green / 16);
+          code[3] = green - code[2] * 16;
+        } else if (
+          this.max_score[this.d_type] - this.min_score[this.d_type] <
+          1
+        ) {
+          let green = Math.floor(
+            (255 / 100) * Math.floor((this.max_score - this.scores[i]) * 100),
+          );
+          code[2] = Math.floor(green / 16);
+          code[3] = green - code[2] * 16;
+        } else {
+          code[2] = 3;
+          code[3] = 3;
+        }
+        //파랑
         let blue = Math.floor((255 / 100) * (100 - this.scores[i]));
         code[4] = Math.floor(blue / 16);
         code[5] = blue - code[4] * 16;
