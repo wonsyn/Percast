@@ -1,6 +1,5 @@
 package b101.percast.dto.message;
 
-
 import b101.percast.entity.MessageService;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

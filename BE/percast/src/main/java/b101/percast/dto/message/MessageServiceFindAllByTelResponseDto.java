@@ -24,7 +24,6 @@ public class MessageServiceFindAllByTelResponseDto {
     @ApiModelProperty(value = "등록한 지역코드")
     private Long sidoCode;
 
-    /* Entity -> DTO */
     public MessageServiceFindAllByTelResponseDto(MessageService entity){
         this.id = entity.getId();
         this.tel = entity.getTel();
