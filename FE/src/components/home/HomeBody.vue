@@ -3,14 +3,19 @@
     v-for="(items, index) in menuArray"
     :key="(items.index = index)"
     v-bind="items"
-    style="margin: 10px"
+    style="margin: auto; background-color: transparent; overflow: auto"
+    id="sec2"
+    data-aos="fade"
   >
   </home-body-item>
+  <Item data-aos="my-fade" data-aos-anchor-placement="top-bottom" />
 </template>
 
 <script>
 import { useStore } from "vuex";
 import { computed } from "vue";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import HomeBodyItem from "./items/HomeBodyItem.vue";
 
@@ -26,6 +31,9 @@ export default {
   },
   mounted() {
     console.log(this.menuArray.length);
+  },
+  created() {
+    AOS.init();
   },
 };
 </script>
