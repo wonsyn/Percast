@@ -366,7 +366,7 @@ export default {
 }
 
 #bg .Select {
-  background: url("../../assets/logo.png");
+  background: url("../../assets/logo.svg");
 }
 
 body.is-article-visible #bg:after {
