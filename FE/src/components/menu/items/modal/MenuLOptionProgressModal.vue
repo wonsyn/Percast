@@ -1,17 +1,49 @@
 <template>
-  <modal-base ref="baseModal"> </modal-base>
+  <modal-base ref="baseModal">
+    <b-row>
+      <b-col cols="11">
+        <div class="header">
+          <span>알림 설정</span>
+        </div>
+      </b-col>
+      <b-col>
+        <a @click="close_modal()"> X </a>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-form-group
+        id="fieldset-1"
+        description="전화번호를 입력해주세요."
+        label="Enter your PhoneNumber"
+        label-for="input-1"
+        valid-feedback="Thank you!"
+        :invalid-feedback="invalidFeedback"
+        :state="state"
+      >
+        <b-input-group>
+          <b-form-input
+            id="input-1"
+            v-model="phoneNum"
+            :state="state"
+            trim
+          ></b-form-input>
+
+          <b-input-group-append>
+            <b-button variant="primary" @click="send_message()">입력</b-button>
+          </b-input-group-append>
+        </b-input-group>
+      </b-form-group>
+    </b-row>
+  </modal-base>
 </template>
 
 <script>
-import ModalBase from "@/components/menu/modal/ModalBase.vue";
+import ModalBase from "@/components/menu/items/modal/ModalBase.vue";
 
 import { ref } from "vue";
 export default {
   components: {
     ModalBase,
-  },
-  props: {
-    content: Object,
   },
   setup() {
     const baseModal = ref(null);
@@ -42,19 +74,48 @@ export default {
   },
   data() {
     return {
-      listnum: 0,
-      selectNum: 0,
+      phoneNum: "",
     };
   },
   methods: {
-    selItem(idx) {
-      this.selectNum = idx;
-      this.text = this.content.entity[idx].explain;
+    state() {
+      return this.phoneNum.length >= 4;
+    },
+
+    invalidFeedback() {
+      if (this.phoneNum.length > 0) {
+        return "Enter at least 4 characters.";
+      }
+      return "Please enter something.";
     },
     close_modal() {
       this.listnum = 0;
       this.selectNum = 0;
+      this.phoneNum = "";
       this.cancel();
+    },
+    send_message() {
+      let pn = "";
+      for (let i = 0; i < this.phoneNum.length; i++) {
+        if (this.phoneNum[i] >= "0" && this.phoneNum[i] <= "9") {
+          pn += this.phoneNum[i];
+        } else if (this.phoneNum[i] === "-") {
+          console.log("- 는 제거합니다.");
+        } else {
+          console.log("error");
+          alert(
+            "잘못된 형식을 입력하였습니다. 숫자 또는 '-' 만 입력 가능합니다.",
+          );
+          return;
+        }
+      }
+      if (pn.length < 11 || pn.length > 11) {
+        alert(
+          "전화번호 형식이 다릅니다. 010-xxxx-xxxx 또는 010xxxxxxxx의 형식으로 입력하세요",
+        );
+        return;
+      }
+      this.close_modal();
     },
   },
 };
