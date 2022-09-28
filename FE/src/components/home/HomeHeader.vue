@@ -18,7 +18,7 @@
         </Slide>
 
         <template #addons>
-          <Navigation />
+          <!-- <Navigation /> -->
           <Pagination />
         </template>
       </Carousel>
@@ -28,7 +28,7 @@
 
 <script>
 import { defineComponent } from "vue";
-import { Carousel, Navigation, Pagination, Slide } from "vue3-carousel";
+import { Carousel, Pagination, Slide } from "vue3-carousel";
 
 import "vue3-carousel/dist/carousel.css";
 
@@ -39,7 +39,7 @@ export default defineComponent({
     Carousel,
     Slide,
     Pagination,
-    Navigation,
+    // Navigation,
   },
   data() {
     return {
