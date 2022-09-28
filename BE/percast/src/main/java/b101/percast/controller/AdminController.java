@@ -22,11 +22,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Api(tags = {"어드민 관련 API"})
 public class AdminController {
-
-
     private final AdminService adminService;
 
-    // 처음에 패스워드 입력받고 난수 생성해서 응답에 보내주는 API + DB에 난수, pass저장되야됨
     @PostMapping
     @ApiOperation(value = "어드민계정 등록", notes = "요청의 패스워드 확인해서 암호화된 패스워드를 db업데이트 후 반환한다.")
     @ApiResponses({
@@ -37,18 +34,14 @@ public class AdminController {
     })
     public ResponseEntity<Map<String, Object>> regist(@RequestBody AdminSaveDto dto) {
         Map<String, Object> map = new HashMap<>();
-        // 비밀번호 체크
         if (!adminService.checkByPass(dto.getPassword())) {
             map.put("message", "fail");
             return ResponseEntity.status(401).body(map);
         }
         map.put("message", "success");
         String encryptedPassword = PasswordEncrypt.encrypt(dto.getPassword());
-        System.out.println(encryptedPassword);
         adminService.update(dto.getPassword(), encryptedPassword);
         map.put("auth", encryptedPassword);
         return ResponseEntity.ok().body(map);
     }
-    // 어드민관련 기능에 접근할 때 RequestBody에 난수 읽어서 어드민인지 확인은 필요한 곳에서 adminService호출하기
-
 }

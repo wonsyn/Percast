@@ -8,8 +8,6 @@ import java.util.List;
 public interface MessageServiceService {
     void sendAll();
     void save(MessageServiceSaveRequestDto requestDto);
-
     List<MessageServiceFindAllByTelResponseDto> findAllByTel(String tel);
-
     void delete(Long id);
 }

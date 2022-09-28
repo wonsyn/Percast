@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class QnaServiceImpl implements QnaService {
-
     private final QnaRepository qnaRepository;
     private final AnswerRepository answerRepository;
 
