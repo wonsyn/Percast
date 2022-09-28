@@ -9,20 +9,21 @@
       <menu-r-option-prevent></menu-r-option-prevent>
     </b-row>
     <b-row>
-      <h4 style="color: white; margin-top: 10px">{{ disease }} 예방 음식</h4>
+      <h4 style="color: white; margin-top: 10px">
+        {{ disease }} 관련 검색기록
+      </h4>
       <menu-r-option-foods></menu-r-option-foods>
     </b-row>
   </b-col>
 </template>
 
 <script>
-import MenuROptionFoods from "./items/MenuROptionFoods.vue";
 import MenuROptionPrevent from "./items/MenuROptionPrevent.vue";
 import MenuROptionSymptom from "./items/MenuROptionSymptom.vue";
 import { computed } from "vue";
 import { useStore } from "vuex";
 export default {
-  components: { MenuROptionSymptom, MenuROptionPrevent, MenuROptionFoods },
+  components: { MenuROptionSymptom, MenuROptionPrevent },
   setup() {
     const store = useStore();
     const disease = computed(() => store.state.menuStore.disease);
