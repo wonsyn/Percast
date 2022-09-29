@@ -23,7 +23,7 @@ public class OutputServiceImpl implements OutputService {
                 .collect(Collectors.toList());
     }
 
-    @Scheduled(cron = "0 30 * * * ?")
+    @Scheduled(cron = "0 32 * * * ?")
     public void saveFoodPoison() throws IOException {
         save(ApiExplorer.getFoodPoison());
     }
