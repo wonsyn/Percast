@@ -1,11 +1,7 @@
 <template>
   <div class="mt-2">
     <b-card id="menu" style="height: 600px; background-color: transparent">
-      <b-row
-        v-if="index % 2 == 0"
-        style="height: 500px; width: auto"
-        no-gutters
-      >
+      <b-row v-if="index % 2 == 0" style="height: 500px" no-gutters>
         <b-col class="menu" data-aos="fade-right" data-aos-offset="300">
           <b-card style="background-color: transparent">
             <h1 style="color: white">
