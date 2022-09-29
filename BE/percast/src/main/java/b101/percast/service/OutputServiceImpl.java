@@ -35,5 +35,6 @@ public class OutputServiceImpl implements OutputService {
             Output output = outputList.get(i);
             output.updateFoodPoison(Double.parseDouble(list.get(i)));
         }
+        outputRepository.saveAll(outputList);
     }
 }
