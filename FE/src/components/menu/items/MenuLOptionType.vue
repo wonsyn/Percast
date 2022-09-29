@@ -30,28 +30,51 @@ export default {
     const d_type = computed(() => store.state.menuStore.d_type);
     const r_num = computed(() => store.state.menuStore.r_num);
     const map_data = computed(() => store.state.menuStore.map_data);
+    const max_score = computed(() => store.state.menuStore.max_score);
+    const min_score = computed(() => store.state.menuStore.min_score);
     const city_score = computed(() => store.state.menuStore.city_score);
-    return { store, scores, d_type, city_score, r_num, map_data };
+    return {
+      store,
+      scores,
+      d_type,
+      city_score,
+      r_num,
+      map_data,
+      max_score,
+      min_score,
+    };
   },
   data() {
     return {
       selected: ["", "", "", "", ""],
       disease: ["감기", "천식", "피부병", "눈병", "식중독"],
+      entities: null,
+      regions: null,
     };
   },
   mounted() {
+    this.regions = document.getElementsByClassName("OUTLINE");
     this.getscores();
     this.fillRegions();
     this.store.dispatch("menuStore/set_score", this.scores[this.r_num]);
   },
   methods: {
     getInfo(num) {
+      console.log(this.d_type + " , " + num);
+      if (this.d_type == num) {
+        return;
+      }
+      // for (let i = 0; i < this.entities.length; i++) {
+      //   this.entities[i].remove();
+      // }
+      // 질병 명과 질병 번호 바꾸기
       this.store.dispatch("menuStore/set_disease", this.disease[num]); // 질병명 설정
       this.store.dispatch("menuStore/set_d_type", num); // 질병코드 설정
+
       this.getscores();
       this.selected_class(num);
-      this.fillRegions();
       this.store.dispatch("menuStore/set_score", this.scores[this.r_num]);
+      this.fillRegions();
     },
     getscores() {
       const data = [];
@@ -86,22 +109,38 @@ export default {
     },
     // scores에 따라 지역의 색이 변화하게 한다.
     fillRegions() {
-      const regions = document.getElementsByClassName("OUTLINE");
-      for (let i = 0; i < regions.length; i++) {
-        console.log(this.map_data[i].name + this.scores[i]);
-        const region = document.getElementById(regions[i].id);
+      // this.entities = document.getElementsByClassName("SCORES");
+      for (let i = 0; i < this.regions.length; i++) {
+        //const region = document.getElementById(regions[i].id);
         let color = "#";
         // 255 / 100 * scores[i]
-        let red = Math.floor((255 / 100) * this.scores[i]);
+        let red = Math.floor((255 / 100) * this.scores[this.regions[i].id]);
         const code = ["", "", "", "", "", ""];
+        //빨강
         code[0] = Math.floor(red / 16);
         code[1] = red - code[0] * 16;
-        code[2] = 3; //46 -> 32 + 14 = 2E
-        code[3] = 3;
+        //녹색
+        if (this.max_score[this.d_type] - this.min_score[this.d_type] < 50) {
+          let green = Math.floor(
+            (255 / 100) *
+              Math.floor(
+                ((this.max_score[this.d_type] - this.scores[i]) /
+                  (this.max_score[this.d_type] - this.min_score[this.d_type])) *
+                  100,
+              ),
+          );
+          code[2] = Math.floor(green / 16);
+          code[3] = green - code[2] * 16;
+        }
+        // 9.99999 ~ 0.00000 까지의 범위 -> x10
+        else {
+          code[2] = 3;
+          code[3] = 3;
+        }
+        //파랑
         let blue = Math.floor((255 / 100) * (100 - this.scores[i]));
         code[4] = Math.floor(blue / 16);
         code[5] = blue - code[4] * 16;
-
         for (let j = 0; j < 6; j++) {
           switch (code[j]) {
             case 10:
@@ -126,7 +165,7 @@ export default {
               color += code[j];
           }
         }
-        region.style.fill = color;
+        this.regions[i].style.fill = color;
       }
     },
   },
