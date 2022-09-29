@@ -110,11 +110,11 @@ export default {
     // scores에 따라 지역의 색이 변화하게 한다.
     fillRegions() {
       // this.entities = document.getElementsByClassName("SCORES");
-      console.log(this.d_type);
-      console.log(this.max_score);
-      console.log(this.max_score[this.d_type]);
-      console.log(this.min_score);
-      console.log(this.min_score[this.d_type]);
+      // console.log(this.d_type);
+      // console.log(this.max_score);
+      // console.log(this.max_score[this.d_type]);
+      // console.log(this.min_score);
+      // console.log(this.min_score[this.d_type]);
       for (let i = 0; i < this.regions.length; i++) {
         //const region = document.getElementById(regions[i].id);
         let color = "#";
@@ -124,7 +124,7 @@ export default {
         //빨강
         code[0] = Math.floor(red / 16);
         code[1] = red - code[0] * 16;
-        console.log(red);
+        // console.log(red);
         //녹색
         if (this.max_score[this.d_type] - this.min_score[this.d_type] < 50) {
           let green = Math.floor(
@@ -135,7 +135,7 @@ export default {
                   100,
               ),
           );
-          console.log(green);
+          // console.log(green);
           code[2] = Math.floor(green / 16);
           code[3] = green - code[2] * 16;
         }
@@ -148,7 +148,7 @@ export default {
         let blue = Math.floor((255 / 100) * (100 - this.scores[i]));
         code[4] = Math.floor(blue / 16);
         code[5] = blue - code[4] * 16;
-        console.log(blue);
+        // console.log(blue);
         for (let j = 0; j < 6; j++) {
           switch (code[j]) {
             case 10:
@@ -173,7 +173,7 @@ export default {
               color += code[j];
           }
         }
-        console.log(color);
+        // console.log(color);
         this.regions[i].style.fill = color;
       }
     },
