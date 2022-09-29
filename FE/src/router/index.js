@@ -16,11 +16,6 @@ const routes = [
         component: () => import("@/components/board/Notice/NoticeList.vue"),
       },
       {
-        name: "delete",
-        path: "delete/:id",
-        component: () => import("@/components/board/Notice/NoticeDetail.vue"),
-      },
-      {
         name: "update",
         path: "update/:id",
         component: () => import("@/components/board/Notice/NoticeUpdate.vue"),
@@ -31,7 +26,7 @@ const routes = [
         component: () => import("@/components/board/Notice/NoticeWrite.vue"),
       },
       {
-        path: "detail",
+        path: "detail/:id",
         name: "NoticeDetail",
         component: () => import("@/components/board/Notice/NoticeDetail.vue"),
       },
