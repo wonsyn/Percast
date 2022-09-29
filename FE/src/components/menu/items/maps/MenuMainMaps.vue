@@ -167,22 +167,40 @@ export default {
     this.store.dispatch("menuStore/get_options_by_region", this.r_num);
   },
   watch: {
-    d_type: function () {
-      //console.log("d_type : " + value);
-      for (let i = 0; i < this.map_data.length; i++) {
-        //console.log(this.map_data[i].name);
-        const elements = document.getElementsByClassName(this.map_data[i].name);
-        //console.log(elements.length);
-        if (elements.length > 1) {
-          //console.log("catch : " + i);
-          //console.log(this.scores[i]);
-          for (let j = 0; elements.length > 1; j++) {
-            //console.log("delete " + j);
-            //console.log(elements[0].childNodes[1]);
-            elements[0].remove();
-          }
-        }
-      }
+    d_type: function (value) {
+      console.log("d_type : " + value);
+      //for (let i = 0; i < this.map_data.length; i++) {
+      //console.log(this.map_data[i].name);
+      //const elements = document.getElementsByClassName(this.map_data[i].name);
+      //console.log(elements.length);
+      //console.log("catch : " + i);
+      //console.log(this.scores[i]);
+      //while (elements.length > 1) {
+      //console.log("delete " + j);
+      //console.log(elements[0].childNodes[1]);
+      //elements[0].remove();
+      /*
+           var content =
+          `<g :class="` +
+          this.map_data[i].name +
+          `" filter="url(#dropshadow)">` +
+          `<text class="TEXT" :x="` +
+          this.map_data[i].x +
+          `" :y="` +
+          this.map_data[i].y +
+          `">` +
+          this.map_data[i].name +
+          `</text>` +
+          `<text class="SCORE" :x="` +
+          this.map_data[i].x +
+          `" :y="` +
+          (this.map_data[i].y + 20) +
+          `">` +
+          this.map_data[i].score +
+          `</text> </g>`;
+           */
+      //}
+      //}
     },
   },
   methods: {
