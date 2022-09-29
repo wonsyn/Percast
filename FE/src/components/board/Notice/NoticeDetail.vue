@@ -55,13 +55,15 @@ export default {
     },
     moveToUpdate() {
       this.$router.push({
-        path: `/notice/update/${this.notice.id}`,
+        path: `/board/notice/update/${this.notice.id}`,
       });
     },
     async noticeDelete() {
       await this.$store.dispatch("noticeStore/deleteNotice", this.notice.id);
       await this.$store.dispatch("noticeStore/getNotices");
-      this.$router.push("/notice/list");
+      this.$router.push({
+        name: "NoticeList",
+      });
     },
   },
 };

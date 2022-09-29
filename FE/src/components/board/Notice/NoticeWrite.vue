@@ -61,7 +61,9 @@ export default {
       };
       this.$store.dispatch("noticeStore/registNotice", newNotice);
       this.$store.dispatch("noticeStore/getNotices");
-      this.$router.push("/notice/list");
+      this.$router.push({
+        name: "NoticeList",
+      });
     },
   },
 };
