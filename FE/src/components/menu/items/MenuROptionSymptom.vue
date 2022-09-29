@@ -1,24 +1,29 @@
 <template>
-  <b-card id="menu_card">
-    <b-card-body>
-      <menu-r-option-lists :v-bind="lists"></menu-r-option-lists>
-    </b-card-body>
+  <b-card id="menu_card" style="height: auto">
+    <div
+      style="color: white"
+      v-for="item in lists[this.d_type].text"
+      :key="item"
+    >
+      {{ item }}
+    </div>
   </b-card>
 </template>
 
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
-import MenuROptionLists from "./lists/MenuROptionLists.vue";
+// import MenuROptionLists from "./lists/MenuROptionLists.vue";
 
 export default {
   setup() {
     const store = useStore();
     const lists = computed(() => store.state.menuStore.symptom);
-    return { store, lists };
+    const d_type = computed(() => store.state.menuStore.d_type);
+    return { store, lists, d_type };
   },
   components: {
-    MenuROptionLists,
+    // MenuROptionLists,
   },
 };
 </script>

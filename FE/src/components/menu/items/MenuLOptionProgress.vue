@@ -154,7 +154,7 @@ export default {
       } else if (score > 20) {
         color = "#FFED46";
       }
-      num.style.color = color;
+      if (num != null) num.style.color = color;
     },
 
     setColor(score) {

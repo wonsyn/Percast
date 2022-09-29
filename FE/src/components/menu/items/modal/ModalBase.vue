@@ -47,10 +47,10 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: (0, 0, 0, 50);
+  background: (0, 0, 0, 0.5);
 }
 .menu_modal_container {
-  background: gray;
+  background: #2c3e50;
   min-width: 500px;
   max-width: 500px;
   min-height: 200px;

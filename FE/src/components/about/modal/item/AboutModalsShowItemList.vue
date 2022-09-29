@@ -79,4 +79,18 @@ export default {
       top: 50%;
       transform: translateY(-50%); */
 }
+pre::-webkit-scrollbar {
+  height: 6px;
+}
+pre::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+pre::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+pre::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
 </style>
