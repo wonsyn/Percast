@@ -32,6 +32,31 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/qna",
+    children: [
+      {
+        path: "list",
+        name: "QnaList",
+        component: () => import("@/components/board/Qna/QnaList.vue"),
+      },
+      {
+        name: "update",
+        path: "update/:id",
+        component: () => import("@/components/board/Qna/QnaUpdate.vue"),
+      },
+      {
+        path: "write",
+        name: "QnaWrite",
+        component: () => import("@/components/board/Qna/QnaWrite.vue"),
+      },
+      {
+        path: "detail/:id",
+        name: "QnaDetail",
+        component: () => import("@/components/board/Qna/QnaDetail.vue"),
+      },
+    ],
+  },
 
   {
     path: "/about",
