@@ -1,7 +1,7 @@
 <template>
   <g :class="name" filter="url(#dropshadow)">
     <text class="TEXT" :x="x" :y="y">{{ name }}</text>
-    <text v-if="score >= 0 && score <= 100" class="SCORE" :x="x" :y="y + 20">
+    <text class="SCORE" :x="x" :y="y + 20">
       {{ score }}
     </text>
   </g>
