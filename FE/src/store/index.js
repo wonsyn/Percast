@@ -9,6 +9,7 @@ import menuStore from "@/store/modules/menuStore.js";
 import memberStore from "@/store/modules/memberStore.js";
 import mapStore from "@/store/modules/mapStore.js";
 import noticeStore from "@/store/modules/noticeStore.js";
+import qnaStore from "@/store/modules/qnaStore.js";
 
 export default createStore({
   modules: {
@@ -19,6 +20,7 @@ export default createStore({
     memberStore,
     mapStore,
     noticeStore,
+    qnaStore,
   },
   plugins: [
     createdPersistedState({

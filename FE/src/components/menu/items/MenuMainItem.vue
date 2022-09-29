@@ -1,6 +1,6 @@
 <template>
-  <text class="TEXT" :x="x" :y="y">{{ name }}</text>
-  <g filter="url(#dropshadow)">
+  <g :class="name" filter="url(#dropshadow)">
+    <text class="TEXT" :x="x" :y="y">{{ name }}</text>
     <text v-if="score >= 0 && score <= 100" class="SCORE" :x="x" :y="y + 20">
       {{ score }}
     </text>

@@ -33,13 +33,13 @@ export default {
 }
 
 #body {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: #0f1421;
 }
 
 #view_body {
-  width: 100vw;
+  width: 100%;
   height: auto;
   background-color: #0f1421;
 }
