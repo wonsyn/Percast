@@ -34,6 +34,7 @@
             </b-card-footer>
           </b-card>
         </b-col>
+        <b-col class="menu"></b-col>
         <b-col class="menu" data-aos="fade-left" data-aos-offset="300">
           <b-card style="background-color: transparent">
             <h1 style="color: white">
