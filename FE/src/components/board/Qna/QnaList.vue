@@ -43,7 +43,7 @@ export default {
   methods: {
     moveToDetail(id) {
       this.$router.push({
-        path: `/qna/detail/${id}`,
+        path: `/board/qna/detail/${id}`,
       });
     },
     moveToWrite() {
