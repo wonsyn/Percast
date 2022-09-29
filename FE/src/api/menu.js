@@ -11,10 +11,9 @@ async function get_data(success, fail) {
 }
 
 async function send_message(data, success, fail) {
-  await api
-    .get(`/message?requestDto=${JSON.stringify(data)}`)
-    .then(success)
-    .catch(fail);
+  console.log(data);
+  await api.get(`/message`, JSON.stringify(data)).then(success).catch(fail);
+  // await api.get(`/message?requestDto=${data}`).then(success).catch(fail);
 }
 
 async function get_twit(disease, success, fail) {
