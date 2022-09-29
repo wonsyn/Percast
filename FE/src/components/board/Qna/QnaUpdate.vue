@@ -58,7 +58,6 @@ export default {
   },
   data() {
     return {
-      valid: true,
       content: "",
     };
   },
@@ -69,20 +68,12 @@ export default {
         name: "QnaList",
       });
     },
-    validate() {
-      this.$refs.form.validate();
-    },
     async updateQna() {
-      console.log("updateQna");
       await this.$store.dispatch("qnaStore/updateQna", this.qna);
       await this.$store.dispatch("qnaStore/getQna", this.qna.id);
-      // this.$router.go(-1);
       this.$router.push({
         path: `/qna/detail/${this.qna.id}`,
-        // name: `/qna/detail/${this.qna.id}`,
-        // params: { id: this.qna.id },
       });
-      console.log("push update");
     },
   },
 };

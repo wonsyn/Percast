@@ -3,9 +3,10 @@
     v-for="(items, index) in menuArray"
     :key="(items.index = index)"
     v-bind="items"
-    style="margin: auto; background-color: transparent; overflow: auto"
+    style="margin: auto; background-color: transparent; overflow: hidden"
     id="sec2"
     data-aos="fade"
+    class="p-0"
   >
   </home-body-item>
   <Item data-aos="my-fade" data-aos-anchor-placement="top-bottom" />
@@ -38,4 +39,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#sec2 {
+  overflow-x: hidden;
+}
+</style>
