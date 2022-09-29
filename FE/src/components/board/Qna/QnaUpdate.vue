@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="percast-font my-5" style="font-size: 50px; font-weight: bolder">
-      공지사항
+      QNA
     </div>
     <form ref="form" lazy-validation>
       <div class="container">
@@ -10,7 +10,7 @@
           <label class="me-3 percast-font" for="title">제목</label>
           <input
             class="form-control"
-            v-model="notice.title"
+            v-model="qna.title"
             name="title"
             placeholder="제목을 입력하세요."
             style="width: 95%"
@@ -20,7 +20,7 @@
         <div class="my-3 d-flex">
           <label class="me-3 percast-font" for="content">내용</label>
           <b-form-textarea
-            v-model="notice.content"
+            v-model="qna.content"
             name="content"
             rows="10"
             max-rows="20"
@@ -37,7 +37,7 @@
             </button>
           </div>
           <div class="col d-flex justify-content-end my-3">
-            <button type="button" class="btn btn-success" @click="updateNotice">
+            <button type="button" class="btn btn-success" @click="updateQna">
               수정
             </button>
           </div>
@@ -51,10 +51,10 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "NoticeUpdate",
+  name: "QnaUpdate",
 
   computed: {
-    ...mapState("noticeStore", ["notice"]),
+    ...mapState("qnaStore", ["qna"]),
   },
   data() {
     return {
@@ -66,19 +66,23 @@ export default {
   methods: {
     moveToList() {
       this.$router.push({
-        name: "NoticeList",
+        name: "QnaList",
       });
     },
     validate() {
       this.$refs.form.validate();
     },
-    async updateNotice() {
-      console.log("updateNotice");
-      await this.$store.dispatch("noticeStore/updateNotice", this.notice);
-      await this.$store.dispatch("noticeStore/getNotice", this.notice.id);
+    async updateQna() {
+      console.log("updateQna");
+      await this.$store.dispatch("qnaStore/updateQna", this.qna);
+      await this.$store.dispatch("qnaStore/getQna", this.qna.id);
+      // this.$router.go(-1);
       this.$router.push({
-        path: `/board/notice/detail/${this.notice.id}`,
+        path: `/qna/detail/${this.qna.id}`,
+        // name: `/qna/detail/${this.qna.id}`,
+        // params: { id: this.qna.id },
       });
+      console.log("push update");
     },
   },
 };

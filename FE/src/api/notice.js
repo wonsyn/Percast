@@ -13,11 +13,21 @@ async function regist_notice(body, success, fail) {
     .then(success)
     .catch(fail);
 }
-async function update_notice(success, fail) {
-  await api.put(`/notice`).then(success).catch(fail);
+async function update_notice(body, success, fail) {
+  await api
+    .put(`/notice`, body, {
+      headers: { Authorization: "62eea8bcaa5128173f599239ad19a041" },
+    })
+    .then(success)
+    .catch(fail);
 }
-async function delete_notice(success, fail) {
-  await api.delete(`/notice`).then(success).catch(fail);
+async function delete_notice(id, success, fail) {
+  await api
+    .delete(`/notice/${id}`, {
+      headers: { Authorization: "62eea8bcaa5128173f599239ad19a041" },
+    })
+    .then(success)
+    .catch(fail);
 }
 
 export { get_notice, get_notices, regist_notice, update_notice, delete_notice };

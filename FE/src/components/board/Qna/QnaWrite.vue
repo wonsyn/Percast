@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="percast-font my-5" style="font-size: 50px; font-weight: bolder">
-      공지사항
+      QNA
     </div>
-    <form v-on:submit="writeNotice" class="mt-5" ref="form">
+    <form v-on:submit="writeQna" class="mt-5" ref="form">
       <div class="my-3 d-flex">
         <label class="me-3 percast-font" for="title">제목</label>
         <input
@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  name: "NoticeWrite.vue",
+  name: "QnaWrite.vue",
   data() {
     return {
       title: "",
@@ -51,19 +51,17 @@ export default {
   methods: {
     moveToList() {
       this.$router.push({
-        name: "NoticeList",
+        name: "QnaList",
       });
     },
-    writeNotice() {
-      const newNotice = {
+    writeQna() {
+      const newQna = {
         title: this.title,
         content: this.content,
       };
-      this.$store.dispatch("noticeStore/registNotice", newNotice);
-      this.$store.dispatch("noticeStore/getNotices");
-      this.$router.push({
-        name: "NoticeList",
-      });
+      this.$store.dispatch("qnaStore/registQna", newQna);
+      this.$store.dispatch("qnaStore/getQnas");
+      this.$router.push("/qna/list");
     },
   },
 };

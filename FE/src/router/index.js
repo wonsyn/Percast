@@ -8,37 +8,6 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/notice",
-    children: [
-      {
-        path: "list",
-        name: "NoticeList",
-        component: () => import("@/components/board/Notice/NoticeList.vue"),
-      },
-      {
-        name: "delete",
-        path: "delete/:id",
-        component: () => import("@/components/board/Notice/NoticeDetail.vue"),
-      },
-      {
-        name: "update",
-        path: "update/:id",
-        component: () => import("@/components/board/Notice/NoticeUpdate.vue"),
-      },
-      {
-        path: "write",
-        name: "NoticeWrite",
-        component: () => import("@/components/board/Notice/NoticeWrite.vue"),
-      },
-      {
-        path: "detail",
-        name: "NoticeDetail",
-        component: () => import("@/components/board/Notice/NoticeDetail.vue"),
-      },
-    ],
-  },
-
-  {
     path: "/about",
     name: "about",
     component: () => import("@/views/AboutView.vue"),
@@ -70,6 +39,48 @@ const routes = [
     path: "/board",
     name: "board",
     component: () => import("@/views/BoardView.vue"),
+    children: [
+      {
+        path: "notice/list",
+        name: "NoticeList",
+        component: () => import("@/components/board/Notice/NoticeList.vue"),
+      },
+      {
+        path: "notice/update/:id",
+        name: "NoticeUpdate",
+        component: () => import("@/components/board/Notice/NoticeUpdate.vue"),
+      },
+      {
+        path: "notice/write",
+        name: "NoticeWrite",
+        component: () => import("@/components/board/Notice/NoticeWrite.vue"),
+      },
+      {
+        path: "notice/detail/:id",
+        name: "NoticeDetail",
+        component: () => import("@/components/board/Notice/NoticeDetail.vue"),
+      },
+      {
+        path: "qna/list",
+        name: "QnaList",
+        component: () => import("@/components/board/Qna/QnaList.vue"),
+      },
+      {
+        path: "qna/update/:id",
+        name: "QnaUpdate",
+        component: () => import("@/components/board/Qna/QnaUpdate.vue"),
+      },
+      {
+        path: "qna/write",
+        name: "QnaWrite",
+        component: () => import("@/components/board/Qna/QnaWrite.vue"),
+      },
+      {
+        path: "qna/detail/:id",
+        name: "QnaDetail",
+        component: () => import("@/components/board/Qna/QnaDetail.vue"),
+      },
+    ],
   },
 ];
 
