@@ -48,7 +48,7 @@ export default {
     },
     moveToWrite() {
       this.$router.push({
-        path: "/qna/write",
+        path: "write",
       });
     },
   },

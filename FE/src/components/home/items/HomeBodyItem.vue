@@ -1,12 +1,8 @@
 <template>
-  <b-card id="menu" style="height: 600px; background-color: transparent">
-    <b-card-group deck>
-      <b-row
-        v-if="index % 2 == 0"
-        style="height: 500px; width: auto"
-        no-gutters
-      >
-        <b-col md="6" class="menu" data-aos="fade-right" data-aos-offset="300">
+  <div class="mt-2">
+    <b-card id="menu" style="height: 600px; background-color: transparent">
+      <b-row v-if="index % 2 == 0" style="height: 500px" no-gutters>
+        <b-col class="menu" data-aos="fade-right" data-aos-offset="300">
           <b-card style="background-color: transparent">
             <h1 style="color: white">
               {{ title }}
@@ -16,7 +12,7 @@
             </b-card-text>
           </b-card>
         </b-col>
-        <b-col md="6" class="menu" data-aos="fade-left" data-aos-offset="300">
+        <b-col class="menu" data-aos="fade-left" data-aos-offset="300">
           <b-card style="background-color: transparent">
             <b-card-text>
               <img :src="require(`@/assets/${imageUrl}`)" />
@@ -28,7 +24,7 @@
         </b-col>
       </b-row>
       <b-row v-else style="height: 500px" no-gutters>
-        <b-col md="6" class="menu" data-aos="fade-right" data-aos-offset="300">
+        <b-col class="menu" data-aos="fade-right" data-aos-offset="300">
           <b-card style="background-color: transparent">
             <b-card-text>
               <img :src="require(`@/assets/${imageUrl}`)" />
@@ -38,7 +34,8 @@
             </b-card-footer>
           </b-card>
         </b-col>
-        <b-col md="6" class="menu" data-aos="fade-left" data-aos-offset="300">
+        <b-col class="menu"></b-col>
+        <b-col class="menu" data-aos="fade-left" data-aos-offset="300">
           <b-card style="background-color: transparent">
             <h1 style="color: white">
               {{ title }}
@@ -49,8 +46,8 @@
           </b-card>
         </b-col>
       </b-row>
-    </b-card-group>
-  </b-card>
+    </b-card>
+  </div>
 </template>
 
 <script>
