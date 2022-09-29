@@ -76,13 +76,9 @@ export default {
       console.log("updateNotice");
       await this.$store.dispatch("noticeStore/updateNotice", this.notice);
       await this.$store.dispatch("noticeStore/getNotice", this.notice.id);
-      // this.$router.go(-1);
       this.$router.push({
-        path: `/notice/detail/${this.notice.id}`,
-        // name: `/notice/detail/${this.notice.id}`,
-        // params: { id: this.notice.id },
+        path: `/board/notice/detail/${this.notice.id}`,
       });
-      console.log("push update");
     },
   },
 };
