@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="container">
     <div class="percast-font my-5" style="font-size: 50px; font-weight: bolder">
       QNA
     </div>
-    <div class="container">
-      <div class="my-5 p-3 bg-secondary text-box">
+    <div style="text-align: left">
+      <div class="my-5 p-3 bg-secondary text-box percast-font">
         <strong>제목: {{ qna.title }}</strong>
         <div>작성일 {{ qna.date }}</div>
       </div>
@@ -13,6 +13,19 @@
           <div height="300px">{{ qna.content }}</div>
         </div>
       </div>
+    </div>
+    <hr style="border: 0; height: 2px; background: white" />
+    <div style="text-align: left">
+      <div class="percast-font">
+        <span style="font-weight: bolder; font-size: 20px">답변일시</span>
+        {{ qna.answer.date }}
+      </div>
+      <div class="row mt-2 p-3 bg-white text-box">
+        <div class="col">
+          <div height="300px">{{ qna.answer.content }}</div>
+        </div>
+      </div>
+      <hr style="border: 0; height: 2px; background: #f5f9ff" />
       <div class="row">
         <div class="col d-flex my-3">
           <button class="btn btn-info" @click="moveToList">뒤로가기</button>
@@ -37,9 +50,6 @@ export default {
   computed: {
     ...mapState("qnaStore", ["qna"]),
   },
-  // props: {
-  //   id: Number,
-  // },
   created() {
     // actions로 qnaId값 보내기
     const pathName = new URL(document.location).pathname.split("/");
@@ -55,7 +65,7 @@ export default {
     },
     moveToUpdate() {
       this.$router.push({
-        path: `/qna/update/${this.qna.id}`,
+        path: `/board/qna/update/${this.qna.id}`,
       });
     },
     async qnaDelete() {
