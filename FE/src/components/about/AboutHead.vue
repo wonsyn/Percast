@@ -12,9 +12,7 @@
       </div>
       <div>
         <div v-if="selNum != 4" class="content">
-          <div class="button" style="font-size: 200%" @click="showModal">
-            확인하기
-          </div>
+          <div class="button" @click="showModal">확인하기</div>
         </div>
       </div>
       <nav>
@@ -106,6 +104,10 @@ export default {
 </script>
 
 <style>
+body {
+  overflow-x: hidden;
+}
+
 #header {
   display: -moz-flex;
   display: -webkit-flex;
@@ -196,6 +198,18 @@ export default {
   color: #ffffff;
 }
 
+#header .content .button {
+  display: block;
+  min-width: 7.5rem;
+  height: 2.75rem;
+  line-height: 2.75rem;
+  padding: 0 1.25rem 0 1.45rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  font-size: 1rem;
+  border-bottom: 0;
+}
+
 #header .content .inner {
   -moz-transition: max-height 0.75s ease, padding 0.75s ease,
     opacity 0.325s ease-in-out;
@@ -228,6 +242,10 @@ export default {
 #header .content .button:hover {
   background-color: rgba(255, 255, 255, 0.075);
   color: gray;
+}
+
+nav {
+  padding: 0;
 }
 
 #header nav ul {
@@ -289,9 +307,9 @@ export default {
   -moz-justify-content: space-between;
   -webkit-justify-content: space-between;
   -ms-justify-content: space-between;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   position: relative;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   width: 100%;
   padding: 4rem 2rem;
   z-index: 3;
@@ -304,7 +322,7 @@ export default {
 
 @media screen and (max-width: 1680px) {
   #wrapper {
-    padding: 3rem 2rem;
+    padding: 3rem 2rem 0rem;
   }
 }
 
