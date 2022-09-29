@@ -1,6 +1,6 @@
 <template>
   <div class="container pt-5">
-    <strong class="percast-font" style="font-size: 50px">공지사항</strong>
+    <strong class="percast-font" style="font-size: 50px">QNA</strong>
     <div class="pt-5 pb-3">
       <div class="d-flex justify-content-end me-3 mb-3">
         <button class="btn btn-success" @click="moveToWrite">글작성</button>
@@ -14,17 +14,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="notice in notices"
-            :key="notice.id"
-            @click="moveToDetail(notice.id)"
-          >
-            <td style="margin-top: 11px">{{ notice.id }}</td>
+          <tr v-for="qna in qnas" :key="qna.id" @click="moveToDetail(qna.id)">
+            <td style="margin-top: 11px">{{ qna.id }}</td>
             <td>
-              {{ notice.title }}
+              {{ qna.title }}
             </td>
             <td>
-              {{ notice.date }}
+              {{ qna.date }}
             </td>
           </tr>
         </tbody>
@@ -37,22 +33,22 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "NoticeList",
+  name: "QnaList",
   computed: {
-    ...mapState("noticeStore", ["notices"]),
+    ...mapState("qnaStore", ["qnas"]),
   },
   async created() {
-    await this.$store.dispatch("noticeStore/getNotices");
+    await this.$store.dispatch("qnaStore/getQnas");
   },
   methods: {
     moveToDetail(id) {
       this.$router.push({
-        path: `/notice/detail/${id}`,
+        path: `/qna/detail/${id}`,
       });
     },
     moveToWrite() {
       this.$router.push({
-        path: "/notice/write",
+        path: "/qna/write",
       });
     },
   },

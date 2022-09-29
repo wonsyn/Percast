@@ -1,9 +1,9 @@
 <template>
   <b-card>
     <b-row>
-      <b-col cols="1">{{ index }}</b-col>
-      <b-col cols="3">{{ place_name }}</b-col>
-      <b-col cols="7">{{ phone }} </b-col>
+      <b-col cols="1" class="idx">{{ index + 1 }}</b-col>
+      <b-col cols="7">{{ place_name }}</b-col>
+      <b-col cols="4">{{ phone }} </b-col>
     </b-row>
   </b-card>
 </template>
@@ -18,4 +18,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.idx {
+  padding: 0;
+}
+</style>
