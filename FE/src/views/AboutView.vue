@@ -17,7 +17,7 @@ export default {
 <style>
 #about_view {
   width: 100vw;
-  height: 100vh;
+  height: auto;
   background-color: #0f1421;
 }
 </style>

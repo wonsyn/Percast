@@ -5,36 +5,39 @@ const navStore = {
     menuArray: [
       // 메뉴 옵션을 정의
       {
-        title: "홈",
-        comments: "어쩌구 저쩌구",
+        title: "감기 걸리기 딱 좋은 날씨네",
+        comments:
+          "질병 위험도, 의료 시설 정보, 계절별 질병 정보 서비스로 당신의 질병을 예방합니다.",
         menu: "Home",
         name: "/",
         imageUrl: "iu.jpg",
       },
       {
-        title: "계절별 통계",
-        comments: "기상과 관련된 각종 통계정보를 확인할 수 있습니다.",
+        title: "질병 위험도 서비스",
+        comments:
+          "빅데이터를 활용하여 현재 날씨, 대기 상태를 바탕으로 지역별 질병 위험도를 알려줍니다.",
         menu: "계절 질병 정보",
         name: "/about",
         imageUrl: "iu.jpg",
       },
       {
-        title: "질병 지수 확인",
-        comments: "지역별 전염병 등 다양한 정보를 한눈에 볼 수 있습니다.",
+        title: "병원/약국 위치 정보",
+        comments: "아플 때 주변 병원/약국 위치를 안내합니다.",
         menu: "전국 질병 지도",
         name: "/menu",
         imageUrl: "iu.jpg",
       },
       {
-        title: "병원 및 약국 위치",
-        comments: "카카오 지도를 통해 메뉴를 확인 할 수 있습니다.",
+        title: "계절별 질병 안내",
+        comments: "계절별 질병 안내로 1년 건강을 예방할 수 있습니다.",
         menu: "주변 의료 시설",
         name: "/maps",
         imageUrl: "iu.jpg",
       },
       {
-        title: "커뮤니티",
-        comments: "QNA 및 공지사항 게시판을 볼 수 있습니다.",
+        title: "QnA/공지사항",
+        comments:
+          "서비스 이용 문의 및 불편사항을 접수해 지속적으로 개선합니다.",
         menu: "Board",
         name: "/board",
         imageUrl: "iu.jpg",
