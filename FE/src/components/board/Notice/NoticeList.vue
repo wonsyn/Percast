@@ -47,12 +47,12 @@ export default {
   methods: {
     moveToDetail(id) {
       this.$router.push({
-        path: `/notice/detail/${id}`,
+        path: `/board/notice/detail/${id}`,
       });
     },
     moveToWrite() {
       this.$router.push({
-        path: "/notice/write",
+        name: "NoticeWrite",
       });
     },
   },
