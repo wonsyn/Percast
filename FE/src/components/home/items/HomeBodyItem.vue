@@ -1,6 +1,6 @@
 <template>
   <div class="mt-2">
-    <b-card id="menu" style="height: 600px; background-color: transparent">
+    <div id="menu" style="height: 600px; background-color: transparent">
       <b-row v-if="index % 2 == 0" style="height: 500px" no-gutters>
         <b-col class="menu" data-aos="fade-right" data-aos-offset="300">
           <b-card style="background-color: transparent">
@@ -13,25 +13,31 @@
           </b-card>
         </b-col>
         <b-col class="menu" data-aos="fade-left" data-aos-offset="300">
-          <b-card style="background-color: transparent">
-            <b-card-text>
-              <img :src="require(`@/assets/${imageUrl}`)" />
-            </b-card-text>
-            <b-card-footer @click="movePage(name, index)" style="color: white">
-              이동하기 ->
-            </b-card-footer>
-          </b-card>
+          <div class="d-flex align-items-center">
+            <b-card style="background-color: transparent">
+              <div>
+                <img :src="require(`@/assets/${imageUrl}`)" />
+              </div>
+              <div v-if="index != 0" class="m-2">
+                <b-button @click="movePage(name, index)" style="color: white">
+                  이동하기
+                </b-button>
+              </div>
+            </b-card>
+          </div>
         </b-col>
       </b-row>
       <b-row v-else style="height: 500px" no-gutters>
         <b-col class="menu" data-aos="fade-right" data-aos-offset="300">
           <b-card style="background-color: transparent">
-            <b-card-text>
+            <div>
               <img :src="require(`@/assets/${imageUrl}`)" />
-            </b-card-text>
-            <b-card-footer @click="movePage(name, index)" style="color: white">
-              이동하기 ->
-            </b-card-footer>
+            </div>
+            <div class="m-2">
+              <b-button @click="movePage(name, index)" style="color: white">
+                이동하기
+              </b-button>
+            </div>
           </b-card>
         </b-col>
         <b-col class="menu"></b-col>
@@ -46,7 +52,7 @@
           </b-card>
         </b-col>
       </b-row>
-    </b-card>
+    </div>
   </div>
 </template>
 
