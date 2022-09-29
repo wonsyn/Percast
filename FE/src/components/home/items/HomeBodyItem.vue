@@ -1,5 +1,6 @@
 <template>
-  <b-card id="menu" style="height: 600px; background-color: transparent">
+  <!-- <b-card id="menu" style="height: 600px; background-color: transparent"> -->
+  <div id="menu" style="height: 600px; background-color: transparent">
     <b-row v-if="index % 2 == 0" style="height: 500px">
       <b-col class="menu" data-aos="fade-right" data-aos-offset="300">
         <b-card style="background-color: transparent">
@@ -42,7 +43,8 @@
         </b-card>
       </b-col>
     </b-row>
-  </b-card>
+  </div>
+  <!-- </b-card> -->
 </template>
 
 <script>
