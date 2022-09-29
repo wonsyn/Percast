@@ -144,8 +144,17 @@ export default {
     },
     change_Score_Color(score) {
       const num = document.getElementById("score");
-      // 255 / 100 * scores[i]
-      num.style.color = this.setColor(score);
+      let color = "#46EE46";
+      if (score > 80) {
+        color = this.setColor(100);
+      } else if (score > 60) {
+        color = this.setColor(80);
+      } else if (score > 40) {
+        color = "#FF7746";
+      } else if (score > 20) {
+        color = "#FFED46";
+      }
+      num.style.color = color;
     },
 
     setColor(score) {

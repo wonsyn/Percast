@@ -4,7 +4,7 @@
       <b-col cols="4">
         <map-l-option></map-l-option>
       </b-col>
-      <b-col cols="8">
+      <b-col cols="8" style="padding: 0">
         <maps-main></maps-main>
       </b-col>
       <!-- 
