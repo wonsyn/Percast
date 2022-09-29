@@ -3,7 +3,10 @@ async function get_qnas(success, fail) {
   await api.get(`/qna`).then(success).catch(fail);
 }
 async function get_qna(id, success, fail) {
-  await api.get(`/qna/${id}`).then(success).catch(fail);
+  await api
+    .get(`/qna/detail`, { params: { qnaId: id } })
+    .then(success)
+    .catch(fail);
 }
 async function regist_qna(body, success, fail) {
   await api
