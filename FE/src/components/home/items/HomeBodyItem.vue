@@ -1,50 +1,56 @@
 <template>
-  <!-- <b-card id="menu" style="height: 600px; background-color: transparent"> -->
-  <div id="menu" style="height: 600px; background-color: transparent">
-    <b-row v-if="index % 2 == 0" style="height: 500px">
-      <b-col class="menu" data-aos="fade-right" data-aos-offset="300">
-        <b-card style="background-color: transparent">
-          <h1 style="color: white">
-            {{ title }}
-          </h1>
-          <b-card-text style="color: white">
-            {{ comments }}
-          </b-card-text>
-        </b-card>
-      </b-col>
-      <b-col class="menu" data-aos="fade-left" data-aos-offset="300">
-        <b-card style="background-color: transparent">
-          <img :src="require(`@/assets/${imageUrl}`)" />
-
-          <b-card-footer @click="movePage(name, index)" style="color: white">
-            이동하기 ->
-          </b-card-footer>
-        </b-card>
-      </b-col>
-    </b-row>
-    <b-row v-else style="height: 500px">
-      <b-col class="menu" data-aos="fade-right" data-aos-offset="300">
-        <b-card style="background-color: transparent">
-          <img :src="require(`@/assets/${imageUrl}`)" />
-
-          <b-card-footer @click="movePage(name, index)" style="color: white">
-            이동하기 ->
-          </b-card-footer>
-        </b-card>
-      </b-col>
-      <b-col class="menu" data-aos="fade-left" data-aos-offset="300">
-        <b-card style="background-color: transparent">
-          <h1 style="color: white">
-            {{ title }}
-          </h1>
-          <b-card-text style="color: white">
-            {{ comments }}
-          </b-card-text>
-        </b-card>
-      </b-col>
-    </b-row>
-  </div>
-  <!-- </b-card> -->
+  <b-card id="menu" style="height: 600px; background-color: transparent">
+    <b-card-group deck>
+      <b-row
+        v-if="index % 2 == 0"
+        style="height: 500px; width: auto"
+        no-gutters
+      >
+        <b-col md="6" class="menu" data-aos="fade-right" data-aos-offset="300">
+          <b-card style="background-color: transparent">
+            <h1 style="color: white">
+              {{ title }}
+            </h1>
+            <b-card-text style="color: white">
+              {{ comments }}
+            </b-card-text>
+          </b-card>
+        </b-col>
+        <b-col md="6" class="menu" data-aos="fade-left" data-aos-offset="300">
+          <b-card style="background-color: transparent">
+            <b-card-text>
+              <img :src="require(`@/assets/${imageUrl}`)" />
+            </b-card-text>
+            <b-card-footer @click="movePage(name, index)" style="color: white">
+              이동하기 ->
+            </b-card-footer>
+          </b-card>
+        </b-col>
+      </b-row>
+      <b-row v-else style="height: 500px" no-gutters>
+        <b-col md="6" class="menu" data-aos="fade-right" data-aos-offset="300">
+          <b-card style="background-color: transparent">
+            <b-card-text>
+              <img :src="require(`@/assets/${imageUrl}`)" />
+            </b-card-text>
+            <b-card-footer @click="movePage(name, index)" style="color: white">
+              이동하기 ->
+            </b-card-footer>
+          </b-card>
+        </b-col>
+        <b-col md="6" class="menu" data-aos="fade-left" data-aos-offset="300">
+          <b-card style="background-color: transparent">
+            <h1 style="color: white">
+              {{ title }}
+            </h1>
+            <b-card-text style="color: white">
+              {{ comments }}
+            </b-card-text>
+          </b-card>
+        </b-col>
+      </b-row>
+    </b-card-group>
+  </b-card>
 </template>
 
 <script>
@@ -83,12 +89,10 @@ export default {
 #menu {
   margin: 10px;
   width: 99%;
-  background-color: gray;
+  /* background-color: gray; */
   background-color: transparent;
   align-items: center;
-  flex-grow: 1;
 }
-
 #card-body {
   background-color: transparent;
 }
