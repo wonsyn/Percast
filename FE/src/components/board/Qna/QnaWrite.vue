@@ -3,7 +3,7 @@
     <div class="percast-font my-5" style="font-size: 50px; font-weight: bolder">
       QNA
     </div>
-    <form v-on:submit="writeQna" class="mt-5" ref="form">
+    <form v-on:submit.prevent="writeQna" class="mt-5" ref="form">
       <div class="my-3 d-flex">
         <label class="me-3 percast-font" for="title">제목</label>
         <input
@@ -54,14 +54,15 @@ export default {
         name: "QnaList",
       });
     },
-    writeQna() {
+    async writeQna() {
       const newQna = {
         title: this.title,
         content: this.content,
+        password: "62eea8bcaa5128173f599239ad19a041",
       };
-      this.$store.dispatch("qnaStore/registQna", newQna);
-      this.$store.dispatch("qnaStore/getQnas");
-      this.$router.push("/qna/list");
+      await this.$store.dispatch("qnaStore/registQna", newQna);
+      await this.$store.dispatch("qnaStore/getQnas");
+      this.$router.go(-1);
     },
   },
 };
