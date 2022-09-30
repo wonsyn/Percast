@@ -43,7 +43,7 @@ export default {
 #album {
   position: relative;
   width: auto;
-  height: 100vh;
+  height: auto;
 }
 
 #bg_map {
