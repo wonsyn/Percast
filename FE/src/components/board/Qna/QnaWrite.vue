@@ -5,6 +5,17 @@
     </div>
     <form v-on:submit.prevent="writeQna" class="mt-5" ref="form">
       <div class="my-3 d-flex">
+        <label class="me-3 percast-font" for="password">암호</label>
+        <input
+          class="form-control"
+          placeholder="암호를 입력해 주세요"
+          name="password"
+          v-model="password"
+          style="width: 20%"
+          required
+        />
+      </div>
+      <div class="my-3 d-flex">
         <label class="me-3 percast-font" for="title">제목</label>
         <input
           class="form-control"
@@ -46,6 +57,7 @@ export default {
     return {
       title: "",
       content: "",
+      password: "",
     };
   },
   methods: {
@@ -58,7 +70,7 @@ export default {
       const newQna = {
         title: this.title,
         content: this.content,
-        password: "62eea8bcaa5128173f599239ad19a041",
+        password: this.password,
       };
       await this.$store.dispatch("qnaStore/registQna", newQna);
       await this.$store.dispatch("qnaStore/getQnas");
