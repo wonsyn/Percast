@@ -9,7 +9,6 @@
     class="p-0"
   >
   </home-body-item>
-  <Item data-aos="my-fade" data-aos-anchor-placement="top-bottom" />
 </template>
 
 <script>
@@ -42,5 +41,8 @@ export default {
 <style>
 #sec2 {
   overflow-x: hidden;
+}
+hr {
+  background-color: white;
 }
 </style>

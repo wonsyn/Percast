@@ -5,6 +5,7 @@
         v-if="this.admin == null"
         class="btn btn-success"
         @click="showModal"
+        style="z-index: 4"
       >
         Admin 로그인
       </button>
