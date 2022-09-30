@@ -24,6 +24,7 @@ const mapStore = {
       category_group_code: "PM9",
       category_group_name: "약국",
     },
+    location: null,
   },
   getters: {},
   mutations: {
@@ -32,6 +33,9 @@ const mapStore = {
     },
     SET_PHARMACY: (state, pharmacy) => {
       state.pharmacy = pharmacy;
+    },
+    SET_LOCATION: (state, location) => {
+      state.location = location;
     },
   },
   actions: {
@@ -83,6 +87,9 @@ const mapStore = {
     },
     set_pharmacy({ commit }, pharmacy) {
       commit("SET_PHARMACY", pharmacy);
+    },
+    set_location({ commit }, location) {
+      commit("SET_LOCATION", location);
     },
   },
 };
