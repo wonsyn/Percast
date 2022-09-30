@@ -18,7 +18,7 @@ async function regist_qna(body, success, fail) {
 }
 async function update_qna(body, success, fail) {
   await api
-    .put(`/qna`, body, {
+    .put(`/qna`, JSON.stringify(body), {
       headers: { Authorization: "62eea8bcaa5128173f599239ad19a041" },
     })
     .then(success)
@@ -33,4 +33,42 @@ async function delete_qna(id, success, fail) {
     .catch(fail);
 }
 
-export { get_qna, get_qnas, regist_qna, update_qna, delete_qna };
+async function regist_answer(body, success, fail) {
+  await api
+    .post(`/qna/answer`, JSON.stringify(body), {
+      headers: { Authorization: "62eea8bcaa5128173f599239ad19a041" },
+    })
+    .then(success)
+    .catch(fail);
+}
+async function update_answer(body, success, fail) {
+  await api
+    .put(`/qna/answer`, JSON.stringify(body), {
+      headers: { Authorization: "62eea8bcaa5128173f599239ad19a041" },
+    })
+    .then(success)
+    .catch(fail);
+}
+async function delete_answer(qnaId, answerId, success, fail) {
+  await api
+    .delete(`/qna/answer`, {
+      params: {
+        qnaId: qnaId,
+        answerId: answerId,
+      },
+      headers: { Authorization: "62eea8bcaa5128173f599239ad19a041" },
+    })
+    .then(success)
+    .catch(fail);
+}
+
+export {
+  get_qna,
+  get_qnas,
+  regist_qna,
+  update_qna,
+  delete_qna,
+  regist_answer,
+  update_answer,
+  delete_answer,
+};

@@ -29,7 +29,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 #body {
@@ -55,9 +54,5 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #bbbbbb;
-}
-
-.card {
-  background-color: #1a2844;
 }
 </style>
