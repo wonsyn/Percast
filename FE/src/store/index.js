@@ -11,6 +11,7 @@ import mapStore from "@/store/modules/mapStore.js";
 import noticeStore from "@/store/modules/noticeStore.js";
 import qnaStore from "@/store/modules/qnaStore.js";
 import twitStore from "@/store/modules/twitStore.js";
+import adminStore from "@/store/modules/adminStore.js";
 
 export default createStore({
   modules: {
@@ -23,6 +24,7 @@ export default createStore({
     noticeStore,
     qnaStore,
     twitStore,
+    adminStore,
   },
   plugins: [
     createdPersistedState({

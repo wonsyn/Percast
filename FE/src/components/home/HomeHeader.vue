@@ -10,14 +10,50 @@
           This is a modified jumbotron that occupies the entire horizontal space
           of its parent.
         </p> -->
-      <Carousel :autoplay="5000" :wrap-around="true">
+      <!-- <Carousel :autoplay="5000" :wrap-around="true"> -->
+      <Carousel :wrap-around="true">
         <Slide v-for="(slide, index) in 3" :key="slide">
-          <div id="carousel__item" :class="carousel__item[index]">
-            감기 걸리기 딱 좋은 날씨네 <br />
-            오늘의 날씨, 미세먼지 정보를 토대로 5대 질병의 위험도를
-            안내해줍니다. <br />
-            계절별 유행 질병도 알려줍니다. <br />
-            병원, 약국 위치도 알려줍니다. <br />
+          <div
+            id="carousel__item"
+            :class="carousel__item[index]"
+            v-if="index == 0"
+            style="flex-direction: column; padding-left: 20px"
+          >
+            <div>병에 걸릴까봐 걱정하는 당신!!</div>
+            <div style="font-weight: bold; font-size: 30px">
+              감기걸리기 딱 좋은 날씨네를
+            </div>
+            <div style="font-weight: bold; font-size: 30px">
+              사용한 후 걱정이 사라집니다.
+            </div>
+          </div>
+          <div
+            id="carousel__item"
+            :class="carousel__item[index]"
+            v-if="index == 1"
+            style="flex-direction: column; padding-left: 20px"
+          >
+            <!-- <div>환절기마다 걱정되는 감기, 천식, 피부병 증상</div>
+            <div>여름마다 심해지는 눈병</div> -->
+            <div>처음 경험해 본 계절 질병들까지 !!</div>
+            <div style="font-weight: bold; font-size: 30px">
+              감기걸리기 딱 좋은 날씨네가
+            </div>
+            <div style="font-weight: bold; font-size: 30px">알려드립니다.</div>
+          </div>
+          <div
+            id="carousel__item"
+            :class="carousel__item[index]"
+            v-if="index == 2"
+            style="flex-direction: column; padding-left: 20px"
+          >
+            <div>감기걸리기 딱 좋은 날씨네를 만나기 전</div>
+            <div style="font-weight: bold; font-size: 30px">
+              왜 이렇게 불편하게
+            </div>
+            <div style="font-weight: bold; font-size: 30px">
+              생활했었나 싶어요
+            </div>
           </div>
         </Slide>
 
@@ -74,18 +110,25 @@ export default defineComponent({
   font-size: 20px;
   border-radius: 8px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 #carousel__item.a {
-  background-image: url("../../assets/sunny.png");
+  background-image: url("../../assets/sunny1.png");
+  background-size: cover;
   color: black;
+  justify-content: center;
+  align-items: start;
 }
 #carousel__item.b {
   background-image: url("../../assets/cloudy.png");
+  justify-content: center;
+  align-items: start;
 }
 #carousel__item.c {
   background-image: url("../../assets/raining.png");
+  justify-content: center;
+  align-items: start;
 }
 .carousel__slide {
   padding: 10px;
