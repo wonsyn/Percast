@@ -12,7 +12,7 @@ async function get_data(success, fail) {
 
 async function send_message(data, success, fail) {
   console.log(data);
-  await api.get(`/message`, JSON.stringify(data)).then(success).catch(fail);
+  await api.post(`/message`, JSON.stringify(data)).then(success).catch(fail);
   // await api.get(`/message?requestDto=${data}`).then(success).catch(fail);
 }
 
