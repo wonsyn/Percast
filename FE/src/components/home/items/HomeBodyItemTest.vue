@@ -2,39 +2,59 @@
   <div>
     <b-row
       v-if="index % 2 == 0"
-      class="justify-content-md-center"
-      style="color: white"
+      class="justify-content-md-center my-5"
+      style="color: #5673eb"
     >
-      <b-col data-aos="fade-left" data-aos-offset="300">
-        멘트 들어갈 곳 짝수
+      <b-col data-aos="fade-right" data-aos-offset="300">
         <div>
-          <h1>{{ title }}</h1>
-        </div>
-        <div>
-          {{ comments }}
+          <div>
+            <h1>{{ title }}</h1>
+          </div>
+          <div>
+            {{ comments }}
+          </div>
         </div>
       </b-col>
-      <b-col data-aos="fade-right" data-aos-offset="300">
-        사진 들어갈 곳 짝수
+      <b-col data-aos="fade-left" data-aos-offset="300" class="mx-3">
         <div>
           <img :src="require(`@/assets/${imageUrl}`)" />
+        </div>
+        <div v-if="index != 0" class="m-2">
+          <b-button
+            pill
+            variant="success"
+            @click="movePage(name, index)"
+            style="color: white; background-color: #5673eb"
+          >
+            이동하기
+          </b-button>
         </div>
       </b-col>
     </b-row>
-    <b-row v-else class="justify-content-md-center" style="color: white">
-      <b-col data-aos="fade-left" data-aos-offset="300">
-        사진 들어갈 곳 홀수
+    <b-row v-else class="justify-content-md-center my-5" style="color: white">
+      <b-col data-aos="fade-right" data-aos-offset="300" class="mx-3">
         <div>
           <img :src="require(`@/assets/${imageUrl}`)" />
         </div>
-      </b-col>
-      <b-col data-aos="fade-right" data-aos-offset="300">
-        멘트 들어갈 곳 홀수
-        <div>
-          <h1>{{ title }}</h1>
+        <div v-if="index != 0" class="m-2">
+          <b-button
+            pill
+            variant="success"
+            @click="movePage(name, index)"
+            style="color: black; background-color: white"
+          >
+            이동하기
+          </b-button>
         </div>
+      </b-col>
+      <b-col data-aos="fade-left" data-aos-offset="300">
         <div>
-          {{ comments }}
+          <div>
+            <h1>{{ title }}</h1>
+          </div>
+          <div>
+            {{ comments }}
+          </div>
         </div>
       </b-col>
     </b-row>
@@ -91,5 +111,11 @@ export default {
 
 #col .aos-init .aos-animate {
   align-items: center;
+}
+img {
+  width: "auto";
+  height: "auto";
+  max-width: 600px;
+  max-height: 600px;
 }
 </style>
