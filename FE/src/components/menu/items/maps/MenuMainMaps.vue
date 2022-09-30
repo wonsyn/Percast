@@ -1,5 +1,6 @@
 <template>
   <svg
+    id="menu_map_svg"
     viewBox="-190 400 885 480"
     height="1000"
     width="600"
@@ -138,8 +139,8 @@
       />
     </g>
     <menu-main-item
-      v-for="(items, index) in map_data"
-      :key="(items.score = scores[index])"
+      v-for="items in map_data"
+      :key="items"
       v-bind="items"
     ></menu-main-item>
   </svg>
@@ -165,43 +166,6 @@ export default {
   },
   mounted() {
     this.store.dispatch("menuStore/get_options_by_region", this.r_num);
-  },
-  watch: {
-    d_type: function (value) {
-      console.log("d_type : " + value);
-      //for (let i = 0; i < this.map_data.length; i++) {
-      //console.log(this.map_data[i].name);
-      //const elements = document.getElementsByClassName(this.map_data[i].name);
-      //console.log(elements.length);
-      //console.log("catch : " + i);
-      //console.log(this.scores[i]);
-      //while (elements.length > 1) {
-      //console.log("delete " + j);
-      //console.log(elements[0].childNodes[1]);
-      //elements[0].remove();
-      /*
-           var content =
-          `<g :class="` +
-          this.map_data[i].name +
-          `" filter="url(#dropshadow)">` +
-          `<text class="TEXT" :x="` +
-          this.map_data[i].x +
-          `" :y="` +
-          this.map_data[i].y +
-          `">` +
-          this.map_data[i].name +
-          `</text>` +
-          `<text class="SCORE" :x="` +
-          this.map_data[i].x +
-          `" :y="` +
-          (this.map_data[i].y + 20) +
-          `">` +
-          this.map_data[i].score +
-          `</text> </g>`;
-           */
-      //}
-      //}
-    },
   },
   methods: {
     onClickMap(num) {
