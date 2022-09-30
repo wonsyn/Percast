@@ -38,7 +38,6 @@ export default {
   methods: {},
   created() {
     AOS.init();
-    // console.log(this.comments);
   },
 };
 </script>
