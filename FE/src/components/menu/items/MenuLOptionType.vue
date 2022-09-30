@@ -1,6 +1,6 @@
 <template>
   <div id="menu_nav">
-    <ul>
+    <!-- <ul>
       <li>
         <a id="menu_type" :class="selected[0]" @click="getInfo(0)">감기</a>
       </li>
@@ -16,7 +16,42 @@
       <li>
         <a id="menu_type" :class="selected[4]" @click="getInfo(4)">식중독</a>
       </li>
-    </ul>
+    </ul> -->
+    <b-button
+      id="menu_type"
+      :class="selected[0]"
+      @click="getInfo(0)"
+      variant="outline-primary"
+      >감기</b-button
+    >
+    <b-button
+      id="menu_type"
+      :class="selected[1]"
+      @click="getInfo(1)"
+      variant="outline-primary"
+      >천식</b-button
+    >
+    <b-button
+      id="menu_type"
+      :class="selected[2]"
+      @click="getInfo(2)"
+      variant="outline-primary"
+      >피부병</b-button
+    >
+    <b-button
+      id="menu_type"
+      :class="selected[3]"
+      @click="getInfo(3)"
+      variant="outline-primary"
+      >눈병</b-button
+    >
+    <b-button
+      id="menu_type"
+      :class="selected[4]"
+      @click="getInfo(4)"
+      variant="outline-primary"
+      >식중독</b-button
+    >
   </div>
 </template>
 
@@ -187,8 +222,8 @@ export default {
   margin: 10px;
   width: 100%;
   height: 40px;
-  background-color: #1a2844;
-  color: #5673eb;
+  /* background-color: #1a2844; */
+  /* color: #5673eb; */
 }
 #menu_nav .on {
   color: #eb5374;
@@ -226,7 +261,9 @@ export default {
 }
 
 #menu_type {
-  color: #5673eb;
+  color: white;
+  border-color: white;
+  margin: 0 3px;
 }
 #menu_type:hover {
   background-color: rgba(255, 255, 255, 0.075);
@@ -234,6 +271,6 @@ export default {
 }
 #menu_type.on {
   background-color: rgba(255, 255, 255, 0.075);
-  color: #eb5374;
+  color: #5673eb;
 }
 </style>
