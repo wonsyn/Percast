@@ -31,7 +31,7 @@
         </b-col>
       </b-row>
       <b-row v-else style="height: 500px" no-gutters>
-        <b-col class="menu"></b-col>
+        <!-- <b-col class="menu"></b-col> -->
         <b-col class="menu" data-aos="fade-right" data-aos-offset="300">
           <b-card style="background-color: transparent">
             <div>
