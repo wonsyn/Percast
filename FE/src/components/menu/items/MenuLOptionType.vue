@@ -98,6 +98,7 @@ export default {
   methods: {
     getInfo(num) {
       console.log(this.d_type + " , " + num);
+      // 같은 숫자면 종료 (바꿀 필요 없다.)
       if (this.d_type == num) {
         return;
       }
@@ -147,12 +148,6 @@ export default {
     },
     // scores에 따라 지역의 색이 변화하게 한다.
     fillRegions() {
-      // this.entities = document.getElementsByClassName("SCORES");
-      // console.log(this.d_type);
-      // console.log(this.max_score);
-      // console.log(this.max_score[this.d_type]);
-      // console.log(this.min_score);
-      // console.log(this.min_score[this.d_type]);
       for (let i = 0; i < this.regions.length; i++) {
         //const region = document.getElementById(regions[i].id);
         let color = "#";
