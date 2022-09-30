@@ -283,7 +283,7 @@ export default {
       var imageSrc = "https://ifh.cc/g/v5F5T5.png";
       // 유효기간 : 2023.06.07
       //"https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png"; // 마커 이미지 url, 스프라이트 이미지를 씁니다
-      const imageSize = new kakao.maps.Size(27, 28); // 마커 이미지의 크기
+      const imageSize = new kakao.maps.Size(22, 28); // 마커 이미지의 크기
       const imgOptions = {
         spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
         spriteOrigin: new kakao.maps.Point(46, order * 36), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background-color: #0f1421">
     <div class="pb-5 px-5 d-flex justify-content-end">
       <button
         v-if="this.admin == null"
