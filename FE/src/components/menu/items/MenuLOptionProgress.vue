@@ -23,12 +23,12 @@
       <div id="menu_text" style="font-size: 20px">
         <div>현재</div>
         <div>{{ time }} 기준</div>
-        <div>{{ region }}의 {{ disease }} 위험지수는</div>
+        <div>{{ region }}의 {{ disease_name }} 위험지수는</div>
         <div>
           <a id="danger_set">{{ danger }}</a> 입니다.
         </div>
       </div>
-      <div style="font-size: 14px; color: white; margin-top: 5px">
+      <div style="font-size: 13px; color: white; margin-top: 5px">
         건강 조심하시고 행복한 하루 되시길 바랍니다.
       </div>
       <div id="button" @click="showModal">[알림 설정]</div>
@@ -51,7 +51,7 @@ export default {
     const region = computed(() => store.state.menuStore.region);
     const score = computed(() => store.state.menuStore.score);
     const danger = computed(() => store.state.menuStore.danger);
-    const disease = computed(() => store.state.menuStore.disease);
+    const disease_name = computed(() => store.state.menuStore.disease_name);
 
     const modal = ref(null);
 
@@ -64,7 +64,7 @@ export default {
       }
     };
 
-    return { store, region, score, danger, disease, modal, showModal };
+    return { store, region, score, danger, disease_name, modal, showModal };
   },
   created() {
     this.nowTimes();
