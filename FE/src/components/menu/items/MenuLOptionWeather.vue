@@ -50,4 +50,8 @@ export default {
 .picto {
   margin: 10px 0px;
 }
+
+#menu_card {
+  margin-bottom: 20px;
+}
 </style>

@@ -216,6 +216,9 @@ export default {
   background-color: #2b3855;
   margin-top: 20px;
   height: 30px;
+  border-radius: 8px;
+  padding: 0.2rem 0;
+  cursor: pointer;
 }
 
 #button:hover {
