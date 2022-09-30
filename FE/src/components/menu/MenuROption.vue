@@ -8,10 +8,7 @@
       <h4 style="color: white; margin-top: 10px">{{ disease }} 예방법</h4>
       <menu-r-option-prevent></menu-r-option-prevent>
     </b-row>
-    <b-row>
-      <h4 style="color: white; margin-top: 10px">
-        {{ disease }} 관련 검색기록
-      </h4>
+    <b-row style="margin-top: 10px">
       <menu-r-option-twitter></menu-r-option-twitter>
     </b-row>
   </b-col>
