@@ -1,5 +1,5 @@
 <template>
-  <b-table-simple responsive hover>
+  <b-table-simple responsive hover class="rounded" style="padding: 0">
     <b-thead style="background-color: #1a2844; color: #5673eb">
       <b-tr>
         <b-th>키워드</b-th>
