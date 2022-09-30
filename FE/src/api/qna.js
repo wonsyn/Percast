@@ -50,12 +50,13 @@ async function update_answer(body, success, fail) {
     .catch(fail);
 }
 async function delete_answer(qnaId, answerId, success, fail) {
+  const params = {
+    qnaid: qnaId,
+    answerid: answerId,
+  };
   await api
     .delete(`/qna/answer`, {
-      params: {
-        qnaId: qnaId,
-        answerId: answerId,
-      },
+      params,
       headers: { Authorization: "62eea8bcaa5128173f599239ad19a041" },
     })
     .then(success)
