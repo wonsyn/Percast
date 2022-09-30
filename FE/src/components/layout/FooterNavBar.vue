@@ -1,9 +1,50 @@
 <template>
-  <h1>Footer</h1>
+  <div>
+    <div class="pb-5 px-5 d-flex justify-content-end">
+      <button
+        v-if="this.admin == null"
+        class="btn btn-success"
+        @click="showModal"
+      >
+        Admin 로그인
+      </button>
+      <button v-else class="btn btn-success" @click="logout">
+        Admin 로그아웃
+      </button>
+    </div>
+  </div>
+  <auth-admin-modal ref="modal" style="border-radius: 5px"></auth-admin-modal>
 </template>
 
 <script>
-export default {};
+import { ref } from "vue";
+import { mapState, mapMutations } from "vuex";
+import AuthAdminModal from "@/components/menu/items/modal/AuthAdminModal.vue";
+
+export default {
+  components: {
+    AuthAdminModal,
+  },
+  computed: {
+    ...mapState("adminStore", ["admin"]),
+  },
+  methods: {
+    ...mapMutations("adminStore", ["SET_ADMIN"]),
+    logout() {
+      this.SET_ADMIN(null);
+      alert("로그아웃 되었습니다.");
+    },
+  },
+  setup() {
+    const modal = ref(null);
+
+    const showModal = async () => {
+      await modal.value.show();
+    };
+
+    return { modal, showModal };
+  },
+};
 </script>
 
 <style></style>
