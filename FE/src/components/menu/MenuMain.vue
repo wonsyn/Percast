@@ -27,7 +27,9 @@ export default {
       this.store.dispatch("menuStore/set_depth", 0);
     },
   },
-  mounted() {},
+  mounted() {
+    this.store.dispatch("menuStore/get_scores");
+  },
   setup() {
     const store = useStore();
 
