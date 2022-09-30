@@ -74,11 +74,28 @@ export default {
       currNum: -1,
       className: "",
       info: null,
+      location: {
+        lat: 37.5666805,
+        lng: 126.974847,
+      },
       mapsrc:
         "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=3917030614cd5f07cc201a4cd63e1930&libraries=services",
     };
   },
 
+  created() {
+    this.$getLocation()
+      .then((coordinates) => {
+        //console.log(coordinates);
+        this.location = {
+          lat: coordinates.lat,
+          lng: coordinates.lng,
+        };
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
   mounted() {
     if (window.kakao && window.kakao.maps) {
       // 지도 초기화
@@ -103,6 +120,12 @@ export default {
   },
 
   methods: {
+    gotoNowPos() {
+      console.log(this.map);
+      this.map.setCenter(
+        new kakao.maps.LatLng(this.location.lat, this.location.lng),
+      );
+    },
     initMap() {
       const container = document.getElementById("map");
       const options = {
@@ -123,6 +146,7 @@ export default {
         removeable: true,
         zIndex: 2,
       });
+      this.gotoNowPos();
     },
     addEventHandle(target, type, callback) {
       if (target.addEventListener) {
@@ -131,21 +155,6 @@ export default {
         target.attachEvent("on" + type, callback);
       }
     },
-
-    // searchPlaces() {
-    //     if (!this.currCategory != "") {
-    //         return;
-    //     }
-    //     // 커스텀 오버레이를 숨깁니다
-    //     this.placeOverlay.setMap(null);
-
-    //     // 지도에 표시되고 있는 마커를 제거합니다
-    //     this.removeMarker();
-
-    //     this.ps.categorySearch(this.currCategory, this.placesSearchCB, {
-    //         useMapBounds: true,
-    //     });
-    // },
 
     // 수정본
     searchPlaces() {
