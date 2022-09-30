@@ -2,7 +2,7 @@
   <!-- teleport: 렌더링 시 위치를 지정합니다. -->
   <teleport to="body">
     <!-- Modal의 열리고 닫힘을 관리합니다. -->
-    <div class="menu_modal_backdrop" v-if="isVisible">
+    <div class="menu_modal_backdrop" v-if="isVisible" data-aos="zoom-in">
       <div class="menu_modal_container">
         <!-- slot을 통해 BaseComponent를 확장시킵니다. -->
         <slot></slot>
@@ -13,6 +13,8 @@
 
 <script>
 import { ref } from "vue";
+import AOS from "aos";
+import "aos/dist/aos.css";
 export default {
   setup() {
     const isVisible = ref(false);
@@ -33,6 +35,10 @@ export default {
       close,
     };
   },
+  methods: {},
+  created() {
+    AOS.init();
+  },
 };
 </script>
 
@@ -47,16 +53,17 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: (0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 .menu_modal_container {
-  background: #2c3e50;
+  background: #1a2844;
   min-width: 500px;
   max-width: 500px;
   min-height: 200px;
   max-height: 200px;
   width: 100%;
   padding: 1.5rem;
+  border-radius: 8px;
   color: white;
 }
 </style>

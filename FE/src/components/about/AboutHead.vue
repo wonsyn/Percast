@@ -12,15 +12,45 @@
       </div>
       <div>
         <div v-if="selNum != 4" class="content">
-          <div class="button" @click="showModal">확인하기</div>
+          <div class="button" @click="showModal" style="cursor: pointer">
+            확인하기
+          </div>
         </div>
       </div>
       <nav>
         <ul>
-          <li><a @click="openSeason(0)" :class="selected[0]">Spring</a></li>
-          <li><a @click="openSeason(1)" :class="selected[1]">Summer</a></li>
-          <li><a @click="openSeason(2)" :class="selected[2]">Autumn</a></li>
-          <li><a @click="openSeason(3)" :class="selected[3]">Winter</a></li>
+          <li>
+            <a
+              @click="openSeason(0)"
+              :class="selected[0]"
+              style="cursor: pointer"
+              >Spring</a
+            >
+          </li>
+          <li>
+            <a
+              @click="openSeason(1)"
+              :class="selected[1]"
+              style="cursor: pointer"
+              >Summer</a
+            >
+          </li>
+          <li>
+            <a
+              @click="openSeason(2)"
+              :class="selected[2]"
+              style="cursor: pointer"
+              >Autumn</a
+            >
+          </li>
+          <li>
+            <a
+              @click="openSeason(3)"
+              :class="selected[3]"
+              style="cursor: pointer"
+              >Winter</a
+            >
+          </li>
           <!--<li><a href="#elements">Elements</a></li>-->
         </ul>
       </nav>
