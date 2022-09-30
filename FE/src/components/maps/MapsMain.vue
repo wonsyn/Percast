@@ -51,12 +51,14 @@
 </template>
 
 <script>
+import { computed } from "vue";
 import { useStore } from "vuex";
 
 export default {
   setup() {
     const store = useStore();
-    return { store };
+    const location = computed(() => store.state.mapStore.location);
+    return { store, location };
   },
   data() {
     return {
@@ -79,12 +81,27 @@ export default {
     };
   },
 
+  created() {
+    this.$getLocation()
+      .then((coordinates) => {
+        //console.log(coordinates);
+        const loc = {
+          lat: coordinates.lat,
+          lng: coordinates.lng,
+        };
+        this.store.dispatch("mapStore/set_location", loc);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
   mounted() {
     if (window.kakao && window.kakao.maps) {
       // 지도 초기화
       this.initMap();
       // 로드뷰 설정
       //this.SetView();
+      console.log("InitMap");
     } else {
       const script = document.createElement("script");
 
@@ -95,14 +112,21 @@ export default {
       script.src = this.mapsrc;
       // document의 head에 script 추가
       document.head.appendChild(script);
+      //this.gotoNowPos();
+      console.log("after");
     }
 
     const contentNode = document.createElement("div");
-
     contentNode.className = "placeinfo_wrap";
   },
 
   methods: {
+    gotoNowPos() {
+      console.log(this.location);
+      this.map.setCenter(
+        new kakao.maps.LatLng(this.location.lat, this.location.lng),
+      );
+    },
     initMap() {
       const container = document.getElementById("map");
       const options = {
@@ -123,6 +147,7 @@ export default {
         removeable: true,
         zIndex: 2,
       });
+      this.gotoNowPos();
     },
     addEventHandle(target, type, callback) {
       if (target.addEventListener) {
@@ -131,21 +156,6 @@ export default {
         target.attachEvent("on" + type, callback);
       }
     },
-
-    // searchPlaces() {
-    //     if (!this.currCategory != "") {
-    //         return;
-    //     }
-    //     // 커스텀 오버레이를 숨깁니다
-    //     this.placeOverlay.setMap(null);
-
-    //     // 지도에 표시되고 있는 마커를 제거합니다
-    //     this.removeMarker();
-
-    //     this.ps.categorySearch(this.currCategory, this.placesSearchCB, {
-    //         useMapBounds: true,
-    //     });
-    // },
 
     // 수정본
     searchPlaces() {
