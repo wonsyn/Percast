@@ -1,14 +1,18 @@
 <template>
-  <h3 style="color: white">{{ region }} 위험단계</h3>
+  <h3 style="color: white; margin-top: 20px">{{ region }} 위험단계</h3>
   <b-card id="menu_progress">
     <b-card-header>
-      <div id="menu_text" style="font-size: 15px; margin-top: 5px">
+      <div id="menu_text" style="font-size: 20px; margin-top: 5px">
         현재 {{ region }} 의 경계지수는
       </div>
       <a id="score" style="font-size: 30px">{{ score }}</a>
-      <a id="menu_text" style="font-size: 13px; margin-top: 20px"> 점</a>
-      <div id="menu_text" style="font-size: 13px">입니다.</div>
-      <b-progress max="100" height="30px" style="background: gray">
+      <a id="menu_text" style="font-size: 20px; margin-top: 20px"> 점</a>
+      <div id="menu_text" style="font-size: 20px">입니다.</div>
+      <b-progress
+        max="100"
+        height="30px"
+        style="background: gray; margin-bottom: 10px"
+      >
         <b-progress-bar
           :value="score"
           style="background: linear-gradient(to left, red, blue)"
@@ -16,7 +20,7 @@
       </b-progress>
     </b-card-header>
     <b-card-body>
-      <div id="menu_text" style="font-size: 15px">
+      <div id="menu_text" style="font-size: 20px">
         <div>현재</div>
         <div>{{ time }} 기준</div>
         <div>{{ region }}의 {{ disease }} 위험지수는</div>
