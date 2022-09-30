@@ -18,7 +18,7 @@ import { computed } from "vue";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import HomeBodyItem from "./items/HomeBodyItem.vue";
+import HomeBodyItem from "./items/HomeBodyItemTest.vue";
 
 export default {
   components: { HomeBodyItem },
