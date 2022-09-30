@@ -23,9 +23,6 @@ const qnaStore = {
     GET_QNAS(state, payload) {
       state.qnas = payload;
     },
-    WRITE_QNA(state, payload) {
-      state.qnas.push(payload);
-    },
   },
   actions: {
     async getQnas({ commit }) {
@@ -50,11 +47,10 @@ const qnaStore = {
       );
     },
     async registQna({ commit }, newQna) {
+      commit;
       await regist_qna(
         newQna,
-        (res) => {
-          commit("WRITE_QNA", res.data);
-        },
+        () => {},
         (error) => {
           console.log(error);
         },
@@ -84,22 +80,23 @@ const qnaStore = {
         },
       );
     },
-    async registAnswer({ commit }, newQna) {
+    async registAnswer({ commit }, newAnswer) {
+      commit;
+      console.log(newAnswer.qnaId);
+      console.log(newAnswer.content);
       await regist_answer(
-        newQna,
-        (res) => {
-          commit("WRITE_ANSWER", res.data);
-        },
+        newAnswer,
+        () => {},
         (error) => {
           console.log(error);
         },
       );
     },
-    async deleteAnswer({ commit }, qnaId, answerId) {
+    async deleteAnswer({ commit }, params) {
       commit;
       await delete_answer(
-        qnaId,
-        answerId,
+        params.qnaId,
+        params.answerId,
         (res) => {
           console.log(res);
         },
