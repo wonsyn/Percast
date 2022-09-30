@@ -2,14 +2,11 @@
   <b-table-simple responsive hover>
     <b-thead style="background-color: #1a2844; color: #5673eb">
       <b-tr>
-        <b-th colspan="12"> {{ disease_name }} 연관 단어 </b-th>
-      </b-tr>
-      <b-tr>
         <b-th>키워드</b-th>
         <b-th>언급량</b-th>
       </b-tr>
     </b-thead>
-    <b-tbody style="background-color: #5673eb; color: #1a2844">
+    <b-tbody style="background-color: #eeeeee; color: #1a2844">
       <menu-r-option-twitter-lists
         v-for="items in twit"
         :key="items"
