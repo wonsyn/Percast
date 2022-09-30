@@ -3,7 +3,7 @@
     <div class="percast-font my-5" style="font-size: 50px; font-weight: bolder">
       QNA
     </div>
-    <form ref="form" lazy-validation>
+    <form ref="form">
       <div class="container">
         <div class="row"></div>
         <div class="my-3 d-flex">
@@ -63,7 +63,8 @@ export default {
   },
 
   methods: {
-    moveToList() {
+    async moveToList() {
+      await this.$store.dispatch("qnaStore/getQnas");
       this.$router.push({
         name: "QnaList",
       });
@@ -72,7 +73,7 @@ export default {
       await this.$store.dispatch("qnaStore/updateQna", this.qna);
       await this.$store.dispatch("qnaStore/getQna", this.qna.id);
       this.$router.push({
-        path: `/qna/detail/${this.qna.id}`,
+        path: `/board/qna/detail/${this.qna.id}`,
       });
     },
   },

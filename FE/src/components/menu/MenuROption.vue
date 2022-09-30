@@ -12,7 +12,7 @@
       <h4 style="color: white; margin-top: 10px">
         {{ disease }} 관련 검색기록
       </h4>
-      <menu-r-option-foods></menu-r-option-foods>
+      <menu-r-option-twitter></menu-r-option-twitter>
     </b-row>
   </b-col>
 </template>
@@ -20,10 +20,11 @@
 <script>
 import MenuROptionPrevent from "./items/MenuROptionPrevent.vue";
 import MenuROptionSymptom from "./items/MenuROptionSymptom.vue";
+import MenuROptionTwitter from "./items/r_option/MenuROptionTwitter.vue";
 import { computed } from "vue";
 import { useStore } from "vuex";
 export default {
-  components: { MenuROptionSymptom, MenuROptionPrevent },
+  components: { MenuROptionSymptom, MenuROptionPrevent, MenuROptionTwitter },
   setup() {
     const store = useStore();
     const disease = computed(() => store.state.menuStore.disease);
