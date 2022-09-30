@@ -1,17 +1,35 @@
 <template>
   <b-col>
     <b-row>
-      <h4 style="color: white; margin-top: 10px">{{ disease }} 증상</h4>
+      <h4 style="color: white; margin-top: 10px">{{ disease_name }} 증상</h4>
       <menu-r-option-symptom></menu-r-option-symptom>
     </b-row>
     <b-row>
-      <h4 style="color: white; margin-top: 10px">{{ disease }} 예방법</h4>
+      <h4 style="color: white">{{ disease_name }} 예방법</h4>
       <menu-r-option-prevent></menu-r-option-prevent>
     </b-row>
     <b-row>
-      <h4 style="color: white; margin-top: 10px">
-        {{ disease }} 관련 검색기록
-      </h4>
+      <a
+        style="
+          color: white;
+          font-size: 24px;
+          text-align: right;
+          padding: 0;
+          text-align: center;
+        "
+      >
+        {{ disease_name }} 연관 단어
+      </a>
+      <a
+        style="
+          font-size: 10px;
+          color: gray;
+          text-align: end;
+          text-align: center;
+        "
+      >
+        ○ twitter 1일 검색량 기준, 06:00 갱신
+      </a>
       <menu-r-option-twitter></menu-r-option-twitter>
     </b-row>
   </b-col>
@@ -27,9 +45,9 @@ export default {
   components: { MenuROptionSymptom, MenuROptionPrevent, MenuROptionTwitter },
   setup() {
     const store = useStore();
-    const disease = computed(() => store.state.menuStore.disease);
+    const disease_name = computed(() => store.state.menuStore.disease_name);
 
-    return { store, disease };
+    return { store, disease_name };
   },
 };
 </script>

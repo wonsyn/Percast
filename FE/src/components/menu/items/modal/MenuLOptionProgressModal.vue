@@ -1,15 +1,33 @@
 <template>
   <modal-base ref="baseModal">
     <b-row>
-      <b-col cols="11">
+      <b-col>
         <div class="header">
-          <span>알림 설정</span>
+          <h3>알림 설정</h3>
         </div>
       </b-col>
-      <b-col>
-        <a @click="close_modal()"> X </a>
+      <b-col style="text-align: end; vertical-align: middle">
+        <a @click="close_modal()" style="cursor: pointer">
+          <svg
+            width="35"
+            height="35"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#a)">
+              <path
+                d="m27.708 9.348-2.056-2.056-8.152 8.152-8.152-8.152-2.056 2.056 8.152 8.152-8.152 8.152 2.056 2.056 8.152-8.152 8.152 8.152 2.056-2.056-8.152-8.152 8.152-8.152Z"
+                fill="#ffffff"
+              />
+            </g>
+            <defs>
+              <clipPath id="a"><path fill="#fff" d="M0 0h35v35H0z" /></clipPath>
+            </defs>
+          </svg>
+        </a>
       </b-col>
     </b-row>
+    <hr style="margin-top: 5px" />
     <b-row>
       <b-form-group
         id="fieldset-1"

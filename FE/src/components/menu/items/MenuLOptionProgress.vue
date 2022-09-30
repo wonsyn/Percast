@@ -1,14 +1,18 @@
 <template>
-  <h3 style="color: white">{{ region }} 위험단계</h3>
+  <h3 style="color: white; margin-top: 20px">{{ region }} 위험단계</h3>
   <b-card id="menu_progress">
     <b-card-header>
-      <div id="menu_text" style="font-size: 15px; margin-top: 5px">
+      <div id="menu_text" style="font-size: 20px; margin-top: 5px">
         현재 {{ region }} 의 경계지수는
       </div>
       <a id="score" style="font-size: 30px">{{ score }}</a>
-      <a id="menu_text" style="font-size: 13px; margin-top: 20px"> 점</a>
-      <div id="menu_text" style="font-size: 13px">입니다.</div>
-      <b-progress max="100" height="30px" style="background: gray">
+      <a id="menu_text" style="font-size: 20px; margin-top: 20px"> 점</a>
+      <div id="menu_text" style="font-size: 20px">입니다.</div>
+      <b-progress
+        max="100"
+        height="30px"
+        style="background: gray; margin-bottom: 10px"
+      >
         <b-progress-bar
           :value="score"
           style="background: linear-gradient(to left, red, blue)"
@@ -16,15 +20,15 @@
       </b-progress>
     </b-card-header>
     <b-card-body>
-      <div id="menu_text" style="font-size: 15px">
+      <div id="menu_text" style="font-size: 20px">
         <div>현재</div>
         <div>{{ time }} 기준</div>
-        <div>{{ region }}의 {{ disease }} 위험지수는</div>
+        <div>{{ region }}의 {{ disease_name }} 위험지수는</div>
         <div>
           <a id="danger_set">{{ danger }}</a> 입니다.
         </div>
       </div>
-      <div style="font-size: 14px; color: white; margin-top: 5px">
+      <div style="font-size: 13px; color: white; margin-top: 5px">
         건강 조심하시고 행복한 하루 되시길 바랍니다.
       </div>
       <div id="button" @click="showModal">[알림 설정]</div>
@@ -47,7 +51,7 @@ export default {
     const region = computed(() => store.state.menuStore.region);
     const score = computed(() => store.state.menuStore.score);
     const danger = computed(() => store.state.menuStore.danger);
-    const disease = computed(() => store.state.menuStore.disease);
+    const disease_name = computed(() => store.state.menuStore.disease_name);
 
     const modal = ref(null);
 
@@ -60,7 +64,7 @@ export default {
       }
     };
 
-    return { store, region, score, danger, disease, modal, showModal };
+    return { store, region, score, danger, disease_name, modal, showModal };
   },
   created() {
     this.nowTimes();
@@ -216,6 +220,9 @@ export default {
   background-color: #2b3855;
   margin-top: 20px;
   height: 30px;
+  border-radius: 8px;
+  padding: 0.2rem 0;
+  cursor: pointer;
 }
 
 #button:hover {
