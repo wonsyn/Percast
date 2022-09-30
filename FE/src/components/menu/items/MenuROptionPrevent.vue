@@ -21,10 +21,7 @@ export default {
     const d_type = computed(() => store.state.menuStore.d_type);
     return { store, lists, d_type };
   },
-  mounted() {
-    console.log("pre : ");
-    console.log(this.lists);
-  },
+  mounted() {},
 };
 </script>
 

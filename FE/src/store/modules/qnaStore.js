@@ -4,6 +4,9 @@ import {
   regist_qna,
   update_qna,
   delete_qna,
+  regist_answer,
+  update_answer,
+  delete_answer,
 } from "@/api/qna";
 
 const qnaStore = {
@@ -72,6 +75,42 @@ const qnaStore = {
     async updateQna({ commit }, body) {
       commit;
       await update_qna(
+        body,
+        () => {
+          console.log("store log");
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    },
+    async registAnswer({ commit }, newQna) {
+      await regist_answer(
+        newQna,
+        (res) => {
+          commit("WRITE_ANSWER", res.data);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    },
+    async deleteAnswer({ commit }, qnaId, answerId) {
+      commit;
+      await delete_answer(
+        qnaId,
+        answerId,
+        (res) => {
+          console.log(res);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    },
+    async updateAnswer({ commit }, body) {
+      commit;
+      await update_answer(
         body,
         () => {
           console.log("store log");
