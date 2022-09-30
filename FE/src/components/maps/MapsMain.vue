@@ -51,12 +51,14 @@
 </template>
 
 <script>
+import { computed } from "vue";
 import { useStore } from "vuex";
 
 export default {
   setup() {
     const store = useStore();
-    return { store };
+    const location = computed(() => store.state.mapStore.location);
+    return { store, location };
   },
   data() {
     return {
@@ -74,10 +76,6 @@ export default {
       currNum: -1,
       className: "",
       info: null,
-      location: {
-        lat: 37.5666805,
-        lng: 126.974847,
-      },
       mapsrc:
         "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=3917030614cd5f07cc201a4cd63e1930&libraries=services",
     };
@@ -87,10 +85,11 @@ export default {
     this.$getLocation()
       .then((coordinates) => {
         //console.log(coordinates);
-        this.location = {
+        const loc = {
           lat: coordinates.lat,
           lng: coordinates.lng,
         };
+        this.store.dispatch("mapStore/set_location", loc);
       })
       .catch((error) => {
         console.log(error);
@@ -102,6 +101,7 @@ export default {
       this.initMap();
       // 로드뷰 설정
       //this.SetView();
+      console.log("InitMap");
     } else {
       const script = document.createElement("script");
 
@@ -112,16 +112,17 @@ export default {
       script.src = this.mapsrc;
       // document의 head에 script 추가
       document.head.appendChild(script);
+      //this.gotoNowPos();
+      console.log("after");
     }
 
     const contentNode = document.createElement("div");
-
     contentNode.className = "placeinfo_wrap";
   },
 
   methods: {
     gotoNowPos() {
-      console.log(this.map);
+      console.log(this.location);
       this.map.setCenter(
         new kakao.maps.LatLng(this.location.lat, this.location.lng),
       );
