@@ -29,7 +29,8 @@ const menuStore = {
     grade: 2, // 단계
     danger: "안전", // 문자
     // 선택한 질병명을 표시
-    disease: "감기",
+    disease_name: "감기",
+    disease: "cold",
     d_type: 0,
     // 지역별 svg좌표 및 클래스명, 지역명 등을 표시
     map_data: [
@@ -303,6 +304,9 @@ const menuStore = {
     SET_DISEASE: (state, disease) => {
       state.disease = disease;
     },
+    SET_DISEASE_NAME: (state, disease_name) => {
+      state.disease_name = disease_name;
+    },
     SET_D_TYPE: (state, d_type) => {
       state.d_type = d_type;
     },
@@ -346,6 +350,9 @@ const menuStore = {
     },
     set_disease({ commit }, disease) {
       commit("SET_DISEASE", disease);
+    },
+    set_disease_name({ commit }, disease_name) {
+      commit("SET_DISEASE_NAME", disease_name);
     },
     set_d_type({ commit }, d_type) {
       commit("SET_D_TYPE", d_type);

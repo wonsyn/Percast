@@ -82,6 +82,7 @@ export default {
   data() {
     return {
       selected: ["", "", "", "", ""],
+      disease_name: ["감기", "천식", "피부병", "눈병", "식중독"],
       disease: ["cold", "asthma", "skin", "eye", "foodPoison"],
       entities: null,
       regions: null,
@@ -106,6 +107,7 @@ export default {
       // 질병 명과 질병 번호 바꾸기
       this.store.dispatch("menuStore/set_disease", this.disease[num]); // 질병명 설정
       this.store.dispatch("menuStore/set_d_type", num); // 질병코드 설정
+      this.store.dispatch("menuStore/set_disease_name", this.disease_name[num]);
       this.store.dispatch("twitStore/set_twit", this.disease[num]);
       this.getscores();
       this.selected_class(num);
