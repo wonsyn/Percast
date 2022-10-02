@@ -1,24 +1,4 @@
 <template>
-  <!-- 
-        MT1 대형마트
-        CS2 편의점
-        PS3 어린이집, 유치원
-        SC4 학교
-        AC5 학원
-        PK6 주차장
-        OL7 주유소, 충전소
-        SW8 지하철역
-        BK9 은행
-        CT1 문화시설
-        AG2 중개업소
-        PO3 공공기관
-        AT4 관광명소
-        AD5 숙박
-        FD6 음식점
-        CE7 카페
-        HP8 병원
-        PM9 약국 
-    -->
   <div id="container">
     <div id="mapWrapper" class="map_wrap">
       <div
@@ -84,7 +64,6 @@ export default {
   created() {
     this.$getLocation()
       .then((coordinates) => {
-        //console.log(coordinates);
         const loc = {
           lat: coordinates.lat,
           lng: coordinates.lng,
@@ -97,11 +76,7 @@ export default {
   },
   mounted() {
     if (window.kakao && window.kakao.maps) {
-      // 지도 초기화
       this.initMap();
-      // 로드뷰 설정
-      //this.SetView();
-      console.log("InitMap");
     } else {
       const script = document.createElement("script");
 
@@ -112,8 +87,6 @@ export default {
       script.src = this.mapsrc;
       // document의 head에 script 추가
       document.head.appendChild(script);
-      //this.gotoNowPos();
-      console.log("after");
     }
 
     const contentNode = document.createElement("div");
@@ -122,7 +95,6 @@ export default {
 
   methods: {
     gotoNowPos() {
-      console.log(this.location);
       this.map.setCenter(
         new kakao.maps.LatLng(this.location.lat, this.location.lng),
       );
@@ -179,7 +151,6 @@ export default {
       this.removeMarker(num);
       this.currNum = num;
       this.currCategory = this.category_name[num];
-      console.log(this.ps);
       this.ps.categorySearch(this.category_name[num], this.placesSearchCB, {
         useMapBounds: true,
       });
@@ -187,10 +158,8 @@ export default {
 
     // status 값을 받아와 OK인 경우 displayPlaces를 수행한다.
     placesSearchCB(data, status) {
-      console.log(status);
       if (status === kakao.maps.services.Status.OK) {
         // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
-        console.log(data);
         this.store.dispatch("mapStore/set_mapdata", data);
         this.displayPlaces(data);
       } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
@@ -204,7 +173,6 @@ export default {
 
     // 수정본
     displayPlaces(places) {
-      console.log("displayPlaces!");
       // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
       // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
       var category = places[0].category_group_code;
@@ -216,8 +184,6 @@ export default {
       }
       var order = document.getElementById(category).getAttribute("data-order");
 
-      console.log("displayPlaces : " + category);
-      console.log("currNum : " + this.currNum);
       places.forEach((place) => {
         // 마커를 생성하고 지도에 표시합니다
         var marker = this.addMarker(
@@ -305,7 +271,6 @@ export default {
     },
 
     onClickCategory(id, classnum) {
-      console.log(id + " , " + classnum);
       this.placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 });
       this.ps = new kakao.maps.services.Places(this.map);
       this.className = this.classname[classnum];
@@ -330,11 +295,9 @@ export default {
 
     // 수정본
     removeMarker(num) {
-      console.log("remove" + num);
       for (var i = 0; i < this.markers2[num].length; i++) {
         this.markers2[num][i].setMap(null);
       }
-      console.log("remove success");
       this.markers2[num] = [];
     },
 
