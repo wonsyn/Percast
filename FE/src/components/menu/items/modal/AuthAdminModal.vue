@@ -79,7 +79,6 @@ export default {
       await adminLogin(
         data,
         (response) => {
-          console.log(response);
           if (response.status === 200) {
             alert("Admin 로그인 성공");
             // sessionStorage.setItem("admin", response.data.auth);
