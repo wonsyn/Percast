@@ -38,7 +38,7 @@ const navStore = {
         title: "QnA/공지사항",
         comments:
           "서비스 이용 문의 및 불편사항을 접수해 지속적으로 개선합니다.",
-        menu: "Board",
+        menu: "QnA 및 공지사항",
         name: "/board",
         imageUrl: "welcome5.png",
       },

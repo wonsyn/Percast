@@ -6,9 +6,6 @@
     <b-row>
       <home-body></home-body>
     </b-row>
-    <b-row>
-      <home-footer></home-footer>
-    </b-row>
   </b-container>
 </template>
 
@@ -17,14 +14,12 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 import HomeHeader from "./HomeHeader.vue";
 import HomeBody from "./HomeBody.vue";
-import HomeFooter from "./HomeFooter.vue";
 
 export default {
   name: "HomeView",
   components: {
     HomeHeader,
     HomeBody,
-    HomeFooter,
   },
   methods: {
     movePage(link) {

@@ -5,12 +5,6 @@
       data-aos="fade-up"
       data-aos-offset="300"
     >
-      <!-- <h1 class="display-4">Fluid jumbotron</h1>
-        <p class="lead">
-          This is a modified jumbotron that occupies the entire horizontal space
-          of its parent.
-        </p> -->
-      <!-- <Carousel :autoplay="5000" :wrap-around="true"> -->
       <Carousel :wrap-around="true">
         <Slide v-for="(slide, index) in 3" :key="slide">
           <div

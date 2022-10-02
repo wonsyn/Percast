@@ -208,8 +208,13 @@ const menuStore = {
       },
       //피부병
       {
-        text: [],
-        copyright: [],
+        text: [
+          "피부가 붉어지며 피부각질이 두꺼운 형태로 떨어진다.",
+          "박탈성의 경우 오한,발열,근육통, 부종, 가려움 등이 동반된다.",
+        ],
+        copyright: [
+          "강북삼성병원 블로그, https://m.post.naver.com/viewer/postView.naver?volumeNo=33070304&memberNo=7131400&searchKeyword=%ED%94%BC%EB%B6%80%EB%B3%91",
+        ],
       },
       // 눈병
       {
@@ -260,8 +265,16 @@ const menuStore = {
         ],
       },
       {
-        text: ["선택한 질병에 대한", "데이터가 없습니다."],
-        copyright: [],
+        text: [
+          "- 실내 난방 및 낮은 습도를 조절한다.",
+          "- 육체 과로 및 스트레스를 줄인다.",
+          "- 적절한 햇빛쬐기와 운동을 지속한다.",
+          "- 꽉 끼는 옷은 피부에 마찰하여 증상이 심해지므로 피한다.",
+          "- 면역력이 약해지면 증상이 심해지므로 감염질환에 걸리지 않도록 조심한다.",
+        ],
+        copyright: [
+          "강북삼성병원 블로그, https://m.post.naver.com/viewer/postView.naver?volumeNo=33070304&memberNo=7131400&searchKeyword=%ED%94%BC%EB%B6%80%EB%B3%91",
+        ],
       },
       {
         text: [

@@ -18,19 +18,6 @@ const routes = [
     component: () => import(`@/views/MenuView.vue`),
   },
   {
-    path: "/chat",
-    name: "chat",
-    component: () => import("@/views/ChatView.vue"),
-    redirect: { name: "chatmain" },
-    children: [
-      {
-        path: "/chat/main",
-        name: "chatmain",
-        component: () => import("@/components/board/ChatMain.vue"),
-      },
-    ],
-  },
-  {
     path: "/maps",
     name: "map",
     component: () => import("@/views/MapView.vue"),
