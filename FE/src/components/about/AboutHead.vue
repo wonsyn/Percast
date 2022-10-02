@@ -51,7 +51,6 @@
               >Winter</a
             >
           </li>
-          <!--<li><a href="#elements">Elements</a></li>-->
         </ul>
       </nav>
     </div>
