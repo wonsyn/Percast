@@ -97,15 +97,9 @@ export default {
   },
   methods: {
     getInfo(num) {
-      console.log(this.d_type + " , " + num);
-      // 같은 숫자면 종료 (바꿀 필요 없다.)
       if (this.d_type == num) {
         return;
       }
-      // for (let i = 0; i < this.entities.length; i++) {
-      //   this.entities[i].remove();
-      // }
-      // 질병 명과 질병 번호 바꾸기
       this.store.dispatch("menuStore/set_disease", this.disease[num]); // 질병명 설정
       this.store.dispatch("menuStore/set_d_type", num); // 질병코드 설정
       this.store.dispatch("menuStore/set_disease_name", this.disease_name[num]);
@@ -149,7 +143,6 @@ export default {
     // scores에 따라 지역의 색이 변화하게 한다.
     fillRegions() {
       for (let i = 0; i < this.regions.length; i++) {
-        //const region = document.getElementById(regions[i].id);
         let color = "#";
         // 255 / 100 * scores[i]
         let red = Math.floor((255 / 100) * this.scores[this.regions[i].id]);
@@ -157,7 +150,6 @@ export default {
         //빨강
         code[0] = Math.floor(red / 16);
         code[1] = red - code[0] * 16;
-        // console.log(red);
         //녹색
         if (this.max_score[this.d_type] - this.min_score[this.d_type] < 50) {
           let green = Math.floor(
@@ -168,7 +160,6 @@ export default {
                   100,
               ),
           );
-          // console.log(green);
           code[2] = Math.floor(green / 16);
           code[3] = green - code[2] * 16;
         }
@@ -181,7 +172,6 @@ export default {
         let blue = Math.floor((255 / 100) * (100 - this.scores[i]));
         code[4] = Math.floor(blue / 16);
         code[5] = blue - code[4] * 16;
-        // console.log(blue);
         for (let j = 0; j < 6; j++) {
           switch (code[j]) {
             case 10:
@@ -206,7 +196,6 @@ export default {
               color += code[j];
           }
         }
-        // console.log(color);
         this.regions[i].style.fill = color;
       }
     },
@@ -219,8 +208,6 @@ export default {
   margin: 10px;
   width: 100%;
   height: 40px;
-  /* background-color: #1a2844; */
-  /* color: #5673eb; */
 }
 #menu_nav .on {
   color: #eb5374;
