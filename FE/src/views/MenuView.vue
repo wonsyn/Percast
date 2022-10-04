@@ -68,6 +68,16 @@ export default {
   },
   mounted() {
     window.addEventListener("resize", this.handleResize);
+    if (window.innerWidth > 1142) {
+      this.resize = true;
+      this.undersize = false;
+    } else if (window.innerWidth < 900) {
+      this.resize = false;
+      this.undersize = true;
+    } else {
+      this.resize = false;
+      this.undersize = false;
+    }
   },
   beforeUnmount() {
     window.removeEventListener("resize", this.handleResize);
