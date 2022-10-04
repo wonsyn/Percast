@@ -16,12 +16,17 @@
       >QNA</router-link
     >
   </div>
-  <div></div>
   <router-view></router-view>
+  <footer-nav-bar></footer-nav-bar>
 </template>
 
 <script>
+import FooterNavBar from "@/components/layout/FooterNavBar";
+
 export default {
+  components: {
+    FooterNavBar,
+  },
   methods: {
     changeNotice() {
       const noticeBtn = document.getElementById("notice-menu");

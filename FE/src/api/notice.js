@@ -8,7 +8,7 @@ async function get_notice(id, success, fail) {
 async function regist_notice(body, success, fail) {
   await api
     .post(`/notice`, JSON.stringify(body), {
-      headers: { Authorization: "62eea8bcaa5128173f599239ad19a041" },
+      headers: { Authorization: sessionStorage.getItem("admin") },
     })
     .then(success)
     .catch(fail);
@@ -16,7 +16,7 @@ async function regist_notice(body, success, fail) {
 async function update_notice(body, success, fail) {
   await api
     .put(`/notice`, body, {
-      headers: { Authorization: "62eea8bcaa5128173f599239ad19a041" },
+      headers: { Authorization: sessionStorage.getItem("admin") },
     })
     .then(success)
     .catch(fail);
@@ -24,7 +24,7 @@ async function update_notice(body, success, fail) {
 async function delete_notice(id, success, fail) {
   await api
     .delete(`/notice/${id}`, {
-      headers: { Authorization: "62eea8bcaa5128173f599239ad19a041" },
+      headers: { Authorization: sessionStorage.getItem("admin") },
     })
     .then(success)
     .catch(fail);
