@@ -14,6 +14,7 @@
         style="background: gray; margin-bottom: 10px"
       >
         <b-progress-bar
+          id="progress"
           :value="score"
           style="background: linear-gradient(to left, red, blue)"
         ></b-progress-bar>
