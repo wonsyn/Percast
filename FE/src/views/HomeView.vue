@@ -1,16 +1,19 @@
 <template>
   <div id="view_body">
     <home-main></home-main>
+    <footer-nav-bar></footer-nav-bar>
   </div>
 </template>
 
 <script>
 import HomeMain from "@/components/home/HomeMain.vue";
+import FooterNavBar from "@/components/layout/FooterNavBar.vue";
 
 export default {
   name: "HomeView",
   components: {
     HomeMain,
+    FooterNavBar,
   },
 };
 </script>
