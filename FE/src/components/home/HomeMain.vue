@@ -1,12 +1,12 @@
 <template>
-  <b-container>
+  <container>
     <b-row>
       <home-header></home-header>
     </b-row>
     <b-row>
       <home-body></home-body>
     </b-row>
-  </b-container>
+  </container>
 </template>
 
 <script>
