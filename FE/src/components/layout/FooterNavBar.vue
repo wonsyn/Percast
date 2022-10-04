@@ -33,6 +33,7 @@ export default {
     ...mapMutations("adminStore", ["SET_ADMIN"]),
     logout() {
       this.SET_ADMIN(null);
+      sessionStorage.removeItem("admin");
       alert("로그아웃 되었습니다.");
     },
   },
