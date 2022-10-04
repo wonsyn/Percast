@@ -5,7 +5,7 @@
       data-aos="fade-up"
       data-aos-offset="300"
     >
-      <Carousel :wrap-around="true">
+      <Carousel :autoplay="5000" :wrap-around="true">
         <Slide v-for="(slide, index) in 3" :key="slide">
           <div
             id="carousel__item"
