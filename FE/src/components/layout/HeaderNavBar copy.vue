@@ -106,17 +106,6 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 export default {
-  data() {
-    return {};
-  },
-  mounted() {},
-  methods: {
-    getSelnum(item) {
-      console.log(item.index);
-      console.log(item.name);
-      //this.store.dispatch('navStore/set_selected_num', nums);
-    },
-  },
   setup() {
     const store = useStore();
 

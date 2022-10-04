@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import { computed } from "vue";
 import { useStore } from "vuex";
 import MenuMainMaps from "./items/maps/MenuMainMaps.vue";
 
@@ -17,26 +16,12 @@ export default {
   components: {
     MenuMainMaps,
   },
-  data() {
-    return {
-      circles: null,
-    };
-  },
-  methods: {
-    back() {
-      this.store.dispatch("menuStore/set_depth", 0);
-    },
-  },
   mounted() {
     this.store.dispatch("menuStore/get_scores");
   },
   setup() {
     const store = useStore();
-
-    const depth = computed(() => store.state.menuStore.depth);
-    const sido = computed(() => store.state.menuStore.sido);
-    const gugun = computed(() => store.state.menuStore.gugun);
-    return { store, depth, sido, gugun };
+    return { store };
   },
 };
 </script>

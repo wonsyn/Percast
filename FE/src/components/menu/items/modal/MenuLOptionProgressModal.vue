@@ -134,8 +134,6 @@ export default {
       for (let i = 0; i < this.phoneNum.length; i++) {
         if (this.phoneNum[i] >= "0" && this.phoneNum[i] <= "9") {
           pn += this.phoneNum[i];
-        } else if (this.phoneNum[i] === "-") {
-          console.log("- 는 제거합니다.");
         } else {
           console.log("error");
           alert(
@@ -155,12 +153,9 @@ export default {
         sidoCode: this.r_num,
         tel: pn,
       };
-      console.log(data);
-      console.log("-----");
       await send_message(
         data,
         (response) => {
-          console.log(response);
           if (response.state === 200) {
             alert("등록이 완료되었습니다.");
             this.close_modal();

@@ -7,11 +7,6 @@
       <b-col cols="8" style="padding: 0">
         <maps-main></maps-main>
       </b-col>
-      <!-- 
-        <b-col>
-            <map-r-option></map-r-option>
-        </b-col> 
-      -->
     </b-row>
   </div>
 </template>
