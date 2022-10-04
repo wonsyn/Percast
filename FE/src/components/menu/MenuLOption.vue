@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="min-width: 353px">
     <menu-l-option-type></menu-l-option-type>
     <menu-l-option-progress></menu-l-option-progress>
     <h4 style="color: white; margin-top: 20px">현재 날씨 정보</h4>
