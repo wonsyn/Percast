@@ -31,7 +31,9 @@
       <div style="font-size: 13px; color: white; margin-top: 5px">
         건강 조심하시고 행복한 하루 되시길 바랍니다.
       </div>
-      <div id="button" @click="showModal">[알림 설정]</div>
+      <div id="button" @click="showModal">
+        [{{ region }}지역 {{ disease_name }}알림 설정]
+      </div>
     </b-card-body>
   </b-card>
   <menu-l-option-progress-modal ref="modal"></menu-l-option-progress-modal>
