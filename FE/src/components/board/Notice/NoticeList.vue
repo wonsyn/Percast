@@ -18,6 +18,7 @@
             v-for="notice in notices"
             :key="notice.id"
             @click="moveToDetail(notice.id)"
+            style="cursor: pointer"
           >
             <td style="margin-top: 11px">{{ notice.id }}</td>
             <td>
