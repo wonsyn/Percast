@@ -32,7 +32,7 @@ export default {
 }
 
 #body {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   height: auto;
   background-color: #0f1421;

@@ -318,10 +318,12 @@ body {
   overflow-x: hidden;
 }
 #container {
-  overflow: hidden;
   height: 100%;
+  min-height: 600px;
   width: 100%;
+  min-width: 800px;
   position: relative;
+  margin: 10px;
 }
 
 .map_wrap {
