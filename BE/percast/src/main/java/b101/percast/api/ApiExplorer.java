@@ -147,8 +147,9 @@ public class ApiExplorer {
         }
         String date = "" + localDate.getYear();
         if(localDate.getMonthValue() < 10) date += "0" + localDate.getMonthValue();
+        else date += localDate.getMonthValue();
+        if(localDate.getDayOfMonth() < 10) date += "0" + localDate.getDayOfMonth();
         else date += localDate.getDayOfMonth();
-        date += localDate.getDayOfMonth();
         for(int i = 0; i < NX.length; i++) {
             StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"); /*URL*/
             urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=kImpf2I8kzldmg5CDHLvX%2FkS%2FBXCIztnt9ZS6BMIImOkrTGNWe3otNY3jQwogBALApPcSRwVLFQl8BrNj8gywA%3D%3D"); /*Service Key*/
@@ -176,6 +177,7 @@ public class ApiExplorer {
             }
             rd.close();
             conn.disconnect();
+
             JSONObject jsonObeject = new JSONObject(sb.toString());
             JSONObject list = jsonObeject.getJSONObject("response").getJSONObject("body").getJSONObject("items");
             JSONArray items = list.getJSONArray("item");
@@ -186,19 +188,23 @@ public class ApiExplorer {
             String nowDate = "" + now.getYear();
             if(now.getMonthValue() < 10) nowDate += "0" + now.getMonthValue();
             else nowDate += now.getMonthValue();
-            nowDate += now.getDayOfMonth();
+            if(now.getDayOfMonth() < 10) nowDate += "0" + now.getDayOfMonth();
+            else nowDate += now.getDayOfMonth();
             String nowTime = "" + now.getHour() + "00";
             if (now.getHour() < 10) nowTime = "0" + now.getHour();
             for(int j = 0; j < items.length(); j++) {
                 JSONObject item = items.getJSONObject(j);
-                String type = item.getString("category");
+                String type = item.getString("category").trim();
                 String fcstDate = item.getString("fcstDate");
                 String fcstTime = item.getString("fcstTime");
                 if(fcstDate.equals(nowDate) && fcstTime.equals(nowTime)) {
                     if (type.equals("PCP")) {
                         pcpCount++;
                         String rain = item.getString("fcstValue");
-                        if(!rain.equals("강수없음")) pcpSum += Double.parseDouble(rain);
+                        if(!rain.equals("강수없음")) {
+                            rain = rain.replaceAll("[^0-9.]", "");
+                            pcpSum += Double.parseDouble(rain);
+                        }
                     } else if (type.equals("REH")) {
                         rehCount++;
                         double temp = item.getDouble("fcstValue");
