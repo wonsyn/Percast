@@ -86,14 +86,25 @@
       </div>
     </div>
   </div>
+  <qna-password-modal
+    ref="modal"
+    :qna-id="qna.id"
+    :type="type"
+  ></qna-password-modal>
 </template>
 
 <script>
+import { ref } from "vue";
 import { mapState } from "vuex";
+import QnaPasswordModal from "@/components/menu/items/modal/QnaPasswordModal";
 
 export default {
   computed: {
     ...mapState("qnaStore", ["qna"]),
+    ...mapState("adminStore"["admin"]),
+  },
+  components: {
+    QnaPasswordModal,
   },
   data() {
     return {
@@ -101,7 +112,17 @@ export default {
       toggleAnswerForm: false,
       admin: String,
       qnaId: String,
+      type: "",
     };
+  },
+  setup() {
+    const modal = ref(null);
+
+    const showModal = async () => {
+      await modal.value.show();
+    };
+
+    return { modal, showModal };
   },
   created() {
     // actions로 qnaId값 보내기
@@ -120,6 +141,10 @@ export default {
   },
   methods: {
     async toggleAnswerUpdate() {
+      if (!sessionStorage.getItem("admin")) {
+        alert("권한이 없습니다.");
+        return;
+      }
       if (this.toggleAnswerForm) {
         console.log("answerContent====", this.answerContent);
         const answer = {
@@ -141,21 +166,25 @@ export default {
       });
     },
     moveToUpdate() {
-      this.$router.push({
-        path: `/board/qna/update/${this.qna.id}`,
-      });
+      this.type = "update";
+      this.showModal();
     },
     async qnaDelete() {
-      await this.$store.dispatch("qnaStore/deleteQna", this.qna.id);
-      await this.$store.dispatch("qnaStore/getQnas");
-      this.$router.push("/board/qna/list");
+      this.type = "delete";
+      this.showModal();
     },
     async answerDelete() {
+      if (!sessionStorage.getItem("admin")) {
+        alert("권한이 없습니다.");
+        return;
+      }
+
       const params = {
         qnaId: this.qna.id,
         answerId: this.qna.answer.id,
       };
       await this.$store.dispatch("qnaStore/deleteAnswer", params);
+      await this.$store.dispatch("qnaStore/getQna", this.qna.id);
       this.answerContent = "";
     },
     async updateAnswer() {

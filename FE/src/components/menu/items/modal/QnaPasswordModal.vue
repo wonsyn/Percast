@@ -3,7 +3,7 @@
     <b-row>
       <b-col cols="11">
         <div class="header">
-          <span style="font-weight: bolder">Admin 인증</span>
+          <span style="font-weight: bolder">작성자 인증</span>
         </div>
       </b-col>
       <b-col>
@@ -15,11 +15,11 @@
         <b-input-group>
           <b-form-input
             id="input-1"
-            v-model="adminPassword"
+            v-model="qnaPassword"
             type="password"
             trim
           ></b-form-input>
-          <button class="btn btn-success" @click="authAdmin">Login</button>
+          <button class="btn btn-success" @click="authQna">인증</button>
         </b-input-group>
       </b-form-group>
     </b-row>
@@ -28,7 +28,7 @@
 
 <script>
 import ModalBase from "@/components/menu/items/modal/ModalBase";
-import { adminLogin } from "@/api/admin.js";
+import { auth_qna } from "@/api/qna.js";
 
 import { ref } from "vue";
 import { useStore, mapMutations } from "vuex";
@@ -61,28 +61,40 @@ export default {
   },
   data() {
     return {
-      adminPassword: "",
+      qnaPassword: "",
     };
+  },
+  props: {
+    qnaId: Number,
+    type: String,
   },
   methods: {
     ...mapMutations("adminStore", ["SET_ADMIN"]),
     close_modal() {
       this.listnum = 0;
       this.selectNum = 0;
-      this.adminPassword = "";
+      this.qnaPassword = "";
       this.cancel();
     },
-    async authAdmin() {
+    async authQna() {
       const data = {
-        password: this.adminPassword,
+        id: this.qnaId,
+        password: this.qnaPassword,
       };
-      await adminLogin(
+      await auth_qna(
         data,
-        (response) => {
+        async (response) => {
           if (response.status === 200) {
-            alert("Admin 로그인 성공");
-            sessionStorage.setItem("admin", response.data.auth);
-            this.SET_ADMIN(response.data.auth);
+            if (this.type === "update") {
+              this.$router.push({
+                path: `/board/qna/update/${this.qnaId}`,
+              });
+            } else if (this.type === "delete") {
+              await this.$store.dispatch("qnaStore/deleteQna", this.qnaId);
+              await this.$store.dispatch("qnaStore/getQnas");
+              alert("삭제되었습니다.");
+              this.$router.push("/board/qna/list");
+            }
             this.close_modal();
           } else {
             alert("비밀번호를 확인해 주세요");
