@@ -1,7 +1,7 @@
 <template>
   <b-row>
     <b-card id="maplist">
-      <b-card-header> 병원 </b-card-header>
+      <b-card-header> <h4>병원</h4> </b-card-header>
       <b-card-body class="list-space">
         <div class="list-inner-space" style="overflow: auto; height: 220px">
           <map-l-option-list-item
@@ -16,7 +16,7 @@
   </b-row>
   <b-row>
     <b-card id="maplist">
-      <b-card-header> 약국 </b-card-header>
+      <b-card-header> <h4>약국</h4> </b-card-header>
       <b-card-body class="list-space">
         <div class="list-inner-space" style="overflow: auto; height: 220px">
           <map-l-option-list-item
