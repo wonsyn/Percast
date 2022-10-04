@@ -10,6 +10,7 @@
           class="form-control"
           placeholder="암호를 입력해 주세요"
           name="password"
+          type="password"
           v-model="password"
           style="width: 20%"
           required
