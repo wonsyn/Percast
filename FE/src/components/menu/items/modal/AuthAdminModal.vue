@@ -82,7 +82,7 @@ export default {
           console.log(response);
           if (response.status === 200) {
             alert("Admin 로그인 성공");
-            // sessionStorage.setItem("admin", response.data.auth);
+            sessionStorage.setItem("admin", response.data.auth);
             this.SET_ADMIN(response.data.auth);
             this.close_modal();
           } else {
