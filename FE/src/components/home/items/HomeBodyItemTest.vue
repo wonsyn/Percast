@@ -117,7 +117,6 @@ export default {
   align-items: center;
 }
 #card-body {
-  background-color: transparent;
 }
 
 #menu .menu {
@@ -128,6 +127,7 @@ export default {
   align-items: center;
 }
 img {
+  background-color: transparent;
   width: "auto";
   height: "auto";
   max-width: 600px;

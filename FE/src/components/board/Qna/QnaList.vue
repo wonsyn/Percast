@@ -14,7 +14,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="qna in qnas" :key="qna.id" @click="moveToDetail(qna.id)">
+          <tr
+            v-for="qna in qnas"
+            :key="qna.id"
+            @click="moveToDetail(qna.id)"
+            style="cursor: pointer"
+          >
             <td style="margin-top: 11px">{{ qna.id }}</td>
             <td>
               {{ qna.title }}
