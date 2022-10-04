@@ -31,7 +31,7 @@
     <b-row>
       <b-form-group
         id="fieldset-1"
-        label="Enter your PhoneNumber"
+        label="매일 오전 9시에 위험지수 정보를 받을 수 있습니다."
         label-for="input-1"
         valid-feedback="전화번호 입력이 끝나면 입력을 눌러주세요"
         :invalid-feedback="feedback_text"
@@ -42,6 +42,7 @@
             id="input-1"
             v-model="phoneNum"
             :state="modal_state"
+            placeholder="전화번호를 입력해주세요."
             trim
           ></b-form-input>
 
