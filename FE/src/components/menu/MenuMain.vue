@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="min-width: 600px">
     <div id="album">
       <div id="bg_map">
         <menu-main-maps></menu-main-maps>
