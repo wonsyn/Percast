@@ -145,7 +145,9 @@ export default {
       for (let i = 0; i < this.regions.length; i++) {
         let color = "#";
         // 255 / 100 * scores[i]
+        // let red = 0;
         let red = Math.floor((255 / 100) * this.scores[this.regions[i].id]);
+        // if (this.scores[this.regions[i].id] > 50) red = 255;
         const code = ["", "", "", "", "", ""];
         //빨강
         code[0] = Math.floor(red / 16);
@@ -169,7 +171,11 @@ export default {
           code[3] = 3;
         }
         //파랑
-        let blue = Math.floor((255 / 100) * (100 - this.scores[i]));
+        let blue = 0;
+        // let blue = Math.floor(
+        //   (255 / 100) * (100 - this.scores[this.regions[i].id]),
+        // );
+        if (this.scores[this.regions[i].id] < 50) blue = 255;
         code[4] = Math.floor(blue / 16);
         code[5] = blue - code[4] * 16;
         for (let j = 0; j < 6; j++) {

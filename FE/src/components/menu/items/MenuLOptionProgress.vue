@@ -3,7 +3,7 @@
   <b-card id="menu_progress">
     <b-card-header>
       <div id="menu_text" style="font-size: 20px; margin-top: 5px">
-        현재 {{ region }} 의 경계지수는
+        현재 {{ region }} 의 위험지수는
       </div>
       <a id="score" style="font-size: 30px">{{ score }}</a>
       <a id="menu_text" style="font-size: 20px; margin-top: 20px"> 점</a>

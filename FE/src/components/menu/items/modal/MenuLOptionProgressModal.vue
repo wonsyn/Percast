@@ -157,7 +157,7 @@ export default {
       await send_message(
         data,
         (response) => {
-          if (response.state === 200) {
+          if (response.status === 200 || response.status === 201) {
             alert("등록이 완료되었습니다.");
             this.close_modal();
           }
