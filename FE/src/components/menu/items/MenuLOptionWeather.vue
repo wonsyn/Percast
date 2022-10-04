@@ -14,14 +14,17 @@
             <img :src="require(`@/assets/humidity.svg`)" />
           </div>
           <div>습도</div>
-          <div>{{ weather.humid }}</div>
+          <div>{{ weather.humid }}%</div>
         </b-col>
         <b-col class="cards" cols="4">
           <div class="picto">
             <img :src="require(`@/assets/rainy.svg`)" />
           </div>
           <div>강우량</div>
-          <div>{{ weather.rain }}</div>
+          <div>
+            {{ weather.rain }}
+            <a style="font-size: 13px; color: #c8c8c8">mm</a>
+          </div>
         </b-col>
       </b-row>
     </div>
