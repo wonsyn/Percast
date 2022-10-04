@@ -25,6 +25,7 @@ const routes = [
   {
     path: "/board",
     name: "board",
+    redirect: "/board/notice/list",
     component: () => import("@/views/BoardView.vue"),
     children: [
       {
