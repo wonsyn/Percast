@@ -91,14 +91,13 @@ export default defineComponent({
 
 <style>
 #jumbotron {
-  height: 700px;
+  height: 100vh;
   width: 100%;
   color: white;
-  padding-top: 40px;
   /* background-color: gray; */
 }
 #carousel__item {
-  min-height: 500px;
+  min-height: 80vh;
   width: 100%;
   color: var(--vc-clr-white);
   font-size: 20px;
@@ -116,11 +115,13 @@ export default defineComponent({
 }
 #carousel__item.b {
   background-image: url("../../assets/cloudy.png");
+  background-size: cover;
   justify-content: center;
   align-items: start;
 }
 #carousel__item.c {
   background-image: url("../../assets/raining.png");
+  background-size: cover;
   justify-content: center;
   align-items: start;
 }
