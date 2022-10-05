@@ -145,7 +145,7 @@ public class ApiExplorer {
     }
 
     private static void getWeather() throws IOException{
-        LocalDateTime localDate = LocalDateTime.now();
+        LocalDateTime localDate = LocalDateTime.now().plusHours(9);
         if(localDate.getHour() < 2) {
             localDate = localDate.minusDays(1);
         }
@@ -188,7 +188,7 @@ public class ApiExplorer {
 
             int pcpCount = 0, rehCount = 0, tmpCount = 0, tmnCount = 0, tmxCount = 0, wsdCount = 0;
             double pcpSum = 0, rehSum = 0, tmpSum = 0, tmnSum = 0, tmxSum = 0, wsdSum = 0;
-            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime now = LocalDateTime.now().plusHours(9);
             String nowDate = "" + now.getYear();
             if(now.getMonthValue() < 10) nowDate += "0" + now.getMonthValue();
             else nowDate += now.getMonthValue();
