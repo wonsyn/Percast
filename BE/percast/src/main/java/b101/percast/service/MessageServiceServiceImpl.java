@@ -28,7 +28,7 @@ public class MessageServiceServiceImpl implements MessageServiceService{
     private final MessageServiceRepository messageServiceRepository;
     private final OutputRepository outputRepository;
 
-    @Scheduled(cron = "0 20 11 * * ?")
+    @Scheduled(cron = "0 30 11 * * ?")
     @Override
     public void sendAll() {
         ArrayList<Message> messageList = new ArrayList<>();
@@ -55,7 +55,7 @@ public class MessageServiceServiceImpl implements MessageServiceService{
                 } else if (disease.equals("skin")){
                     diseaseVal = output.getSkin();
                     disease = "피부병";
-                } else if (disease.equals("food")){
+                } else if (disease.equals("foodPoison")){
                     diseaseVal = output.getFoodPoison();
                     disease = "식중독";
                 } else {
