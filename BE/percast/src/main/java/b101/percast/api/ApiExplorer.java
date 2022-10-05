@@ -64,7 +64,11 @@ public class ApiExplorer {
             conn.disconnect();
             String item = new JSONObject(sb.toString()).getJSONObject(("response"))
                     .getJSONObject("body").getJSONObject("items").getJSONArray("item").getJSONObject(0).getString("today");
-            list.add(item);
+            if(item.length() == 0) {
+                list.add("0");
+            } else {
+                list.add(item);
+            }
         }
         return list;
     }
