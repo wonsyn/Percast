@@ -19,7 +19,7 @@ const navStore = {
         comments2: "현재 날씨, 대기 상태를 바탕으로",
         comments3: "지역별 질병 위험도를 알려줍니다.",
         menu: "계절 질병 정보",
-        name: "/about",
+        name: "/menu",
         imageUrl: "welcome2.png",
       },
       {
@@ -28,7 +28,7 @@ const navStore = {
         comments2: "주변 병원/약국 위치를 안내합니다.",
         comments3: "",
         menu: "전국 질병 지도",
-        name: "/menu",
+        name: "/maps",
         imageUrl: "welcome3.png",
       },
       {
@@ -37,7 +37,7 @@ const navStore = {
         comments2: "1년 건강을 예방할 수 있습니다.",
         comments3: "",
         menu: "주변 의료 시설",
-        name: "/maps",
+        name: "/about",
         imageUrl: "welcome4.png",
       },
       {
