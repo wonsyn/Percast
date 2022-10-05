@@ -28,9 +28,10 @@ public class MessageServiceServiceImpl implements MessageServiceService{
     private final MessageServiceRepository messageServiceRepository;
     private final OutputRepository outputRepository;
 
-    @Scheduled(cron = "0 58 14 * * ?")
+    @Scheduled(cron = "0 16 15 * * ?")
     @Override
     public void sendAll() {
+        System.out.println("message start");
         ArrayList<Message> messageList = new ArrayList<>();
         List<String> telList = messageServiceRepository.findDistinctTelAll();
         String localDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));
