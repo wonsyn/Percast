@@ -18,7 +18,7 @@ import java.io.IOException;
 public class InputServiceImpl implements InputService{
     private final InputRepository inputRepository;
 
-    @Scheduled(cron = "0 54 * * * ?")
+    @Scheduled(cron = "0 1 * * * ?")
     @Transactional
     @Override
     public void saveInputData() throws IOException {
