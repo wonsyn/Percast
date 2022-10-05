@@ -39,16 +39,16 @@
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="mx-auto">
+          <router-link :to="{ path: menuArray[1].name }" class="nav-link">
+            {{ menuArray[1].menu }}
+          </router-link>
+
           <router-link :to="{ path: menuArray[2].name }" class="nav-link">
             {{ menuArray[2].menu }}
           </router-link>
 
           <router-link :to="{ path: menuArray[3].name }" class="nav-link">
             {{ menuArray[3].menu }}
-          </router-link>
-
-          <router-link :to="{ path: menuArray[1].name }" class="nav-link">
-            {{ menuArray[1].menu }}
           </router-link>
 
           <router-link :to="{ path: menuArray[4].name }" class="nav-link">
