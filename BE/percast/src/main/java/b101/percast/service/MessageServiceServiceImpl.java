@@ -28,7 +28,7 @@ public class MessageServiceServiceImpl implements MessageServiceService{
     private final MessageServiceRepository messageServiceRepository;
     private final OutputRepository outputRepository;
 
-    @Scheduled(cron = "0 30 11 * * ?")
+    @Scheduled(cron = "0 0 12 * * ?")
     @Override
     public void sendAll() {
         ArrayList<Message> messageList = new ArrayList<>();
