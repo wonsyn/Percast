@@ -31,7 +31,7 @@ public class TwitServiceImpl implements TwitService {
                 .collect(Collectors.toList());
     }
 
-    @Scheduled(cron = "0 6 6 * * ?")
+    @Scheduled(cron = "0 6 21 * * ?")
     public void saveDiseaseOutput() {
         List<Twit> resList = new ArrayList<>();
 
