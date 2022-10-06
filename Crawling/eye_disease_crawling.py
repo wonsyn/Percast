@@ -11,7 +11,7 @@ db_connection = create_engine(db_connection_str, encoding='utf-8')
 conn = db_connection.connect()
 
 today = date.today()
-yesterday = date.today() - timedelta(days=14)
+yesterday = date.today() - timedelta(days=30)
 
 tagger = MeCab.Tagger()
 
