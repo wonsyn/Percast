@@ -23,7 +23,7 @@
 
 - 전화번호를 입력하면 SMS 문자 알림 정보 서비스를 받을 수 있습니다.
   
-    ![캡처.PNG](picDisease/캡처.png)
+    ![캡처.PNG](picDisease/그림10.png)
     
     ![그림5.jpg](picDisease/그림5.jpg)
     
@@ -51,44 +51,44 @@
 
 - 좌측 상단 버튼을 누르면 해당 카테고리의 정보를 지도상에서 확인할 수 있습니다.
 
-![Untitled](C:\Users\multicampus\Desktop\NotionMap\picMap\Untitled.png)
+![Untitled](picDisease/그림11.png)
 
 - 마커를 클릭하면 해당 지점의 정보가 나오며, 카카오 지도로 이동 가능합니다.
 
-![Untitled](C:\Users\multicampus\Desktop\NotionMap\picMap\Untitled 1.png)
+![Untitled](picDisease/그림12.png)
 
-![Untitled](C:\Users\multicampus\Desktop\NotionMap\picMap\Untitled 2.png)
+![Untitled](picDisease/그림13.png)
 
 ### 주의사항 : 마커를 한 번 더 눌러야 꺼지므로 반드시 한번 더 눌러서 끄고 설명을 이어간다.
 
 - 좌측 상단 카테고리를 누르면 활성화된 마커는 다시 사라집니다.
 
-![Untitled](C:\Users\multicampus\Desktop\NotionMap\picMap\Untitled.png)
+![Untitled](picDisease/그림11.png)
 
 - 또한, 카테고리를 활성하면 좌측에 리스트가 생기며, 이름과 전화번호 등의 간략한 정보를 알 수 있습니다.
 
-![Untitled](C:\Users\multicampus\Desktop\NotionMap\picMap\Untitled 3.png)
+![Untitled](picDisease/그림14.png)
 
 - (지도를 이동하거나 확대, 축소하며) 지도를 확대하거나 축소하거나 또는 이동을 할 경우 해당 상태에 맞는 병원과 약국 위치를 다시 검색해 주며, 좌측의 리스트 또한 갱신됩니다.
 
-![Untitled](C:\Users\multicampus\Desktop\NotionMap\picMap\Untitled 4.png)
+![Untitled](picDisease/그림15.png)
 
 ### 한장으로 요약하기
 
-![Untitled](C:\Users\multicampus\Desktop\NotionMap\picMap\Untitled 5.png)
+![Untitled](picDisease/그림16.png)
 
 
 
 ## 3. 계절 질병 정보
 
-![계절질병정보.png](C:\Users\multicampus\Desktop\계절질병정보\picSeason\그림1.png)
+![계절질병정보.png](picDisease/그림17.png)
 
 1. 계절 질병 정보입니다.
 2. 원하는 계절을 선택할 수 있습니다.
 3. 선택한 계절과 간단한 주의사항이 적혀있습니다.
 4. 해당 계절에 대한 정보를 모달을 통해 띄워줍니다.
 
-![계절질병정보_모달.png](C:\Users\multicampus\Desktop\계절질병정보\picSeason\그림2.png)
+![계절질병정보_모달.png](picDisease/그림18.png)
 
 1. 선택한 계절의 질병 정보를 담은 모달창입니다.
 2. 주로 유행하는 질병명이 나와있고, 선택할 수 있습니다.
