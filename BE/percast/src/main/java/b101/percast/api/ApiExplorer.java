@@ -194,8 +194,7 @@ public class ApiExplorer {
             else nowDate += now.getMonthValue();
             if(now.getDayOfMonth() < 10) nowDate += "0" + now.getDayOfMonth();
             else nowDate += now.getDayOfMonth();
-            String nowTime = "" + now.getHour() + "00";
-            if (now.getHour() < 10) nowTime = "0" + now.getHour();
+            String nowTime = (now.getHour() < 10) ? "0" + now.getHour() + "00" : "" + now.getHour() + "00";
             for(int j = 0; j < items.length(); j++) {
                 JSONObject item = items.getJSONObject(j);
                 String type = item.getString("category").trim();
