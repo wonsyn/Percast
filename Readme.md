@@ -1,5 +1,15 @@
-# 기술스택
-![image.png](https://user-images.githubusercontent.com/54360785/194492328-cf4ceaec-458e-460e-b843-7b44a687e296.png)
+# 기획의도
+![기획의도](https://user-images.githubusercontent.com/54360785/194493841-ec124a01-d231-4cd4-b316-802345644ec0.png)
+
+# 기능소개
+![기능소개](https://user-images.githubusercontent.com/54360785/194493810-9b205220-526d-4856-8477-4f9fec24ad1f.png)
+
+# 팀원소개
+![팀원소개](https://user-images.githubusercontent.com/54360785/194493773-25439289-3904-4fcd-a220-1860f7f8f926.png)
+
+
+# 아키텍처 및 기술스택
+![아키텍처및기술스택](https://user-images.githubusercontent.com/54360785/194492328-cf4ceaec-458e-460e-b843-7b44a687e296.png)
 - BE
     - IntelliJ
     - SpringBoot 2.7.3
