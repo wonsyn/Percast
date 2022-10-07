@@ -1,3 +1,22 @@
+# 기술스택
+![image.png](https://user-images.githubusercontent.com/54360785/194492328-cf4ceaec-458e-460e-b843-7b44a687e296.png)
+- BE
+    - IntelliJ
+    - SpringBoot 2.7.3
+    - Spring Data JPA
+    - mySql 8.0.30
+    - Java 11
+    - Gradle 7.5
+    - Hadoop
+- ML
+    - Scikit-Learn
+- FE
+    - VSCode, figma, Vue3, BootStrapVue3, node.js, Javascript
+- Infra
+    - Docker, Jenkins, AWS EC2
+- Team Collaboration Tool
+    - Jira, gitLab, notion, webex, MatterMost, SourceTree
+
 # 시연시나리오
 
 ## 1. 전국 질병 지도
